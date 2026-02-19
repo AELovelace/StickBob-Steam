@@ -172,7 +172,7 @@ function scr_fill_the_grid(ax, ay, xgoal, ygoal){
 	                       n = n + 1;
 	                       a = ds_grid_get(ds_gridpathfinding, ax-1, ay+n);
 	                       }
-	                    until (a = -2) || (ay + n == ds_grid_height(ds_gridpathfinding))
+	                    until (a == -2) || (ay + n == ds_grid_height(ds_gridpathfinding))
 	                    }
 	                    if ds_grid_get(ds_gridpathfinding, ax-1, ay+n-1) == -1 && ds_grid_get(ds_gridpathfinding, ax-1, ay+n) == -2
 	                    {
