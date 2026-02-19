@@ -1,5 +1,10 @@
 // Create an array (or a list) of your sound assets
 track_list = [radio_3, bassything, flute_loop_4, all_my_heroes_quit,wailing ]; // Add all your tracks
+ANG3LWARE_LIST = [radio_3, bassything, flute_loop_4, all_my_heroes_quit,wailing ]
+GLOOMSTONE_LIST = [radio_3, CryToDeath,ESAL,LockYourDoors,trashworld]
+artists = [ANG3LWARE_LIST,GLOOMSTONE_LIST]
+artistName = ["ANG3LWARE", "GLOOMSTONE"]
+artistPosition = 0;
 track_position = 0; // Start with the first track (index 0)
 audio_instance = -1; // Variable to store the currently playing sound's ID
 refStringLength = string_length("ref sound ");

@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Garbage",
-    "path":"folders/Sprites/Garbage.yy",
+    "name":"MP3 Player",
+    "path":"folders/Sprites/MP3 Player.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

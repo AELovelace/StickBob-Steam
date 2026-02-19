@@ -161,7 +161,7 @@ function paddle_movement() {
 		wallJump = 0;
 
 		// Wall-jump: player is airborne, pressing up, and within the fall-cooldown window
-		if(canJump == 0 && yInput == -1 && fallCooldown <= 0){
+		if(canJump == 0 && yInput == -1 && fallCooldown <= 0 && place_meeting(x + xSpeed, y + ySpeed, obj_Wall)){
 			if(collisionAngle == 0 && xInput == -1 && xSpeed <= .5){
 				xSpeed = xSpeed + 15   // launch away from the left wall
 				ySpeed -= 15

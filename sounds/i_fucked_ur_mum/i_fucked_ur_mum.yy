@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"i_fucked_ur_mum",
   "parent":{
-    "name":"Sounds",
-    "path":"folders/Sounds.yy",
+    "name":"SFX",
+    "path":"folders/Sounds/SFX.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

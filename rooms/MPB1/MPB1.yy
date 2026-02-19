@@ -263,8 +263,8 @@
   ],
   "name":"MPB1",
   "parent":{
-    "name":"Rooms",
-    "path":"folders/Rooms.yy",
+    "name":"Multiplayer",
+    "path":"folders/Rooms/Multiplayer.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

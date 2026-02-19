@@ -24,6 +24,10 @@ var skipX = hwidth-25
 var skipY = 140
 var prevX = hwidth-96
 var prevY = 140
+var artUpX = hwidth-62
+var ArtUpY = 105
+var artDownX = hwidth-62
+var artDownY = 173
 if (point_in_rectangle(mouse_gui_x, mouse_gui_y, playX-16, playY-16, playX + 16, playY + 16)) {
     if (mouse_check_button_pressed(mb_left)) {
 		show_debug_message("Button Clicked!");
@@ -65,6 +69,42 @@ if (point_in_rectangle(mouse_gui_x, mouse_gui_y, prevX-16, prevY-16, prevX + 16,
 		} else if(track_position >= 0) {
 			play_current_track()
 		}
+    
+    }
+}
+//TODO: implement artist up/down in mp3 player
+if (point_in_rectangle(mouse_gui_x, mouse_gui_y, artUpX-16, ArtUpY-16, artUpX + 16, ArtUpY + 16)) {
+    if (mouse_check_button_pressed(mb_left)) {
+	show_debug_message("Button Clicked!");
+	artistPosition = (artistPosition + 1);	
+	if(artistPosition >= array_length(artists)){
+		artistPosition = 0;
+		array_copy(track_list,0,artists[artistPosition],0,array_length(track_list))
+		track_position = 0;
+		play_current_track()
+	} else if(artistPosition >= 0) {
+		array_copy(track_list,0,artists[artistPosition],0,array_length(track_list))
+		track_position = 0;
+		play_current_track()
+
+	}
+    
+    }
+}
+if (point_in_rectangle(mouse_gui_x, mouse_gui_y, artDownX-16, artDownY-16, artDownX + 16, artDownY + 16)) {
+    if (mouse_check_button_pressed(mb_left)) {
+	artistPosition = (artistPosition - 1);	
+	if(artistPosition >= array_length(artists)){
+		artistPosition = 0;
+		array_copy(track_list,0,artists[artistPosition],0,array_length(track_list))
+		track_position = 0;
+		play_current_track()
+	} else if(artistPosition >= 0) {
+		array_copy(track_list,0,artists[artistPosition],0,array_length(track_list))
+		track_position = 0;
+		play_current_track()
+
+	}
     
     }
 }
