@@ -107,8 +107,9 @@ function update_player_position(_b) {
 	for (var _i = 0; _i < array_length(playerList); _i++){
 		if (_steam_id == playerList[_i].steamID) {
 			if playerList[_i].character == undefined then continue
-			playerList[_i].character.x = _x
-			playerList[_i].character.y = _y
+			playerList[_i].character.netX = _x
+			playerList[_i].character.netY = _y
+			playerList[_i].character.hasNetPos = true
 		}
 	}
 }

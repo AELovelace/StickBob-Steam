@@ -42,6 +42,11 @@ function variableInitAll(){
 
 	// Set by horizontal wall collision: 0 = left wall hit, 180 = right wall hit
 	collisionAngle = 0;
+
+	// Network reconciliation / interpolation
+	netX      = 0      // server-authoritative x target
+	netY      = 0      // server-authoritative y target
+	hasNetPos = false  // true once first PLAYER_POSITION packet is received
 }
 
 // ---------------------------------------------------------------------------
@@ -306,6 +311,34 @@ function playerShoot(){
 		effect_create_above(ef_spark,   _x, _y, .05, c_orange);
 		currentCooldown = fireCooldown  // start the inter-shot cooldown
 	}
+}
+
+// ---------------------------------------------------------------------------
+// Reconciles the local predicted position with the server-authoritative
+// position (isLocal) or interpolates remote players toward server truth.
+// Call once per Step after paddle_movement().
+// ---------------------------------------------------------------------------
+function reconcile_net_position() {
+    if (!hasNetPos) return;
+
+    if (isLocal) {
+        // Prediction reconciliation: correct local player gently toward server truth.
+        // Large errors (>64 px total) snap immediately (desync recovery).
+        // Small errors lerp at 25% per frame so corrections are invisible.
+        var _err = abs(x - netX) + abs(y - netY);
+        if (_err > 64) {
+            x = netX;  y = netY;
+            xSpeed = 0; ySpeed = 0;
+        } else if (_err > 4) {
+            x = lerp(x, netX, 0.25);
+            y = lerp(y, netY, 0.25);
+        }
+        // Within 4 px: prediction was accurate, keep local position unchanged.
+    } else {
+        // Remote player interpolation: slide toward last known server position.
+        x = lerp(x, netX, 0.3);
+        y = lerp(y, netY, 0.3);
+    }
 }
 
 // ---------------------------------------------------------------------------

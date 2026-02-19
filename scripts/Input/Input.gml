@@ -47,6 +47,14 @@ function get_controls(_is_host, _is_local)
 		// Send raw key state to the server; the server converts to axis values
 		var _input = {rightKey:_rightKey, leftKey:_leftKey, downKey:_downKey, upKey:_upKey, runKey:_runKey, actionKey:_actionKey, mouseAngle:_mouseAngle}
 		send_player_input(_input, lobbyHost);
+
+		// Write input to instance vars so paddle_movement() has real input this frame
+		// (client-side prediction — physics runs locally, server corrections reconcile later)
+		xInput     = (_rightKey - _leftKey)
+		yInput     = (_downKey  - _upKey)
+		runKey     = _runKey
+		actionKey  = _actionKey
+		mouseAngle = _mouseAngle
 	}
 }
 
