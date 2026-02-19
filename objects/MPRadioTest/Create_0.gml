@@ -2,7 +2,16 @@
 track_list = [radio_3, bassything, flute_loop_4, all_my_heroes_quit,wailing ]; // Add all your tracks
 track_position = 0; // Start with the first track (index 0)
 audio_instance = -1; // Variable to store the currently playing sound's ID
+refStringLength = string_length("ref sound ");
+mp3Open = true
+paused = false;
 
+currentPos = 1
+songDuration = 1
+songPercent = 1
+
+
+hwidth = display_get_gui_width()
 // Function to play the current track
 function play_current_track() {
     // Stop any currently playing music first
