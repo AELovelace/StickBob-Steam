@@ -30,6 +30,9 @@ climbHeight = 8;
 mouseAngle = 0;
 collisionAngle = 0;
 releasedJump = false;
+netX      = 0
+netY      = 0
+hasNetPos = false
 wallJumpTimer = 20;
 cwjt = 0;
 init_controls()

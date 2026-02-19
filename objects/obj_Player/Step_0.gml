@@ -2,6 +2,7 @@
 get_controls(isHost,isLocal)
 
 paddle_movement()
+reconcile_net_position()
 
 if (sprite_index != sprPlayerDie){
 	global.stopShooting = false;	
