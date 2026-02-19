@@ -1,162 +1,195 @@
-function scr_fill_the_grid(ax,ay,xgoal, ygoal){  // Y Position where we want to go
-	path_found = undefined ;      // A way was found
-	n = undefined ;  // Variable when you fall
-	a = undefined; // Variable when you fall
-	path_found = 0;  // 0 means that the path is not found
+// Breadth-first search (BFS) pathfinding over the global AI grid.
+//
+// Grid cell conventions:
+//   -1  = walkable (open air with solid floor beneath, or passable space)
+//   -2  = solid / impassable
+//    0  = starting cell (set during init)
+//    i  = visited at BFS wave i  (i > 0 means "reachable in i steps")
+//
+// The algorithm expands outward from (ax, ay) wave by wave.  Each wave checks
+// six movement types for every frontier cell: walk right/left, step-up one
+// block right/left, diagonal big-jump right/left, horizontal gap-jump
+// right/left, and fall right/left.  When the goal cell (xgoal, ygoal) is
+// reached, scr_build_the_path() is called immediately to reconstruct the
+// route before the grid is cleaned up.
+//
+// Parameters:
+//   ax, ay        – starting grid cell (enemy's current grid position)
+//   xgoal, ygoal  – target grid cell (player's current grid position)
+//
+// Returns:
+//   1 if a path was found (path_found is also set on the calling instance)
+//   0 if no path exists
+function scr_fill_the_grid(ax, ay, xgoal, ygoal){
+	path_found = undefined;
+	n = undefined;  // reused fall-scan counter
+	a = undefined;  // reused fall-scan cell value
+	path_found = 0; // 0 = not yet found
 
-	/// Copy the global pathfinding
-	ds_gridpathfinding = ds_grid_create(ds_grid_width(global.ds_grid_pathfinding), ds_grid_height(global.ds_grid_pathfinding)) ;
-	ds_grid_copy (ds_gridpathfinding, global.ds_grid_pathfinding);
+	// Work on a per-call copy so the master grid is never modified
+	ds_gridpathfinding = ds_grid_create(ds_grid_width(global.ds_grid_pathfinding), ds_grid_height(global.ds_grid_pathfinding));
+	ds_grid_copy(ds_gridpathfinding, global.ds_grid_pathfinding);
 
-	/// Add the first point into the list
-	var point_list = ds_list_create() ;
-	ds_list_add (point_list, ax);
-	ds_list_add (point_list, ay);
-	ds_grid_set(ds_gridpathfinding,ax,ay,0);
+	// Seed the BFS with the starting cell
+	var point_list = ds_list_create();
+	ds_list_add(point_list, ax);
+	ds_list_add(point_list, ay);
+	ds_grid_set(ds_gridpathfinding, ax, ay, 0);  // mark start as visited (wave 0)
 
-	for (var i=1; i<200; i+=1)
+	// i = current BFS wave depth (caps at 200 to prevent infinite loops)
+	for (var i = 1; i < 200; i += 1)
 	{
 	    if path_found == 1 {
-	    ds_list_destroy(point_list); // We don't need the list anymore because we find a path.
-	    ///ds_grid_destroy(ds_gridpathfinding); /// Grid has to be delete. We keep it only for debuger purposes
-	    return path_found ;
-	    break ;
+	        ds_list_destroy(point_list);
+	        ///ds_grid_destroy(ds_gridpathfinding); // kept for debug; uncomment to free memory
+	        return path_found;
+	        break;
 	    }
 
-	var size_list = ds_list_size(point_list) ;  // Update the size of the list. It is for delete all the previous points.
+		var size_list = ds_list_size(point_list);  // number of coordinates (pairs) in the frontier
 
-	if size_list == 0 {    // When size list is zero, it means that, we check all the positions where the enemy could go, and no one is the goal position
-	ds_list_destroy(point_list);   // Destroy the list because it takes up memory and we don't need it anymore.
-	ds_grid_destroy(ds_gridpathfinding); // // Destroy the grid because it takes up memory.
-	return path_found ;  /// It will return 0, so if script returns 0, it means that no path was found to reach the goal.
-	break ;
-	}
+		if size_list == 0 {
+			// Frontier exhausted with no path found
+			ds_list_destroy(point_list);
+			ds_grid_destroy(ds_gridpathfinding);
+			return path_found;  // returns 0
+			break;
+		}
 
+		// Iterate over every cell in the current wave (stored as x,y pairs)
+		for (var j = 0; j < size_list; j += 2){
+	        ax = ds_list_find_value(point_list, j)
+	        ay = ds_list_find_value(point_list, j + 1)
 
-	for (var j=0; j<size_list; j+=2){
-	        ax = ds_list_find_value(point_list,j)
-	        ay = ds_list_find_value(point_list,j+1)
-
-	        if ax==xgoal && ay==ygoal {
-	        path_found = 1 ;
-	        scr_build_the_path(xgoal,ygoal);
-	        break ;
+	        if ax == xgoal && ay == ygoal {
+	            path_found = 1;
+	            scr_build_the_path(xgoal, ygoal);  // reconstruct path before grid changes
+	            break;
 	        }
 
-	n=1 ; /// Variable for the Fall
+		n = 1;  // reset fall-scan depth for the RIGHT side
 
-	/// Check if the enemy can go to the right
-	if ds_grid_get(ds_gridpathfinding,ax+1,ay)==-1 && ds_grid_get(ds_gridpathfinding,ax+1,ay+1)==-2 {
-	ds_grid_set(ds_gridpathfinding,ax+1,ay,i);
-	ds_list_add (point_list, ax + 1);
-	ds_list_add (point_list, ay);
-	}
+		// --- Move right (flat ground) ---
+		// Cell to the right is open AND has solid floor beneath it
+		if ds_grid_get(ds_gridpathfinding, ax+1, ay) == -1 && ds_grid_get(ds_gridpathfinding, ax+1, ay+1) == -2 {
+			ds_grid_set(ds_gridpathfinding, ax+1, ay, i);
+			ds_list_add(point_list, ax + 1);
+			ds_list_add(point_list, ay);
+		}
+		else {
+			// Only check jump/fall variants when the direct walk is blocked
 
-	else{   /// If the enemy can go to the right, the other movement will be impossible. So we can put a else to skip all the following code
-
-	/// Check if we can go jump one block vertically (right side)
-	if (ds_grid_get(ds_gridpathfinding,ax+1,ay)==-2 && ds_grid_get(ds_gridpathfinding,ax+1,ay-1)==-1)
+			// --- Step up one block (right) ---
+			// Cell to the right is solid but the cell above it is open
+			if (ds_grid_get(ds_gridpathfinding, ax+1, ay) == -2 && ds_grid_get(ds_gridpathfinding, ax+1, ay-1) == -1)
 	            {
-	            ds_grid_set(ds_gridpathfinding,ax+1,ay-1,i);
-	            ds_list_add (point_list, ax + 1);
-	            ds_list_add (point_list, ay-1);
+	            ds_grid_set(ds_gridpathfinding, ax+1, ay-1, i);
+	            ds_list_add(point_list, ax + 1);
+	            ds_list_add(point_list, ay - 1);
 	            }
-	else {  /// If the ennemy can go jump one block horizontally, the others movement will be impossible. So we can put a else to skip all the following code
+			else {
 
-	/// Check if the enemy can do a diagonal jump (Big Jump). (Right side);
-	if ds_grid_get(ds_gridpathfinding,ax+1,ay)==-1 && ds_grid_get(ds_gridpathfinding,ax+2,ay)==-2 && ds_grid_get(ds_gridpathfinding,ax+2,ay-1)==-1
-	        {
-	        ds_grid_set(ds_gridpathfinding,ax+2,ay-1,i);
-	        ds_list_add (point_list, ax + 2);
-	        ds_list_add (point_list, ay-1);
-	        }
+				// --- Diagonal / big jump (right) ---
+				// Right cell is open, two-right cell is solid, two-right cell above is open
+				if ds_grid_get(ds_gridpathfinding, ax+1, ay) == -1 && ds_grid_get(ds_gridpathfinding, ax+2, ay) == -2 && ds_grid_get(ds_gridpathfinding, ax+2, ay-1) == -1
+	                {
+	                ds_grid_set(ds_gridpathfinding, ax+2, ay-1, i);
+	                ds_list_add(point_list, ax + 2);
+	                ds_list_add(point_list, ay - 1);
+	                }
 
-	///Check if the enemy can jump horizontally (jump over a void). (Right side)
-	if ds_grid_get(ds_gridpathfinding,ax+1,ay)==-1 && ds_grid_get(ds_gridpathfinding,ax+2,ay)==-1 && ds_grid_get(ds_gridpathfinding,ax+2,ay+1)==-2
-	        {
-	        ds_grid_set(ds_gridpathfinding,ax+2,ay,i);
-	        ds_list_add (point_list, ax + 2);
-	        ds_list_add (point_list, ay);
-	        }
+				// --- Horizontal gap jump (right) ---
+				// Two cells to the right are open and the landing cell has a floor
+				if ds_grid_get(ds_gridpathfinding, ax+1, ay) == -1 && ds_grid_get(ds_gridpathfinding, ax+2, ay) == -1 && ds_grid_get(ds_gridpathfinding, ax+2, ay+1) == -2
+	                {
+	                ds_grid_set(ds_gridpathfinding, ax+2, ay, i);
+	                ds_list_add(point_list, ax + 2);
+	                ds_list_add(point_list, ay);
+	                }
 
-	/// Check if the enemy can fall (Right side).
-	if ds_grid_get(ds_gridpathfinding,ax+1,ay)==-1 && ds_grid_get(ds_gridpathfinding,ax+1,ay+1)==-1
-	            {
+				// --- Fall right ---
+				// Cell to the right is open and the cell below it is also open — scan downward
+				// until we find a floor cell or hit the grid boundary
+				if ds_grid_get(ds_gridpathfinding, ax+1, ay) == -1 && ds_grid_get(ds_gridpathfinding, ax+1, ay+1) == -1
+	                {
 	                    {
 	                    do
 	                       {
-	                       n=n+1 ;
-	                       a = ds_grid_get(ds_gridpathfinding,ax+1,ay+n);
+	                       n = n + 1;
+	                       a = ds_grid_get(ds_gridpathfinding, ax+1, ay+n);
 	                       }
-	                    until (a==-2) ||  (ay+n == ds_grid_height(ds_gridpathfinding)) }
-                    
-	        if ds_grid_get(ds_gridpathfinding,ax+1,ay+n-1)==-1 && ds_grid_get(ds_gridpathfinding,ax+1,ay+n)== -2
-	            {
-	            ds_grid_set(ds_gridpathfinding,ax+1,ay+n-1,i);
-	            ds_list_add (point_list, ax + 1);
-	            ds_list_add (point_list, ay+n-1);
-	            }
-	        }
-	    }
-	}
-
-
-	n=1 ; /// Re-initialize variable for the Fall (left side)
-
-	/// Check if the enemy can go to the left
-	if ds_grid_get(ds_gridpathfinding,ax-1,ay)==-1 && ds_grid_get(ds_gridpathfinding,ax-1,ay+1)==-2 {
-	ds_grid_set(ds_gridpathfinding,ax-1,ay,i);
-	ds_list_add (point_list, ax -1);
-	ds_list_add (point_list, ay);
-	}
-	else{
-
-	/// Check if we can go jump one block vertically (left side)
-	if ds_grid_get(ds_gridpathfinding,ax-1,ay)==-2 && ds_grid_get(ds_gridpathfinding,ax-1,ay-1)==-1{
-	ds_grid_set(ds_gridpathfinding,ax-1,ay-1,i);
-	ds_list_add (point_list, ax-1);
-	ds_list_add (point_list, ay-1);
-	}
-	else {
-
-	/// Check if the enemy can do a diagonal jump (Big Jump). (left side);
-	if ds_grid_get(ds_gridpathfinding,ax-1,ay)==-1 && ds_grid_get(ds_gridpathfinding,ax-2,ay)==-2 && ds_grid_get(ds_gridpathfinding,ax-2,ay-1)==-1{
-	ds_grid_set(ds_gridpathfinding,ax-2,ay-1,i);
-	ds_list_add (point_list, ax-2);
-	ds_list_add (point_list, ay-1);
-	}
-
-	///Check if the enemy can jump horizontally (over a void). (left side)
-	if ds_grid_get(ds_gridpathfinding,ax-1,ay)==-1 && ds_grid_get(ds_gridpathfinding,ax-2,ay)==-1 && ds_grid_get(ds_gridpathfinding,ax-2,ay+1)==-2{
-	ds_grid_set(ds_gridpathfinding,ax-2,ay,i);
-	ds_list_add (point_list, ax-2);
-	ds_list_add (point_list, ay);
-	}
-
-	/// Check if the enemy can fall (left side).
-	if ds_grid_get(ds_gridpathfinding,ax-1,ay)==-1 && ds_grid_get(ds_gridpathfinding,ax-1,ay+1)==-1
-	            {
-	                {
-	                do
-	                   {
-	                   n=n+1 ;
-	                   a = ds_grid_get(ds_gridpathfinding,ax-1,ay+n);
-	                   }
-	                until (a=-2) || (ay+n==ds_grid_height(ds_gridpathfinding))}   
-	                    if ds_grid_get(ds_gridpathfinding,ax-1,ay+n-1)==-1 && ds_grid_get(ds_gridpathfinding,ax-1,ay+n)== -2
-	                    {
-	                    ds_grid_set(ds_gridpathfinding,ax-1,ay+n-1,i);
-	                    ds_list_add (point_list, ax-1);
-	                    ds_list_add (point_list, ay+n-1);
+	                    until (a == -2) || (ay + n == ds_grid_height(ds_gridpathfinding))
 	                    }
+	                    // Add the last open cell just above the floor as a reachable landing spot
+	                    if ds_grid_get(ds_gridpathfinding, ax+1, ay+n-1) == -1 && ds_grid_get(ds_gridpathfinding, ax+1, ay+n) == -2
+	                        {
+	                        ds_grid_set(ds_gridpathfinding, ax+1, ay+n-1, i);
+	                        ds_list_add(point_list, ax + 1);
+	                        ds_list_add(point_list, ay + n - 1);
+	                        }
+	                }
 	            }
-	        }
-	    }
-	}
-	/// Delete all the previous points
-	for (var k=0; k< size_list; k+=1)
+		}
+
+		n = 1;  // reset fall-scan depth for the LEFT side
+
+		// --- Move left (flat ground) ---
+		if ds_grid_get(ds_gridpathfinding, ax-1, ay) == -1 && ds_grid_get(ds_gridpathfinding, ax-1, ay+1) == -2 {
+			ds_grid_set(ds_gridpathfinding, ax-1, ay, i);
+			ds_list_add(point_list, ax - 1);
+			ds_list_add(point_list, ay);
+		}
+		else {
+
+			// --- Step up one block (left) ---
+			if ds_grid_get(ds_gridpathfinding, ax-1, ay) == -2 && ds_grid_get(ds_gridpathfinding, ax-1, ay-1) == -1 {
+				ds_grid_set(ds_gridpathfinding, ax-1, ay-1, i);
+				ds_list_add(point_list, ax - 1);
+				ds_list_add(point_list, ay - 1);
+			}
+			else {
+
+				// --- Diagonal / big jump (left) ---
+				if ds_grid_get(ds_gridpathfinding, ax-1, ay) == -1 && ds_grid_get(ds_gridpathfinding, ax-2, ay) == -2 && ds_grid_get(ds_gridpathfinding, ax-2, ay-1) == -1 {
+					ds_grid_set(ds_gridpathfinding, ax-2, ay-1, i);
+					ds_list_add(point_list, ax - 2);
+					ds_list_add(point_list, ay - 1);
+				}
+
+				// --- Horizontal gap jump (left) ---
+				if ds_grid_get(ds_gridpathfinding, ax-1, ay) == -1 && ds_grid_get(ds_gridpathfinding, ax-2, ay) == -1 && ds_grid_get(ds_gridpathfinding, ax-2, ay+1) == -2 {
+					ds_grid_set(ds_gridpathfinding, ax-2, ay, i);
+					ds_list_add(point_list, ax - 2);
+					ds_list_add(point_list, ay);
+				}
+
+				// --- Fall left ---
+				if ds_grid_get(ds_gridpathfinding, ax-1, ay) == -1 && ds_grid_get(ds_gridpathfinding, ax-1, ay+1) == -1
+	                {
+	                    {
+	                    do
+	                       {
+	                       n = n + 1;
+	                       a = ds_grid_get(ds_gridpathfinding, ax-1, ay+n);
+	                       }
+	                    until (a = -2) || (ay + n == ds_grid_height(ds_gridpathfinding))
+	                    }
+	                    if ds_grid_get(ds_gridpathfinding, ax-1, ay+n-1) == -1 && ds_grid_get(ds_gridpathfinding, ax-1, ay+n) == -2
+	                    {
+	                        ds_grid_set(ds_gridpathfinding, ax-1, ay+n-1, i);
+	                        ds_list_add(point_list, ax - 1);
+	                        ds_list_add(point_list, ay + n - 1);
+	                    }
+	                }
+			}
+		}
+		}
+
+		// Remove the cells that were part of this wave from the frontier list
+		// so the next iteration only processes newly discovered cells
+		for (var k = 0; k < size_list; k += 1)
 	    {
-	    ds_list_delete (point_list, 0);
+	    ds_list_delete(point_list, 0);
 	    }
 	}
 }
