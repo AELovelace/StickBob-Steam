@@ -100,14 +100,13 @@ function send_player_positions() {
 //@self obj_Client
 // Reads a PLAYER_POSITION packet from _b and snaps the matching player
 // instance to the server-authoritative coordinates.
-// Note: uses assignment (=) not equality (==) in the noone check — bug to revisit.
 function update_player_position(_b) {
 	var _steam_id = buffer_read(_b, buffer_u64)
 	var _x        = buffer_read(_b, buffer_u16)
 	var _y        = buffer_read(_b, buffer_u16)
 	for (var _i = 0; _i < array_length(playerList); _i++){
 		if (_steam_id == playerList[_i].steamID) {
-			if playerList[_i].character = undefined then continue  // NOTE: = instead of == (see above)
+			if playerList[_i].character == undefined then continue
 			playerList[_i].character.x = _x
 			playerList[_i].character.y = _y
 		}
