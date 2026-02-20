@@ -9,6 +9,7 @@ track_position = 0; // Start with the first track (index 0)
 audio_instance = -1; // Variable to store the currently playing sound's ID
 refStringLength = string_length("ref sound ");
 mp3Open = true
+autoSkip = true
 paused = false;
 
 currentPos = 1

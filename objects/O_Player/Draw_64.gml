@@ -23,6 +23,8 @@ if(playerHealth <= 0){
 	draw_sprite_ext(sprPlayerDie, image_index, 64, 64, 2, -2, 180, c_white, 1)
 }
 draw_text(15, 6, "Health:" + string(playerHealth));
+draw_healthbar(10,105, 120, 115, speedBar, c_black, c_red, c_green, 0, true, true)
+//draw_text(10,116,"Speed:" + string(speedBar))
 //draw_text(10, 30, "ySpeed: " + string(ySpeed));
 //draw_text(10, 45, "xInput: " + string(xInput));
 //draw_text(10, 60, "yInput: " + string(yInput));

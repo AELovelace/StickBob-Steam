@@ -41,7 +41,7 @@ if (place_meeting(x, y + ySpeed, objSolid)) {
 // Check one step forward and one step down
 
 var player_distance = distance_to_object(O_Player);
-var chase_range = 100; // Set a range in pixels
+var chase_range = 350; // Set a range in pixels
 
 if (player_distance < chase_range && !hit_wall) {
     state = "chase";
@@ -86,5 +86,5 @@ if (state == "chase") {
 		sprite_index = sprPlayerRunLeft;	
 	}
 	else{
-		sprite_index = sprPlayerIdle
+		sprite_index = sprPlayerNoArm
 	}

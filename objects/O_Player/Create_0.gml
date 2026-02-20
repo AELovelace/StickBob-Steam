@@ -7,6 +7,7 @@ global.isPaused = false;
 mask_index = sprPlayerIdle;
 xSpeed = 0; 
 ySpeed = 0;
+speedBar = 0;
 playerHealth = 5;
 //screen init
 vpSizeWidth = 1280

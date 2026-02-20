@@ -10,8 +10,13 @@ var target_y = O_Player.y;
 var min_distance = 100;
 var jumpCheck = 128;
 var nearest_instance = instance_nearest(x, y, objBouncyBottom);
-xSpeed = walksp * dir;
+var player_distance = distance_to_object(O_Player);
+var chase_range = 250; // Set a range in pixels
+var shoot_range = 100;
 
+if(player_distance > 50){
+	xSpeed = walksp * dir;
+}
 if(nearest_instance != noone){
 	var dist = point_distance(x, y, nearest_instance.x, nearest_instance.y);
 	if (dist <= min_distance && canCheck == true){
@@ -56,10 +61,8 @@ if (place_meeting(x, y + ySpeed, objSolid)) {
 if (!place_meeting(x + (walksp * dir), y + 2, objSolid)) {
     dir *= -1; // Turn around if no platform ahead
 }
-var player_distance = distance_to_object(O_Player);
-var chase_range = 250; // Set a range in pixels
-var shoot_range = 100;
-if (player_distance < chase_range) {
+
+if (player_distance < chase_range && player_distance > 50) {
     state = "chase";
 	mouseAngle = point_direction(x,y, O_Player.x, O_Player.y)
 
@@ -78,7 +81,7 @@ if (state == "chase") {
     if (O_Player.y < y - 32 && ySpeed == 0) { // Player is 32 pixels above us and we are on the ground
         ySpeed = -7; // Give a jump velocity
     }
-	var distance = 32;
+	var distance = 48;
 	gun_distance = 20
 	if currentCooldown > 0 then --currentCooldown;
 	if(currentCooldown <= 0 && global.stopShooting == false && player_distance < shoot_range){

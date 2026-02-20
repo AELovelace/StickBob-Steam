@@ -10,7 +10,7 @@ walksp = 0;
 // Initial Direction (-1 for left, 1 for right)
 climbHeight = 8;
 mouseAngle = 0;
-fireCooldown = 15;
+fireCooldown = 10;
 currentCooldown = fireCooldown;
 global.stopShooting = false;
 dir = -1; 

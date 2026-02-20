@@ -100,7 +100,7 @@ function viewInitSP(){
 // slope climbing, and the slide/crawl mechanic.
 // ---------------------------------------------------------------------------
 function paddle_movement() {
-    var maxSpeedX = 7
+    var maxSpeedX = 8
 	var maxSpeedY = 15
     var accel = 0.3;
 
