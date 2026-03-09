@@ -48,8 +48,8 @@
   },
   "origin":4,
   "parent":{
-    "name":"Garbage",
-    "path":"folders/Sprites/Garbage.yy",
+    "name":"UI",
+    "path":"folders/Sprites/UI.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -19,20 +19,28 @@ last_selected = menu_index;
 if (keyboard_check_pressed(vk_enter) || keyboard_check_pressed(vk_space)) {
     switch(menu_index) {
         case 0:
-		instance_destroy(obj_LobbyItem)
-		instance_destroy(obj_LobbyList)
+			// Multiplayer Logic
+			instance_destroy(obj_LobbyItem)
+			instance_destroy(obj_LobbyList)
 			instance_create_layer(x,y,"Instances",objPlayerMenu);
 			instance_destroy()
             break;
+			
+			draw_text(200,200,"Not Available in HTML5 Demo")
+			break;
         case 1:
             // Action for "Load Game"
-			 for (var _i = 0; _i < 5; _i++){
+			//multiplayer Logic
+			for (var _i = 0; _i < 5; _i++){
 			var _inst = instance_find(obj_Button,_i)
 				if _inst != noone then _inst.disabled = true;
 			}
 		
-		var lobby_list = instance_create_depth(416,208,-10,obj_LobbyList)
+			var lobby_list = instance_create_depth(416,208,-10,obj_LobbyList)
             break;
+			
+			//draw_text(200,200,"Not Available in HTML5 Demo")
+			break;
         case 2:
             // Action for "Options"
 			room_goto(rm_GameRoom)

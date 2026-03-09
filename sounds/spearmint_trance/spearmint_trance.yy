@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"spearmint_trance",
+  "audioGroupId":{
+    "name":"SADP3",
+    "path":"audiogroups/SADP3",
+  },
+  "bitDepth":1,
+  "channelFormat":1,
+  "compression":1,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":141.0,
+  "exportDir":"music/PHOSPHORRGIRL",
+  "name":"spearmint_trance",
+  "parent":{
+    "name":"PHOSPHORRGIRL",
+    "path":"folders/Sounds/Music/PHOSPHORRGIRL.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"spearmint_trance.mp3",
+  "volume":1.0,
+}

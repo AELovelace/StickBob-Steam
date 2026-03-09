@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"verdant_homeworld",
+  "audioGroupId":{
+    "name":"SADP3",
+    "path":"audiogroups/SADP3",
+  },
+  "bitDepth":1,
+  "channelFormat":1,
+  "compression":1,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":121.54812,
+  "exportDir":"music/PHOSPHORRGIRL",
+  "name":"verdant_homeworld",
+  "parent":{
+    "name":"PHOSPHORRGIRL",
+    "path":"folders/Sounds/Music/PHOSPHORRGIRL.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"verdant_homeworld.mp3",
+  "volume":1.0,
+}

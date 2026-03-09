@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"BetterOffAlone",
+  "audioGroupId":{
+    "name":"SADP3",
+    "path":"audiogroups/SADP3",
+  },
+  "bitDepth":1,
+  "channelFormat":1,
+  "compression":1,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":249.72728,
+  "exportDir":"music/GLOOMSTONE",
+  "name":"BetterOffAlone",
+  "parent":{
+    "name":"GLOOMSTONE",
+    "path":"folders/Sounds/Music/GLOOMSTONE.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"BetterOffAlone.mp3",
+  "volume":1.0,
+}

@@ -19,7 +19,7 @@
   "height":960,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"eb15b0d3-5cb6-46a7-8e21-b03fb96b36bb","blendMode":1,"displayName":"default","isLocked":false,"name":"eb15b0d3-5cb6-46a7-8e21-b03fb96b36bb","opacity":48.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"eb15b0d3-5cb6-46a7-8e21-b03fb96b36bb","blendMode":1,"displayName":"default","isLocked":false,"name":"eb15b0d3-5cb6-46a7-8e21-b03fb96b36bb","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"night_sky",
   "nineSlice":null,

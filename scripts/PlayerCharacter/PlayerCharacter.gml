@@ -172,7 +172,9 @@ function paddle_movement() {
 			}
 		}
 	}
-
+//	if(place_meeting(x, y+1, objSolid) && canJump != 1){
+//		audio_play_sound(land,10,0,5,.3,1)
+//	}
 	// --- Vertical collision with solid objects ---
 	if (place_meeting(x, y + ySpeed, objSolid)){
 		canJump = true;
@@ -186,6 +188,7 @@ function paddle_movement() {
 		if(yInput == -1 && place_meeting(x, y + 1, objSolid) && canJump){
 			ySpeed = jumpSpeed
 			canJump = false;
+			audio_play_sound(jump,10,0,5,.3,1)
 		}
 	}
 
@@ -358,6 +361,7 @@ function playerSpriteIndexer(){
 	}
 	else if(xSpeed > -3.5 && xSpeed < -0.05 && xInput == 0 && !isCrawling && global.stopShooting == false){
 		sprite_index = sprPlayerSkidLeft;
+
 	}
 	// Running right / left
 	else if(xSpeed > 0.1 && xInput == 1 && canSlide && global.stopShooting == false){
@@ -379,10 +383,18 @@ function playerSpriteIndexer(){
 	else if(xSpeed > 0 && yInput == 1 && !isCrawling && global.stopShooting == false){
 		sprite_index = sprPlayerSlide;
 		mask_index   = sprPlayerSlide;
+		if(!audio_is_playing(slide)){
+			if(place_meeting(x, y+1, objSolid)){
+				audio_play_sound(slide, 10, 0, 3,.2,2)
+			}
+		}
 	}
 	else if(xSpeed < 0 && yInput == 1 && !isCrawling && global.stopShooting == false){
 		sprite_index = sprPlayerSlideLeft;
 		mask_index   = sprPlayerSlideLeft;
+		if(!audio_is_playing(slide)){
+			audio_play_sound(slide, 10, 0, 3,.2,2)	
+		}
 	}
 	// Falling (airborne and moving downward, past coyote-time)
 	else if(ySpeed > 0.5 && yInput != -1 && !onGround && fallCooldown <= 0 && xSpeed >= 0 && !isCrawling && global.stopShooting == false){
@@ -395,4 +407,21 @@ function playerSpriteIndexer(){
 	else if(xInput == 0 && yInput == 0 && xSpeed == 0 && global.stopShooting == false){
 		sprite_index = sprPlayerIdle
 	}
+}
+
+function playerSounds(){
+	
+	if (xInput != 0 && yInput == 0){
+		if(!audio_is_playing(running)){
+			audio_play_sound(running, 10, 0, 3,.5,2)	
+		}
+	}
+	if(xInput == 0 || yInput != 0){
+		audio_stop_sound(running)	
+	}
+	if(!place_meeting(x, y+1, objSolid)){
+		audio_stop_sound(running)	
+	}
+
+
 }

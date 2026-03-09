@@ -9,8 +9,8 @@
   "name":"ShaderInitializer",
   "overriddenProperties":[],
   "parent":{
-    "name":"UI",
-    "path":"folders/Objects/UI.yy",
+    "name":"Main Menu",
+    "path":"folders/Objects/UI/Main Menu.yy",
   },
   "parentObjectId":null,
   "persistent":true,

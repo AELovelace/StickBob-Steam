@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"Water_Form_Heart",
+  "audioGroupId":{
+    "name":"SADP3",
+    "path":"audiogroups/SADP3",
+  },
+  "bitDepth":1,
+  "channelFormat":1,
+  "compression":1,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":168.50882,
+  "exportDir":"music/PHOSPHORRGIRL",
+  "name":"Water_Form_Heart",
+  "parent":{
+    "name":"PHOSPHORRGIRL",
+    "path":"folders/Sounds/Music/PHOSPHORRGIRL.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"Water_Form_Heart.mp3",
+  "volume":1.0,
+}

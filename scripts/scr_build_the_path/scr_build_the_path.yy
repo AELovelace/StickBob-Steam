@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_build_the_path",
   "parent":{
-    "name":"group1",
-    "path":"folders/Scripts/group1.yy",
+    "name":"DS_MAPPING ATTEMPT",
+    "path":"folders/Scripts/DS_MAPPING ATTEMPT.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

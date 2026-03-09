@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_fill_the_grid",
   "parent":{
-    "name":"group1",
-    "path":"folders/Scripts/group1.yy",
+    "name":"DS_MAPPING ATTEMPT",
+    "path":"folders/Scripts/DS_MAPPING ATTEMPT.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

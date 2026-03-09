@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"Raigekill",
+  "audioGroupId":{
+    "name":"SADP3",
+    "path":"audiogroups/SADP3",
+  },
+  "bitDepth":1,
+  "channelFormat":1,
+  "compression":1,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":135.5294,
+  "exportDir":"music/PHOSPHORRGIRL",
+  "name":"Raigekill",
+  "parent":{
+    "name":"PHOSPHORRGIRL",
+    "path":"folders/Sounds/Music/PHOSPHORRGIRL.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"Raigekill.mp3",
+  "volume":1.0,
+}

@@ -6,6 +6,7 @@ getSPControls()
 paddle_movement()
 playerShoot()
 playerSpriteIndexer()
+playerSounds()
 speedBar = xSpeed * 12.5
 if(speedBar < 0){
 	speedBar *=-1	

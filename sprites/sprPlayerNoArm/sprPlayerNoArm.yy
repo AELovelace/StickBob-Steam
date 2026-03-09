@@ -45,8 +45,8 @@
   },
   "origin":9,
   "parent":{
-    "name":"Player",
-    "path":"folders/Sprites/Player.yy",
+    "name":"Enemy Stuff",
+    "path":"folders/Sprites/Enemy Stuff.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

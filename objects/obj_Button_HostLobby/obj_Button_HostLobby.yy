@@ -9,8 +9,8 @@
   "name":"obj_Button_HostLobby",
   "overriddenProperties":[],
   "parent":{
-    "name":"UI",
-    "path":"folders/Objects/UI.yy",
+    "name":"Lobby Menu",
+    "path":"folders/Objects/UI/Lobby Menu.yy",
   },
   "parentObjectId":{
     "name":"obj_Button",
