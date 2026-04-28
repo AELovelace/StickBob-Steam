@@ -2,9 +2,9 @@
   "$GMProject":"v1",
   "%Name":"SinglePlayer Demo",
   "AudioGroups":[
-    {"$GMAudioGroup":"","%Name":"audiogroup_default","name":"audiogroup_default","resourceType":"GMAudioGroup","resourceVersion":"2.0","targets":-1,},
-    {"$GMAudioGroup":"","%Name":"SADP3","name":"SADP3","resourceType":"GMAudioGroup","resourceVersion":"2.0","targets":-1,},
-    {"$GMAudioGroup":"","%Name":"SFX","name":"SFX","resourceType":"GMAudioGroup","resourceVersion":"2.0","targets":-1,},
+    {"$GMAudioGroup":"v1","%Name":"audiogroup_default","exportDir":"","name":"audiogroup_default","resourceType":"GMAudioGroup","resourceVersion":"2.0","targets":-1,},
+    {"$GMAudioGroup":"v1","%Name":"SADP3","exportDir":"","name":"SADP3","resourceType":"GMAudioGroup","resourceVersion":"2.0","targets":-1,},
+    {"$GMAudioGroup":"v1","%Name":"SFX","exportDir":"","name":"SFX","resourceType":"GMAudioGroup","resourceVersion":"2.0","targets":-1,},
   ],
   "configs":{
     "children":[],
@@ -243,6 +243,7 @@
     {"id":{"name":"scr_runner_scoring","path":"scripts/scr_runner_scoring/scr_runner_scoring.yy",},},
     {"id":{"name":"scr_runner_slices","path":"scripts/scr_runner_slices/scr_runner_slices.yy",},},
     {"id":{"name":"scr_runner_world1_chunks","path":"scripts/scr_runner_world1_chunks/scr_runner_world1_chunks.yy",},},
+    {"id":{"name":"SGCGateway","path":"scripts/SGCGateway/SGCGateway.yy",},},
     {"id":{"name":"Steamworks_Definitions","path":"scripts/Steamworks_Definitions/Steamworks_Definitions.yy",},},
     {"id":{"name":"SHD_CRT","path":"shaders/SHD_CRT/SHD_CRT.yy",},},
     {"id":{"name":"all_my_heroes_quit","path":"sounds/all_my_heroes_quit/all_my_heroes_quit.yy",},},

@@ -22,3 +22,7 @@ playerList[0] = {
 	playerHealth	: _maxHP,
 	playerColor	: app_settings_current().player_color
 	}
+
+// Establish a gateway session for this client. Match registration is
+// driven host-side and gets joined later through gameplay packets.
+sgc_gateway_bootstrap(false);

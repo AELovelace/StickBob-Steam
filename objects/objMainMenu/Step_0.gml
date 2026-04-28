@@ -56,7 +56,14 @@ if (keyboard_check_pressed(vk_enter) || keyboard_check_pressed(vk_space)) {
             break;
             // Action for "Exit"
 			
-		case 6:	
+		case 6:
+			// Link the player's Steam identity to their SadGirlCoin wallet
+			// via the gateway's OAuth flow. Opens in the Steam overlay
+			// browser when available, otherwise the system browser.
+			sgc_gateway_begin_link_flow();
+			break;
+
+		case 7:
 			url_open("https://sadgirlsclub.wtf")
             break;
     }

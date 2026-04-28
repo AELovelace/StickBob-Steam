@@ -21,3 +21,8 @@ playerList[0] = {
 	playerHealth	: _maxHP,
 	playerColor		: app_settings_current().player_color
 	}
+
+// Establish gateway session and (host-only) create a match record so that
+// reward events from this lobby can be reported and idempotency-bound.
+sgc_gateway_bootstrap(false);
+sgc_gateway_match_create();

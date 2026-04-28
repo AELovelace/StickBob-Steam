@@ -22,6 +22,16 @@ if (playerHealth <= 0){
 	if(!isLocal){
 		audio_play_sound(crunch, 10, 0)
 	}
+	// Host reports the PvP kill to the SGC gateway. Idempotency is keyed on
+	// (match, victim, killer, death_seq), so accidental duplicate dispatches
+	// (re-trigger of the same death) won't double-pay.
+	if (variable_instance_exists(id, "sgc_pvp_death_seq") == false) sgc_pvp_death_seq = 0;
+	sgc_pvp_death_seq += 1;
+	sgc_gateway_report_pvp_kill({
+		victim_steam_id      : string(steamID),
+		beneficiary_steam_id : string(other.owner_steam_id),
+		death_seq            : sgc_pvp_death_seq,
+	});
 	if(random(10) >= 6){
 		x = 200
 

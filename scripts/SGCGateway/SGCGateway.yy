@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"SGCGateway",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"SGCGateway",
+  "parent":{
+    "name":"clientServer",
+    "path":"folders/Scripts/clientServer.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
