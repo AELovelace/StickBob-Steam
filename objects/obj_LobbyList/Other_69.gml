@@ -14,7 +14,9 @@ switch(async_load[?"event_type"])
 					lobby_index : _i,
 					lobby_id : steam_lobby_list_get_lobby_id(_i),
 					lobby_creator : steam_lobby_list_get_data(_i, "Creator"),
-					lobby_map	: steam_lobby_list_get_data(_i, "MapName")
+					lobby_map	: steam_lobby_list_get_data(_i, "MapName"),
+					lobby_mode	: steam_lobby_list_get_data(_i, "Mode"),
+					lobby_mode_name	: steam_lobby_list_get_data(_i, "ModeName")
 				});
 				array_push(lobbyList, _ins)
 			}

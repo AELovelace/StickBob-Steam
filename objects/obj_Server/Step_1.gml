@@ -13,6 +13,10 @@ while(steam_net_packet_receive()){
 			var _playerInput = receive_player_input(inbuf, _sender);
 			send_player_input_to_clients(_playerInput);
 			break
+
+		case NETWORK_PACKETS.PLAYER_COLOR:
+			receive_player_color(inbuf, _sender)
+			break
 			
 		default:
 			show_debug_message("Unknown packet received: "+string(_type))

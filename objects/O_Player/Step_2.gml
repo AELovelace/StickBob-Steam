@@ -12,7 +12,7 @@ camera_set_view_pos(_cam, _newCamX, _camY);
 var _cx = camera_get_view_x(view_camera[1]);
 var _xspd = 3 * (keyboard_check(vk_right) - keyboard_check(vk_left));
 _cx += _xspd
-camera_set_view_pos(view_camera[0], _cx, 0);
+camera_set_view_pos(view_camera[0], _cx, _camY);
 
 var _b = ds_map_find_first(background_map);
 repeat(ds_map_size(background_map))

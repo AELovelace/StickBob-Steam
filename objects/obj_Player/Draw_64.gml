@@ -1,13 +1,16 @@
-draw_set_color(c_red); // Set the text color to white
-draw_set_halign(fa_left); // Align text to the left
-draw_set_valign(fa_top); // Align text to the top
-draw_text(10, 10, "xSpeed: " + string(xSpeed));
-draw_text(10, 20, "ySpeed: " + string(ySpeed));
-draw_text(10, 30, "xInput: " + string(xInput));
-draw_text(10, 40, "yInput: " + string(yInput));
-draw_text(10, 50, "yInput: " + string(sprite_index));
-draw_text(10, 60, "canSlide: " + string(canSlide));
-draw_text(10, 70, "canJump: " + string(canJump));
-draw_text(10, 80, "isCrawling: " + string(isCrawling));
-draw_text(10, 90, "fallCooldown: " + string(fallCooldown));
-draw_text(10, 100, "collisionAngle: " + string(collisionAngle));
+if !isLocal exit;
+
+draw_set_color(c_red);
+draw_set_halign(fa_left);
+draw_set_valign(fa_top);
+draw_set_font(fontMenu)
+
+var _modeName = "Classic"
+if global.gameParams.modeSelection == global.GAME_MODE_HP5 then _modeName = "HP5"
+
+draw_text(10, 10, "Mode: " + _modeName)
+draw_text(10, 25, "Health: " + string(playerHealth) + "/" + string(maxHealth))
+
+var _hpPercent = 0
+if maxHealth > 0 then _hpPercent = (playerHealth / maxHealth) * 100
+draw_healthbar(10,45,120,58,_hpPercent,c_black,c_red,c_green,0,true,true)

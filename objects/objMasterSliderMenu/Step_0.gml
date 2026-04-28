@@ -15,6 +15,7 @@ if point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), gui_x,
 if mouse_check_button_released(mb_left)
 {
     slider_state = "idle";
+    app_settings_set_master_volume(global.masterVolume);
 }
 
 switch (slider_state)

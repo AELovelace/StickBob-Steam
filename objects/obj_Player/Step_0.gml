@@ -18,6 +18,7 @@ if (actionKey == 1 && currentCooldown <= 0){
 		bullet.direction = mouseAngle
 		bullet.image_angle = bullet.direction
 		bullet.owner_id = id
+		bullet.owner_steam_id = steamID
 	audio_play_sound(wob_wob_2, 10, 0)
     var _x = x + lengthdir_x(gun_distance, mouseAngle);
     var _y = y + lengthdir_y(gun_distance, mouseAngle);

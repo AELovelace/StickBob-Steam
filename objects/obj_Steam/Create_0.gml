@@ -1,10 +1,14 @@
 
 randomize()
 is_game_restarting = false;
+
+global.GAME_MODE_CLASSIC = 0;
+global.GAME_MODE_HP5 = 1;
 global.gameParams = {
 				numberPlayers: 0,
 				mapSelection: 0,
-				playerColor: 0
+				playerColor: 0,
+				modeSelection: global.GAME_MODE_CLASSIC
 }
 
 var _steam_init = steam_initialised()

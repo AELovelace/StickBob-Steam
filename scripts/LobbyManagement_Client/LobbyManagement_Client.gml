@@ -17,8 +17,14 @@ function sync_players(_new_list) {
 
 	for (var _i = 0; _i < array_length(_new_list); _i++){
 		var _newSteamID = _new_list[_i].steamID
+		var _incomingName = variable_struct_exists(_new_list[_i], "steamName") ? _new_list[_i].steamName : steam_get_user_persona_name(_newSteamID)
+		if _new_list[_i].maxHealth == undefined then _new_list[_i].maxHealth = mode_max_health()
+		if _new_list[_i].playerHealth == undefined then _new_list[_i].playerHealth = _new_list[_i].maxHealth
+		var _incomingColor = variable_struct_exists(_new_list[_i], "playerColor") ? _new_list[_i].playerColor : c_white
+		_new_list[_i].steamName = _incomingName
 		if !array_contains(_steamIDs, _newSteamID){
 			// Brand-new player — spawn them and add to the local list
+			_new_list[_i].playerColor = _incomingColor
 			var _inst = client_player_spawn_at_pos(_new_list[_i])
 			_new_list[_i].character = _inst
 			array_push(playerList, _new_list[_i])
@@ -28,11 +34,19 @@ function sync_players(_new_list) {
 				if playerList[_k].steamID == _newSteamID {
 					playerList[_k].startPos     = _new_list[_i].startPos
 					playerList[_k].lobbyMemberID = _new_list[_i].lobbyMemberID
-					playerList[_k].steamName    = steam_get_persona_name(playerList[_k].steamID)
+					playerList[_k].steamName    = _incomingName
+					playerList[_k].maxHealth    = _new_list[_i].maxHealth
+					playerList[_k].playerHealth = _new_list[_i].playerHealth
+					playerList[_k].playerColor  = _incomingColor
 					// If the instance was lost (e.g. room change) and it isn't the local player, respawn it
 					if playerList[_k].character == undefined && playerList[_k].steamID != steam_get_user_steam_id() {
 						var _inst = client_player_spawn_at_pos(playerList[_k])
 						playerList[_k].character = _inst
+					} else if playerList[_k].character != undefined {
+						playerList[_k].character.maxHealth    = playerList[_k].maxHealth
+						playerList[_k].character.playerHealth = playerList[_k].playerHealth
+						playerList[_k].character.playerColor  = _incomingColor
+						playerList[_k].character.steamName    = _incomingName
 					}
 				}
 			}
@@ -46,14 +60,23 @@ function sync_players(_new_list) {
 // store it in playerList[].character.
 function client_player_spawn_at_pos(_player_info) {
 	var _layer   = layer_get_id("Instances")
-	var _name    = steam_get_persona_name(_player_info.steamID)
+	var _name    = variable_struct_exists(_player_info, "steamName") ? _player_info.steamName : steam_get_user_persona_name(_player_info.steamID)
 	var _steamID = _player_info.steamID
 	var _num     = _player_info.lobbyMemberID
 	var _loc     = _player_info.startPos
+	var _maxHP = _player_info.maxHealth
+	if _maxHP == undefined then _maxHP = mode_max_health()
+	var _hp = _player_info.playerHealth
+	if _hp == undefined then _hp = _maxHP
+	var _color = variable_struct_exists(_player_info, "playerColor") ? _player_info.playerColor : c_white
 	var _inst    = instance_create_layer(_loc.x, _loc.y, _layer, obj_Player, {
 		steamName    : _name,
 		steamID      : _steamID,
-		lobbyMemberID: _num
+		lobbyMemberID: _num,
+		maxHealth    : _maxHP,
+		playerHealth : _hp,
+		gameMode     : global.gameParams.modeSelection,
+		playerColor  : _color
 	})
 	return _inst
 }

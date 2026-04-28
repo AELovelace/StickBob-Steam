@@ -10,8 +10,19 @@ ySpeed = 0;
 speedBar = 0;
 playerHealth = 5;
 //screen init
-vpSizeWidth = 1280
-vpSizeLength = 720
+// Pull current resolution from persisted app settings.
+var _settings = app_settings_defaults()
+if variable_global_exists("appSettings") then _settings = variable_global_get("appSettings")
+if !is_struct(_settings) then _settings = app_settings_defaults()
+var _fullscreen = false
+if variable_struct_exists(_settings, "fullscreen") then _fullscreen = (variable_struct_get(_settings, "fullscreen") == true)
+vpSizeWidth = max(320, real(variable_struct_get(_settings, "resolution_width")))
+vpSizeLength = max(240, real(variable_struct_get(_settings, "resolution_height")))
+if _fullscreen {
+	// Fullscreen should use the current display size, not the windowed preset.
+	vpSizeWidth = display_get_width()
+	vpSizeLength = display_get_height()
+}
 global.baseW = noone
 global.baseH = noone
 if(isLocal){

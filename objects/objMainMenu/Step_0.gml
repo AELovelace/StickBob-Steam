@@ -25,9 +25,6 @@ if (keyboard_check_pressed(vk_enter) || keyboard_check_pressed(vk_space)) {
 			instance_create_layer(x,y,"Instances",objPlayerMenu);
 			instance_destroy()
             break;
-			
-			draw_text(200,200,"Not Available in HTML5 Demo")
-			break;
         case 1:
             // Action for "Load Game"
 			//multiplayer Logic
@@ -46,12 +43,20 @@ if (keyboard_check_pressed(vk_enter) || keyboard_check_pressed(vk_space)) {
 			room_goto(rm_GameRoom)
 			break;
         case 3:
+			// Runner mode
+			room_goto(rm_Runner)
+			break;
+		case 4:
+			instance_create_layer(x,y,"Instances",objSettingsMenu);
+			instance_destroy()
+			break;
+		case 5:
 			game_end(); // Closes the game
             show_debug_message("Open Options Menu");
             break;
             // Action for "Exit"
 			
-		case 4:	
+		case 6:	
 			url_open("https://sadgirlsclub.wtf")
             break;
     }

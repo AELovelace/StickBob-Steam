@@ -6,13 +6,16 @@ switch(async_load[?"event_type"])
 		if (async_load[?"change_flags"] & steam_lobby_member_change_entered){
 			show_debug_message("Player Joined: " + _fromName)
 			var _slot = array_length(playerList)
+			var _maxHP = mode_max_health()
 			array_push(playerList, 
 			{
 				steamID: _fromID,
 				steamName: _fromName,
 				character: undefined,
 				startPos: grab_spawn_point(_slot),
-				lobbyMemberID: _slot
+				lobbyMemberID: _slot,
+				maxHealth: _maxHP,
+				playerHealth: _maxHP
 			})
 			send_player_sync(_fromID);
 			send_player_spawn(_fromID, _slot);

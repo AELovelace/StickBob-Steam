@@ -1,10 +1,14 @@
 randomize();
 global.isPaused = false;
 // Create Event
+var _settings = app_settings_load()
+variable_global_set("appSettings", _settings)
+app_settings_apply(_settings)
 
 menu_x = room_width / 2; // Center the menu horizontally
 menu_y = room_height / 2; // Position vertically
 button_h = 40; // Vertical spacing between options
+button = []
 
 // Array of menu options (strings)
 button[0] = "Resume";

@@ -14,6 +14,8 @@ enum NETWORK_PACKETS {
 	CLIENT_PLAYER_INPUT = 10,  // client → server: xInput, yInput, runKey, actionKey, mouseAngle
 	SERVER_PLAYER_INPUT = 11,  // server → clients: same fields plus steamID of the player
 	PLAYER_POSITION     = 12,  // server → clients: steamID + x + y (u16 each)
+	PLAYER_HEALTH       = 13,  // server → clients: steamID + current health
+	PLAYER_COLOR        = 14,  // client → server (u32 color); server → clients (u64 steamID + u32 color)
 	SPAWN_OTHER         = 97,  // server → clients: a peer has joined; includes their steamID + start pos
 	SPAWN_SELF          = 98,  // server → new client: where the joining player should spawn
 	SYNC_PLAYERS        = 99   // server → new client: full JSON player-list snapshot

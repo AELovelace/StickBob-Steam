@@ -21,17 +21,17 @@ if (keyboard_check_pressed(vk_enter) || keyboard_check_pressed(vk_space)) {
         case 0:
             // Action for "New Game"
             global.gameParams.numberPlayers = 2;
-			instance_create_layer(x,y,"Instances", objMapMenu)
+			instance_create_layer(x,y,"Instances", objModeMenu)
 			instance_destroy()
             break;
         case 1:
             global.gameParams.numberPlayers = 3;
-			instance_create_layer(x,y,"Instances", objMapMenu)
+			instance_create_layer(x,y,"Instances", objModeMenu)
             instance_destroy()
 			break;
         case 2:
             global.gameParams.numberPlayers = 4;
-			instance_create_layer(x,y,"Instances", objMapMenu)
+			instance_create_layer(x,y,"Instances", objModeMenu)
             instance_destroy()
 			break;
         case 3:

@@ -1,17 +1,3 @@
-    if window_get_fullscreen()
-    {
-        window_set_fullscreen(false);
-		view_wport[0] = 1280
-		view_hport[0] = 720
-		surface_resize(application_surface, view_wport[lobbyMemberID], view_hport[lobbyMemberID]);
-    }
-    else
-    {
-        window_set_fullscreen(true);
-		vpSizeWidthFS = display_get_width()
-
-		vpSizeLengthFS = display_get_height();
-				view_wport[lobbyMemberID] = vpSizeWidthFS
-		view_hport[lobbyMemberID] = vpSizeLengthFS
-		surface_resize(application_surface, view_wport[lobbyMemberID], view_hport[lobbyMemberID]);
-    }
+// Legacy fullscreen hotkey disabled.
+// Fullscreen/windowed mode is now handled globally in obj_Game Step (vk_f11)
+// via app_settings_toggle_fullscreen() so settings persist consistently.

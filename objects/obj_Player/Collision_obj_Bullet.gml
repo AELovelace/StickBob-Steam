@@ -1,18 +1,27 @@
-show_debug_message(string(other.owner_id))
-show_debug_message(string(localSteamID))
+if (other.owner_steam_id == steamID) exit;
+
 instance_destroy(other)
 
-if (sprite_index != sprPlayerDie){
-	image_speed = 1;
-	sprite_index = sprPlayerDie;
-	audio_play_sound(i_fucked_ur_mum, 10, 0)
-}
-if (sprite_index != sprPlayerDie){
-	global.stopShooting = false;	
+if !isHost exit;
+if sprite_index == sprPlayerDie exit;
+
+if global.gameParams.modeSelection == global.GAME_MODE_CLASSIC {
+	playerHealth = 0
+} else {
+	playerHealth = max(0, playerHealth - 1)
 }
 
-if (other.owner_id != localSteamID){
-
+if (playerHealth <= 0){
+	global.stopShooting = true
+	image_speed = 1
+	sprite_index = sprPlayerDie
+	instance_create_layer(x,y,"Instances",objPlayerDeath)
+	if(isLocal){
+		audio_play_sound(i_fucked_ur_mum, 10, 0)
+	}
+	if(!isLocal){
+		audio_play_sound(crunch, 10, 0)
+	}
 	if(random(10) >= 6){
 		x = 200
 
@@ -21,11 +30,10 @@ if (other.owner_id != localSteamID){
 		x = room_width - 200;		
 	}
 	y = room_height / 2;
+	set_player_health(steamID, 5)
+} else {
+	global.stopShooting = false
 }
 
-	if(isLocal){
-		audio_play_sound(i_fucked_ur_mum, 10, 0)
-	}
-	if(!isLocal){
-		audio_play_sound(crunch, 10, 0)
-	}
+set_player_health(steamID, playerHealth)
+send_player_health_to_clients(steamID, playerHealth)

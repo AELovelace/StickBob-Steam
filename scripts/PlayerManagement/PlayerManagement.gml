@@ -113,3 +113,156 @@ function update_player_position(_b) {
 		}
 	}
 }
+
+// Returns max health for the active game mode.
+function mode_max_health(_mode=undefined){
+	var _selectedMode = _mode
+	if _selectedMode == undefined {
+		if variable_global_exists("gameParams") {
+			_selectedMode = global.gameParams.modeSelection
+		} else {
+			_selectedMode = 0
+		}
+	}
+	if _selectedMode == global.GAME_MODE_HP5 then return 5
+	return 1
+}
+
+// Applies player health to both playerList and spawned character instances.
+function set_player_health(_steam_id, _health){
+	var _playerList
+	var _listOwner = 0
+
+	if variable_instance_exists(id, "playerList") {
+		_playerList = playerList
+		_listOwner = 1
+	} else if instance_exists(obj_Server) {
+		_playerList = obj_Server.playerList
+		_listOwner = 2
+	} else if instance_exists(obj_Client) {
+		_playerList = obj_Client.playerList
+		_listOwner = 3
+	} else {
+		return
+	}
+
+	for (var _i = 0; _i < array_length(_playerList); _i++){
+		if _playerList[_i].steamID != _steam_id then continue
+
+		if _playerList[_i].maxHealth == undefined then _playerList[_i].maxHealth = max(1, _health)
+		_playerList[_i].playerHealth = _health
+
+		if _playerList[_i].character != undefined {
+			var _char = _playerList[_i].character
+			_char.maxHealth = _playerList[_i].maxHealth
+			_char.playerHealth = _health
+
+			if (_health <= 0 && _char.sprite_index != sprPlayerDie) {
+				_char.image_speed = 1
+				_char.sprite_index = sprPlayerDie
+			}
+
+			if (_health > 0 && _char.sprite_index == sprPlayerDie) {
+				_char.sprite_index = sprPlayerIdle
+			}
+		}
+
+		break
+	}
+
+	switch _listOwner {
+		case 1:
+			playerList = _playerList
+			break
+		case 2:
+			obj_Server.playerList = _playerList
+			break
+		case 3:
+			obj_Client.playerList = _playerList
+			break
+	}
+}
+
+//@self obj_Server
+// Broadcasts a player's current health to all non-host clients.
+function send_player_health_to_clients(_steam_id, _health){
+	var _b = buffer_create(11, buffer_fixed, 1);
+	buffer_write(_b, buffer_u8, NETWORK_PACKETS.PLAYER_HEALTH)
+	buffer_write(_b, buffer_u64, _steam_id)
+	buffer_write(_b, buffer_u16, _health)
+
+	for (var _i = 0; _i < array_length(obj_Server.playerList); _i++){
+		if (obj_Server.playerList[_i].steamID != obj_Server.steamID) {
+			steam_net_packet_send(obj_Server.playerList[_i].steamID, _b)
+		}
+	}
+
+	buffer_delete(_b)
+}
+
+//@self obj_Client
+// Applies an incoming PLAYER_HEALTH packet.
+function receive_player_health(_b){
+	var _steam_id = buffer_read(_b, buffer_u64)
+	var _health = buffer_read(_b, buffer_u16)
+	set_player_health(_steam_id, _health)
+}
+
+// ---------------------------------------------------------------------------
+// Player colour sync
+// ---------------------------------------------------------------------------
+
+///@self obj_Client
+// Sends a PLAYER_COLOR packet to the server with this client's chosen colour.
+// Packet layout (client → server): u8 type | u32 color  → 5 bytes
+function send_player_color(_color) {
+	var _b = buffer_create(5, buffer_fixed, 1)
+	buffer_write(_b, buffer_u8,  NETWORK_PACKETS.PLAYER_COLOR)
+	buffer_write(_b, buffer_u32, _color)
+	steam_net_packet_send(steam_lobby_get_owner_id(), _b)
+	buffer_delete(_b)
+}
+
+///@self obj_Server
+// Reads a PLAYER_COLOR packet from a client, updates the server playerList and
+// the live character instance, then broadcasts the new colour to all other clients.
+// Broadcast layout (server → clients): u8 type | u64 steamID | u32 color  → 13 bytes
+function receive_player_color(_b, _steam_id) {
+	var _color = buffer_read(_b, buffer_u32)
+	for (var _i = 0; _i < array_length(obj_Server.playerList); _i++) {
+		if obj_Server.playerList[_i].steamID == _steam_id {
+			obj_Server.playerList[_i].playerColor = _color
+			if obj_Server.playerList[_i].character != undefined {
+				obj_Server.playerList[_i].character.playerColor = _color
+			}
+			break
+		}
+	}
+	var _bcast = buffer_create(13, buffer_fixed, 1)
+	buffer_write(_bcast, buffer_u8,  NETWORK_PACKETS.PLAYER_COLOR)
+	buffer_write(_bcast, buffer_u64, _steam_id)
+	buffer_write(_bcast, buffer_u32, _color)
+	for (var _i = 0; _i < array_length(obj_Server.playerList); _i++) {
+		if obj_Server.playerList[_i].steamID != obj_Server.steamID {
+			steam_net_packet_send(obj_Server.playerList[_i].steamID, _bcast)
+		}
+	}
+	buffer_delete(_bcast)
+}
+
+///@self obj_Client
+// Applies a broadcasted PLAYER_COLOR packet received from the server.
+// Packet layout (after type byte): u64 steamID | u32 color
+function apply_player_color(_b) {
+	var _steam_id = buffer_read(_b, buffer_u64)
+	var _color    = buffer_read(_b, buffer_u32)
+	for (var _i = 0; _i < array_length(playerList); _i++) {
+		if playerList[_i].steamID == _steam_id {
+			playerList[_i].playerColor = _color
+			if playerList[_i].character != undefined {
+				playerList[_i].character.playerColor = _color
+			}
+			break
+		}
+	}
+}

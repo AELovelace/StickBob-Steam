@@ -8,8 +8,10 @@ button_h = 40; // Vertical spacing between options
 button[0] = "Host Game";
 button[1] = "Join Game";
 button[2] = "SinglePlayer";
-button[3] = "Exit";
-button[4] = "SadGirlsClub.WTF";
+button[3] = "Runner";
+button[4] = "Settings";
+button[5] = "Exit";
+button[6] = "SadGirlsClub.WTF";
 
 
 buttons = array_length_1d(button); // Get the number of buttons

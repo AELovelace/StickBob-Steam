@@ -67,7 +67,7 @@ if (point_in_rectangle(mouse_gui_x, mouse_gui_y, artDownX-16, artDownY-16, artDo
 // Music volume slider (only active when mp3 is open)
 if (mp3Open == true) {
     var _sgui_x = _hwidth - 128;
-    var _sgui_y = 200;
+    var _sgui_y = 220;
     
     // Ensure slider_x is anchored correctly on first open (music_slider_x starts at 0)
     if (music_slider_x < _sgui_x || music_slider_x > _sgui_x + music_slider_width) {
@@ -79,6 +79,7 @@ if (mp3Open == true) {
     if (mouse_check_button_released(mb_left)) {
         music_slider_state = "idle";
         music_slider_x = _sgui_x + (global.musicVolume / 100) * music_slider_width;
+        app_settings_set_music_volume(global.musicVolume);
     }
 
     switch (music_slider_state) {

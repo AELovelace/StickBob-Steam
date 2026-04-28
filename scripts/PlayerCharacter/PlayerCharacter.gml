@@ -47,6 +47,14 @@ function variableInitAll(){
 	netX      = 0      // server-authoritative x target
 	netY      = 0      // server-authoritative y target
 	hasNetPos = false  // true once first PLAYER_POSITION packet is received
+
+	// Visual / cosmetic
+	// steamName: may already be set via instance_create_layer variable struct (remote players);
+	// fall back to the local Steam name for the own-player / singleplayer instance.
+	if !variable_instance_exists(id, "steamName") || steamName == undefined {
+		steamName = steam_get_persona_name()
+	}
+	playerColor = app_settings_current().player_color  // overridden post-spawn for remote players
 }
 
 // ---------------------------------------------------------------------------
@@ -328,10 +336,11 @@ function reconcile_net_position() {
         // Prediction reconciliation: correct local player gently toward server truth.
         // Large errors (>64 px total) snap immediately (desync recovery).
         // Small errors lerp at 25% per frame so corrections are invisible.
+        // Note: speed is NOT zeroed on snap — killing momentum here would cause
+        // the player to feel frozen whenever a correction fires under latency.
         var _err = abs(x - netX) + abs(y - netY);
         if (_err > 64) {
             x = netX;  y = netY;
-            xSpeed = 0; ySpeed = 0;
         } else if (_err > 4) {
             x = lerp(x, netX, 0.25);
             y = lerp(y, netY, 0.25);
