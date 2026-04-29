@@ -2,6 +2,7 @@
 var i = 0;
 draw_set_font(fontMenu); // Replace with your font asset name
 draw_set_halign(fa_center); // Center the text horizontally
+draw_set_valign(fa_top);
 
 repeat(buttons) {
     // Set color based on selection status
@@ -19,4 +20,5 @@ repeat(buttons) {
 
 // Remember to reset draw settings if you draw other elements later
 draw_set_halign(fa_left);
+draw_set_valign(fa_top);
 draw_set_color(c_white);

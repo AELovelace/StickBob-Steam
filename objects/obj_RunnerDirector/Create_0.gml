@@ -265,6 +265,14 @@ runner_best_kills = 0;    // most kills in a single run this session
 runner_distance   = 0;    // kept in sync with runner_score
 runner_best       = 0;    // kept in sync with runner_best_score
 
+_runner_collectible_amount = function() {
+    var _roll = irandom(99);
+    if (_roll < 45) return 1;
+    if (_roll < 75) return 3;
+    if (_roll < 92) return 5;
+    return 10;
+};
+
 // ── Internal: spawn one slice at next_spawn_x ──────────────────────────────
 _spawn_chunk = function() {
     // Weighted + normalized selection:
@@ -292,6 +300,40 @@ _spawn_chunk = function() {
         var _inst = instance_create_layer(_ox + _pdx, _pdy, "Instances", objSolid);
         _inst.image_xscale = _pw / 16;
         array_push(_inst_arr, _inst);
+    }
+
+    if (_p_count > 0 && irandom(99) < 35) {
+        var _valid_platforms = [];
+        for (var _pc = 0; _pc < _p_count; _pc++) {
+            var _plat = _platforms[_pc];
+            if (variable_struct_get(_plat, "w") >= 64) {
+                array_push(_valid_platforms, _plat);
+            }
+        }
+
+        if (array_length(_valid_platforms) > 0) {
+            var _pickup_platform = _valid_platforms[irandom(array_length(_valid_platforms) - 1)];
+            var _pickup_margin = 24;
+            var _pickup_width = variable_struct_get(_pickup_platform, "w");
+            var _pickup_span = max(1, _pickup_width - (_pickup_margin * 2));
+            var _pickup_dx = variable_struct_get(_pickup_platform, "dx")
+                + _pickup_margin
+                + irandom(_pickup_span);
+            var _pickup_dy = variable_struct_get(_pickup_platform, "dy") - 18;
+            var _pickup_amount = _runner_collectible_amount();
+            var _pickup = instance_create_layer(
+                _ox + _pickup_dx,
+                _pickup_dy,
+                "Instances",
+                obj_SGCCollectible
+            );
+            _pickup.sgcAmount = _pickup_amount;
+            _pickup.collectibleCode = "runner:"
+                + string(_ox + _pickup_dx)
+                + ":" + string(_pickup_dy)
+                + ":" + string(_pickup_amount);
+            array_push(_inst_arr, _pickup);
+        }
     }
 
     // Hazards ─ individual obj_RunnerHazard instances

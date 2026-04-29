@@ -54,7 +54,8 @@ function send_other_player_spawn(_steam_id, _pos) {
 	buffer_write(_b, buffer_u64, _steam_id);
 	buffer_write(_b, buffer_string, _name);
 	for (var _i = 1; _i < array_length(playerList); _i++){
-		if (playerList[_i].steamID != _steam_id) {
+		if (playerList[_i].steamID != _steam_id
+			&& !(variable_struct_exists(playerList[_i], "disconnected") && playerList[_i].disconnected)) {
 			steam_net_packet_send(playerList[_i].steamID, _b)
 		}
 	}
@@ -68,6 +69,7 @@ function send_other_player_spawn(_steam_id, _pos) {
 function shrink_player_list(){
 	var _shrunkList = []
 	for (var _i = 0; _i < array_length(playerList); _i++) {
+		if variable_struct_exists(playerList[_i], "disconnected") && playerList[_i].disconnected then continue
 		array_push(_shrunkList, {
 			steamID      : playerList[_i].steamID,
 			steamName    : playerList[_i].steamName,
@@ -126,7 +128,8 @@ function send_player_input_to_clients(_player_input){
 	buffer_write(_b, buffer_u8,  _player_input.actionKey);
 	buffer_write(_b, buffer_s16, _player_input.mouseAngle);
 	for (var _i = 0; _i < array_length(obj_Server.playerList); _i++){
-		if (obj_Server.playerList[_i].steamID != obj_Server.steamID) {
+		if (obj_Server.playerList[_i].steamID != obj_Server.steamID
+			&& !(variable_struct_exists(obj_Server.playerList[_i], "disconnected") && obj_Server.playerList[_i].disconnected)) {
 			steam_net_packet_send(obj_Server.playerList[_i].steamID, _b)
 		}
 	}

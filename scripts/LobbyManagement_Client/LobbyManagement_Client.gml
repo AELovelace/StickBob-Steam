@@ -39,10 +39,10 @@ function sync_players(_new_list) {
 					playerList[_k].playerHealth = _new_list[_i].playerHealth
 					playerList[_k].playerColor  = _incomingColor
 					// If the instance was lost (e.g. room change) and it isn't the local player, respawn it
-					if playerList[_k].character == undefined && playerList[_k].steamID != steam_get_user_steam_id() {
+					if !player_entry_has_live_character(playerList[_k]) && playerList[_k].steamID != steam_get_user_steam_id() {
 						var _inst = client_player_spawn_at_pos(playerList[_k])
 						playerList[_k].character = _inst
-					} else if playerList[_k].character != undefined {
+					} else if player_entry_has_live_character(playerList[_k]) {
 						playerList[_k].character.maxHealth    = playerList[_k].maxHealth
 						playerList[_k].character.playerHealth = playerList[_k].playerHealth
 						playerList[_k].character.playerColor  = _incomingColor

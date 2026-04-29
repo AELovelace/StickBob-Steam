@@ -24,6 +24,7 @@ if(playerHealth <= 0){
 }
 draw_text(15, 6, "Health:" + string(playerHealth));
 draw_healthbar(10,105, 120, 115, speedBar, c_black, c_red, c_green, 0, true, true)
+sgc_gateway_draw_balance_hud();
 //draw_text(10,116,"Speed:" + string(speedBar))
 //draw_text(10, 30, "ySpeed: " + string(ySpeed));
 //draw_text(10, 45, "xInput: " + string(xInput));

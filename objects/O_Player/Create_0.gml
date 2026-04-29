@@ -9,6 +9,8 @@ xSpeed = 0;
 ySpeed = 0;
 speedBar = 0;
 playerHealth = 5;
+zoomDelay = 0;
+camLookAhead = 0;
 //screen init
 // Pull current resolution from persisted app settings.
 var _settings = app_settings_defaults()
@@ -46,4 +48,16 @@ if (os_browser != browser_not_a_browser) {
     var _bw = browser_width  - 10;                        // viewport width minus a small safety margin
     var _bh = browser_height - 10 - _bar_h;               // viewport height minus margin and any browser bar
     window_set_size(_bw, _bh);                            // resize the game canvas to fit the usable area
+}
+
+// Singleplayer rooms do not spawn obj_Server/obj_Client, so the local player
+// owns the gateway lifecycle and creates a reward match for kill payouts.
+if (isLocal && !instance_exists(obj_Server) && !instance_exists(obj_Client)) {
+	sgc_gateway_begin_singleplayer_match();
+	sgc_gateway_bootstrap(false);
+	sgc_gateway_spawn_singleplayer_collectibles(x, y);
+}
+
+if (isLocal) {
+	sgc_gateway_begin_level_balance_cycle();
 }

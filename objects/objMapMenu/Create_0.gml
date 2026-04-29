@@ -1,6 +1,8 @@
 // Create Event
-menu_x = room_width / 2; // Center the menu horizontally
-menu_y = room_height / 3; // Position vertically
+leftness = 5;
+topness = 6;
+menu_x = window_get_width() / leftness; // Center the menu horizontally
+menu_y = window_get_height() / topness; // Position vertically
 button_h = 40; // Vertical spacing between options
 button = []
 
@@ -13,6 +15,8 @@ button[2] = "Back";
 buttons = array_length_1d(button); // Get the number of buttons
 menu_index = 0; // Current selected item index (starts at 0)
 last_selected = 0; // Track the last selection to prevent repeated sound playing
+last_mouse_x = mouse_x;
+last_mouse_y = mouse_y;
 
 start_host_lobby = function(_room) {
 	var _initialised = steam_initialised()

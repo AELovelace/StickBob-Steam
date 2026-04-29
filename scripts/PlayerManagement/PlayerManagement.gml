@@ -61,13 +61,21 @@ function receive_player_input(_b, _steam_id=-1){
 	return {steamID: _steam_id, xInput: _xInput, yInput: _yInput, runKey: _runKey, actionKey: _actionKey, mouseAngle: _mouseAngle}
 }
 
+function player_entry_has_live_character(_entry) {
+	if !is_struct(_entry) then return false
+	if !variable_struct_exists(_entry, "character") then return false
+	var _char = _entry.character
+	if _char == undefined then return false
+	return instance_exists(_char)
+}
+
 ///@self obj_Client, obj_Server
 // Searches playerList for an entry whose character instance has the given
 // steamID.  Returns the instance reference, or noone if not found.
 function find_player_by_steam_id(_steam_id){
 	for (var _i = 0; _i < array_length(playerList); _i++){
 		var _player = playerList[_i].character
-		if _player == undefined continue;
+		if !player_entry_has_live_character(playerList[_i]) continue;
 		if _player.steamID == _steam_id return _player;
 	}
 	return noone;
@@ -80,7 +88,8 @@ function find_player_by_steam_id(_steam_id){
 function send_player_positions() {
 	for (var _i = 0; _i < array_length(playerList); _i++){
 		var _player = playerList[_i]
-		if _player.character == undefined then continue
+		if variable_struct_exists(_player, "disconnected") && _player.disconnected then continue
+		if !player_entry_has_live_character(_player) then continue
 		if _player.steamID  == undefined then continue
 		var _b = buffer_create(13, buffer_fixed, 1);
 		buffer_write(_b, buffer_u8,  NETWORK_PACKETS.PLAYER_POSITION);
@@ -89,7 +98,8 @@ function send_player_positions() {
 		buffer_write(_b, buffer_u16, _player.character.y);
 		// Broadcast to every non-host client
 		for (var _k = 0; _k < array_length(playerList); _k++){
-			if (playerList[_k].steamID != obj_Server.steamID) {
+			if ((playerList[_k].steamID != obj_Server.steamID)
+				&& !(variable_struct_exists(playerList[_k], "disconnected") && playerList[_k].disconnected)) {
 				steam_net_packet_send(playerList[_k].steamID, _b)
 			}
 		}
@@ -106,7 +116,7 @@ function update_player_position(_b) {
 	var _y        = buffer_read(_b, buffer_u16)
 	for (var _i = 0; _i < array_length(playerList); _i++){
 		if (_steam_id == playerList[_i].steamID) {
-			if playerList[_i].character == undefined then continue
+			if !player_entry_has_live_character(playerList[_i]) then continue
 			playerList[_i].character.netX = _x
 			playerList[_i].character.netY = _y
 			playerList[_i].character.hasNetPos = true
@@ -152,7 +162,7 @@ function set_player_health(_steam_id, _health){
 		if _playerList[_i].maxHealth == undefined then _playerList[_i].maxHealth = max(1, _health)
 		_playerList[_i].playerHealth = _health
 
-		if _playerList[_i].character != undefined {
+		if player_entry_has_live_character(_playerList[_i]) {
 			var _char = _playerList[_i].character
 			_char.maxHealth = _playerList[_i].maxHealth
 			_char.playerHealth = _health
@@ -192,7 +202,8 @@ function send_player_health_to_clients(_steam_id, _health){
 	buffer_write(_b, buffer_u16, _health)
 
 	for (var _i = 0; _i < array_length(obj_Server.playerList); _i++){
-		if (obj_Server.playerList[_i].steamID != obj_Server.steamID) {
+		if (obj_Server.playerList[_i].steamID != obj_Server.steamID
+			&& !(variable_struct_exists(obj_Server.playerList[_i], "disconnected") && obj_Server.playerList[_i].disconnected)) {
 			steam_net_packet_send(obj_Server.playerList[_i].steamID, _b)
 		}
 	}
@@ -232,7 +243,7 @@ function receive_player_color(_b, _steam_id) {
 	for (var _i = 0; _i < array_length(obj_Server.playerList); _i++) {
 		if obj_Server.playerList[_i].steamID == _steam_id {
 			obj_Server.playerList[_i].playerColor = _color
-			if obj_Server.playerList[_i].character != undefined {
+			if player_entry_has_live_character(obj_Server.playerList[_i]) {
 				obj_Server.playerList[_i].character.playerColor = _color
 			}
 			break
@@ -243,7 +254,8 @@ function receive_player_color(_b, _steam_id) {
 	buffer_write(_bcast, buffer_u64, _steam_id)
 	buffer_write(_bcast, buffer_u32, _color)
 	for (var _i = 0; _i < array_length(obj_Server.playerList); _i++) {
-		if obj_Server.playerList[_i].steamID != obj_Server.steamID {
+		if obj_Server.playerList[_i].steamID != obj_Server.steamID
+			&& !(variable_struct_exists(obj_Server.playerList[_i], "disconnected") && obj_Server.playerList[_i].disconnected) {
 			steam_net_packet_send(obj_Server.playerList[_i].steamID, _bcast)
 		}
 	}
@@ -259,7 +271,7 @@ function apply_player_color(_b) {
 	for (var _i = 0; _i < array_length(playerList); _i++) {
 		if playerList[_i].steamID == _steam_id {
 			playerList[_i].playerColor = _color
-			if playerList[_i].character != undefined {
+			if player_entry_has_live_character(playerList[_i]) {
 				playerList[_i].character.playerColor = _color
 			}
 			break

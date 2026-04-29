@@ -14,3 +14,4 @@ draw_text(10, 25, "Health: " + string(playerHealth) + "/" + string(maxHealth))
 var _hpPercent = 0
 if maxHealth > 0 then _hpPercent = (playerHealth / maxHealth) * 100
 draw_healthbar(10,45,120,58,_hpPercent,c_black,c_red,c_green,0,true,true)
+sgc_gateway_draw_balance_hud();

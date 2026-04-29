@@ -70,3 +70,7 @@ if(isLocal){
 	camera_set_view_size(view_camera[lobbyMemberID], 320, 240);
 	target_instance = playerID
 }
+
+if (isLocal) {
+	sgc_gateway_begin_level_balance_cycle();
+}

@@ -10,7 +10,7 @@ if(sprite_index == sprPlayerDie){
 	y = room_height / 2;
 	if isHost {
 		playerHealth = maxHealth
-		set_player_health(steamID, 5)
+		set_player_health(steamID, maxHealth)
 		send_player_health_to_clients(steamID, playerHealth)
 	}
 }

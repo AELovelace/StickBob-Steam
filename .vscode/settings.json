@@ -1,0 +1,15 @@
+{
+  // The SGC gateway lives in its own git repo at sgc-gateway-server/ but is
+  // ignored by the parent BetterAI repo. VS Code's git provider ignores nested
+  // repos that fall under a .gitignore entry by default, so opt in explicitly.
+  "git.detectSubmodules": false,
+  "git.openRepositoryInParentFolders": "always",
+  "git.repositoryScanIgnoredFolders": [
+    "node_modules",
+    ".venv",
+    "tmp"
+  ],
+  "git.repositoryScanMaxDepth": 2,
+  "git.autoRepositoryDetection": true,
+  "git.ignoredRepositories": []
+}

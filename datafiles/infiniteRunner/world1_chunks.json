@@ -1,0 +1,5396 @@
+{
+    "chunk_set": "world1",
+    "chunk_width": 640,
+    "source_rooms": [
+        "rm_GameRoom",
+        "SP1",
+        "SP2",
+        "SP3",
+        "SP4"
+    ],
+    "chunks": [
+        {
+            "width": 640,
+            "platforms": [],
+            "hazards": [],
+            "elements": [
+                {
+                    "object_name": "objSolid",
+                    "dx": 16.0,
+                    "dy": 352.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 32.0,
+                    "dy": 352.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 48.0,
+                    "dy": 352.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 64.0,
+                    "dy": 352.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 80.0,
+                    "dy": 352.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 96.0,
+                    "dy": 352.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 112.0,
+                    "dy": 352.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 128.0,
+                    "dy": 352.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 144.0,
+                    "dy": 352.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 160.0,
+                    "dy": 352.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 176.0,
+                    "dy": 352.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 192.0,
+                    "dy": 352.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 208.0,
+                    "dy": 352.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 224.0,
+                    "dy": 352.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 240.0,
+                    "dy": 352.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 256.0,
+                    "dy": 352.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 272.0,
+                    "dy": 352.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 288.0,
+                    "dy": 352.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 304.0,
+                    "dy": 352.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 320.0,
+                    "dy": 352.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 336.0,
+                    "dy": 352.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 352.0,
+                    "dy": 352.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 368.0,
+                    "dy": 352.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 384.0,
+                    "dy": 352.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 400.0,
+                    "dy": 352.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 416.0,
+                    "dy": 352.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 432.0,
+                    "dy": 352.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 448.0,
+                    "dy": 352.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 464.0,
+                    "dy": 352.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 480.0,
+                    "dy": 352.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 496.0,
+                    "dy": 352.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 512.0,
+                    "dy": 352.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 528.0,
+                    "dy": 352.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 544.0,
+                    "dy": 352.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 560.0,
+                    "dy": 352.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 576.0,
+                    "dy": 352.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 592.0,
+                    "dy": 352.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 608.0,
+                    "dy": 352.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 304.0,
+                    "dy": 0.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 288.0,
+                    "dy": 0.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 272.0,
+                    "dy": 0.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 256.0,
+                    "dy": 0.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 240.0,
+                    "dy": 0.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 224.0,
+                    "dy": 0.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 208.0,
+                    "dy": 0.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 192.0,
+                    "dy": 0.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 176.0,
+                    "dy": 0.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 160.0,
+                    "dy": 0.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 144.0,
+                    "dy": 0.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 128.0,
+                    "dy": 0.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 112.0,
+                    "dy": 0.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 96.0,
+                    "dy": 0.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 80.0,
+                    "dy": 0.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 64.0,
+                    "dy": 0.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 48.0,
+                    "dy": 0.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 32.0,
+                    "dy": 0.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 16.0,
+                    "dy": 0.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 320.0,
+                    "dy": 0.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 336.0,
+                    "dy": 0.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 352.0,
+                    "dy": 0.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 368.0,
+                    "dy": 0.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 384.0,
+                    "dy": 0.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 400.0,
+                    "dy": 0.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 416.0,
+                    "dy": 0.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 432.0,
+                    "dy": 0.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 448.0,
+                    "dy": 0.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 464.0,
+                    "dy": 0.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 480.0,
+                    "dy": 0.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 496.0,
+                    "dy": 0.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 512.0,
+                    "dy": 0.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 528.0,
+                    "dy": 0.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 544.0,
+                    "dy": 0.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 560.0,
+                    "dy": 0.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 576.0,
+                    "dy": 0.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 592.0,
+                    "dy": 0.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 608.0,
+                    "dy": 0.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 304.0,
+                    "dy": 320.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 272.0,
+                    "dy": 336.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid1",
+                    "dx": 304.0,
+                    "dy": 336.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid1",
+                    "dx": 320.0,
+                    "dy": 336.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSlopBot",
+                    "dx": 480.0,
+                    "dy": 336.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSlopBotSlacker",
+                    "dx": 512.0,
+                    "dy": 336.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objBouncyBottom",
+                    "dx": 336.0,
+                    "dy": 336.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "obj_Wall",
+                    "dx": 192.0,
+                    "dy": 288.0,
+                    "scale_x": 1.0,
+                    "scale_y": 4.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSlopBotGunner",
+                    "dx": 544.0,
+                    "dy": 336.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                }
+            ],
+            "source_room": "rm_GameRoom",
+            "source_start": 0
+        },
+        {
+            "width": 640,
+            "platforms": [],
+            "hazards": [],
+            "elements": [
+                {
+                    "object_name": "objSolid6",
+                    "dx": 0.0,
+                    "dy": 240.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 160.0,
+                    "dy": 448.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 624.0,
+                    "dy": 528.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 544.0,
+                    "dy": 528.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 528.0,
+                    "dy": 528.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objBouncyBottom",
+                    "dx": 112.0,
+                    "dy": 608.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objBouncyBottom",
+                    "dx": 80.0,
+                    "dy": 608.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objBouncyBottom",
+                    "dx": 144.0,
+                    "dy": 688.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objBouncyBottom",
+                    "dx": 160.0,
+                    "dy": 688.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objBouncyBottom",
+                    "dx": 128.0,
+                    "dy": 688.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 48.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 64.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 80.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 96.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 112.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 368.0,
+                    "dy": 544.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 400.0,
+                    "dy": 560.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 432.0,
+                    "dy": 576.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 464.0,
+                    "dy": 592.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 544.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 512.0,
+                    "dy": 640.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 480.0,
+                    "dy": 656.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 448.0,
+                    "dy": 672.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 416.0,
+                    "dy": 688.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 256.0,
+                    "dy": 704.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 224.0,
+                    "dy": 720.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 336.0,
+                    "dy": 352.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 368.0,
+                    "dy": 368.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 400.0,
+                    "dy": 384.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 528.0,
+                    "dy": 400.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 560.0,
+                    "dy": 416.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 592.0,
+                    "dy": 480.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 560.0,
+                    "dy": 496.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 528.0,
+                    "dy": 512.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 496.0,
+                    "dy": 528.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 624.0,
+                    "dy": 480.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 560.0,
+                    "dy": 512.0,
+                    "scale_x": 5.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 592.0,
+                    "dy": 496.0,
+                    "scale_x": 3.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped45",
+                    "dx": 240.0,
+                    "dy": 576.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped45",
+                    "dx": 208.0,
+                    "dy": 544.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped45",
+                    "dx": 176.0,
+                    "dy": 512.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 144.0,
+                    "dy": 496.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 256.0,
+                    "dy": 592.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSlopBotSlacker",
+                    "dx": 432.0,
+                    "dy": 544.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSlopBotSlacker",
+                    "dx": 336.0,
+                    "dy": 528.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 288.0,
+                    "dy": 704.0,
+                    "scale_x": 10.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 0.0,
+                    "dy": 736.0,
+                    "scale_x": 16.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 0.0,
+                    "dy": 160.0,
+                    "scale_x": 40.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 16.0,
+                    "dy": 0.0,
+                    "scale_x": 39.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 224.0,
+                    "dy": 608.0,
+                    "scale_x": 6.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 304.0,
+                    "dy": 544.0,
+                    "scale_x": 1.0,
+                    "scale_y": 4.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 320.0,
+                    "dy": 544.0,
+                    "scale_x": 3.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 368.0,
+                    "dy": 560.0,
+                    "scale_x": 2.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 400.0,
+                    "dy": 576.0,
+                    "scale_x": 2.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 432.0,
+                    "dy": 592.0,
+                    "scale_x": 2.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 224.0,
+                    "dy": 576.0,
+                    "scale_x": 1.0,
+                    "scale_y": 2.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 192.0,
+                    "dy": 544.0,
+                    "scale_x": 1.0,
+                    "scale_y": 3.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 160.0,
+                    "dy": 512.0,
+                    "scale_x": 1.0,
+                    "scale_y": 3.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 128.0,
+                    "dy": 512.0,
+                    "scale_x": 2.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 112.0,
+                    "dy": 496.0,
+                    "scale_x": 2.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 208.0,
+                    "dy": 576.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 176.0,
+                    "dy": 544.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 160.0,
+                    "dy": 448.0,
+                    "scale_x": 10.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 304.0,
+                    "dy": 352.0,
+                    "scale_x": 1.0,
+                    "scale_y": 8.0,
+                    "rotation": -0.5794596
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 384.0,
+                    "dy": 400.0,
+                    "scale_x": 9.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 512.0,
+                    "dy": 416.0,
+                    "scale_x": 3.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 352.0,
+                    "dy": 384.0,
+                    "scale_x": 3.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 320.0,
+                    "dy": 368.0,
+                    "scale_x": 3.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 320.0,
+                    "dy": 352.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 528.0,
+                    "dy": 528.0,
+                    "scale_x": 6.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 576.0,
+                    "dy": 624.0,
+                    "scale_x": 4.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                }
+            ],
+            "source_room": "SP1",
+            "source_start": 0
+        },
+        {
+            "width": 640,
+            "platforms": [],
+            "hazards": [],
+            "elements": [
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 272.0,
+                    "dy": 480.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 304.0,
+                    "dy": 496.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 336.0,
+                    "dy": 512.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 368.0,
+                    "dy": 528.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 400.0,
+                    "dy": 544.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 432.0,
+                    "dy": 560.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 464.0,
+                    "dy": 576.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 496.0,
+                    "dy": 592.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 0.0,
+                    "dy": 480.0,
+                    "scale_x": 17.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 0.0,
+                    "dy": 608.0,
+                    "scale_x": 40.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 0.0,
+                    "dy": 592.0,
+                    "scale_x": 31.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 0.0,
+                    "dy": 576.0,
+                    "scale_x": 29.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 0.0,
+                    "dy": 560.0,
+                    "scale_x": 27.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 0.0,
+                    "dy": 544.0,
+                    "scale_x": 25.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 0.0,
+                    "dy": 528.0,
+                    "scale_x": 23.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 0.0,
+                    "dy": 512.0,
+                    "scale_x": 21.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 0.0,
+                    "dy": 496.0,
+                    "scale_x": 19.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSlopBot",
+                    "dx": 160.0,
+                    "dy": 448.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 512.0,
+                    "dy": 448.0,
+                    "scale_x": 8.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 608.0,
+                    "dy": 304.0,
+                    "scale_x": 2.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 0.0,
+                    "dy": 160.0,
+                    "scale_x": 40.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 0.0,
+                    "dy": 0.0,
+                    "scale_x": 40.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 624.0,
+                    "dy": 416.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 592.0,
+                    "dy": 432.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSlopBotGunner",
+                    "dx": 544.0,
+                    "dy": 432.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objBouncyRight",
+                    "dx": -16.0,
+                    "dy": 544.0,
+                    "scale_x": 1.0,
+                    "scale_y": 5.0,
+                    "rotation": 0.0
+                }
+            ],
+            "source_room": "SP1",
+            "source_start": 640
+        },
+        {
+            "width": 640,
+            "platforms": [],
+            "hazards": [],
+            "elements": [
+                {
+                    "object_name": "objSolid6",
+                    "dx": 320.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 336.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 352.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 368.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 384.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 400.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 416.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 432.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 448.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 464.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 480.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 496.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 512.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 528.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 544.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 560.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 576.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 592.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 608.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 624.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 0.0,
+                    "dy": 608.0,
+                    "scale_x": 20.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 320.0,
+                    "dy": 608.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSlopBot",
+                    "dx": 512.0,
+                    "dy": 592.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSlopBot",
+                    "dx": 144.0,
+                    "dy": 576.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 0.0,
+                    "dy": 448.0,
+                    "scale_x": 40.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 0.0,
+                    "dy": 304.0,
+                    "scale_x": 40.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 0.0,
+                    "dy": 160.0,
+                    "scale_x": 40.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 0.0,
+                    "dy": 0.0,
+                    "scale_x": 40.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped45",
+                    "dx": 416.0,
+                    "dy": 416.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 432.0,
+                    "dy": 432.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped45",
+                    "dx": 384.0,
+                    "dy": 384.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 352.0,
+                    "dy": 368.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 112.0,
+                    "dy": 368.0,
+                    "scale_x": 15.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 80.0,
+                    "dy": 368.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 48.0,
+                    "dy": 384.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 16.0,
+                    "dy": 400.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": -16.0,
+                    "dy": 416.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSlopBotGunner",
+                    "dx": 176.0,
+                    "dy": 144.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 544.0,
+                    "dy": 144.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 512.0,
+                    "dy": 128.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 512.0,
+                    "dy": 144.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 528.0,
+                    "dy": 144.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                }
+            ],
+            "source_room": "SP1",
+            "source_start": 1280
+        },
+        {
+            "width": 640,
+            "platforms": [],
+            "hazards": [],
+            "elements": [
+                {
+                    "object_name": "objSolid6",
+                    "dx": 0.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 16.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 32.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 48.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 48.0,
+                    "dy": 640.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 64.0,
+                    "dy": 640.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 80.0,
+                    "dy": 640.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 96.0,
+                    "dy": 640.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 112.0,
+                    "dy": 640.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 128.0,
+                    "dy": 640.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 144.0,
+                    "dy": 640.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 160.0,
+                    "dy": 640.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 176.0,
+                    "dy": 640.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 192.0,
+                    "dy": 640.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 208.0,
+                    "dy": 640.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 224.0,
+                    "dy": 640.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 240.0,
+                    "dy": 640.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 256.0,
+                    "dy": 640.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 272.0,
+                    "dy": 640.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 288.0,
+                    "dy": 640.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 304.0,
+                    "dy": 640.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 320.0,
+                    "dy": 640.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 336.0,
+                    "dy": 640.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 352.0,
+                    "dy": 640.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 368.0,
+                    "dy": 640.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 384.0,
+                    "dy": 640.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 400.0,
+                    "dy": 640.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 416.0,
+                    "dy": 640.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 432.0,
+                    "dy": 640.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 448.0,
+                    "dy": 640.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 464.0,
+                    "dy": 640.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 480.0,
+                    "dy": 640.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 496.0,
+                    "dy": 640.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 512.0,
+                    "dy": 640.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 528.0,
+                    "dy": 640.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 544.0,
+                    "dy": 640.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 560.0,
+                    "dy": 640.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 464.0,
+                    "dy": 480.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 448.0,
+                    "dy": 480.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 432.0,
+                    "dy": 480.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 416.0,
+                    "dy": 480.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 400.0,
+                    "dy": 480.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 384.0,
+                    "dy": 480.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 560.0,
+                    "dy": 432.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 320.0,
+                    "dy": 608.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 304.0,
+                    "dy": 608.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 288.0,
+                    "dy": 608.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 272.0,
+                    "dy": 608.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 240.0,
+                    "dy": 608.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 256.0,
+                    "dy": 608.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 624.0,
+                    "dy": 432.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 608.0,
+                    "dy": 432.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 592.0,
+                    "dy": 432.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 576.0,
+                    "dy": 432.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 288.0,
+                    "dy": 448.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 272.0,
+                    "dy": 448.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 256.0,
+                    "dy": 448.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 240.0,
+                    "dy": 448.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 224.0,
+                    "dy": 448.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 208.0,
+                    "dy": 448.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 192.0,
+                    "dy": 448.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 176.0,
+                    "dy": 448.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 160.0,
+                    "dy": 448.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 144.0,
+                    "dy": 448.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 128.0,
+                    "dy": 448.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 368.0,
+                    "dy": 480.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 352.0,
+                    "dy": 480.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 336.0,
+                    "dy": 480.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 320.0,
+                    "dy": 464.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 320.0,
+                    "dy": 480.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 304.0,
+                    "dy": 464.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 288.0,
+                    "dy": 464.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 448.0,
+                    "dy": 448.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 432.0,
+                    "dy": 448.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 416.0,
+                    "dy": 432.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 400.0,
+                    "dy": 432.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 416.0,
+                    "dy": 448.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 384.0,
+                    "dy": 416.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 368.0,
+                    "dy": 416.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 384.0,
+                    "dy": 432.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 352.0,
+                    "dy": 400.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 336.0,
+                    "dy": 400.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 368.0,
+                    "dy": 416.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 352.0,
+                    "dy": 416.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 320.0,
+                    "dy": 384.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 320.0,
+                    "dy": 400.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 304.0,
+                    "dy": 384.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 288.0,
+                    "dy": 384.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 272.0,
+                    "dy": 384.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 256.0,
+                    "dy": 384.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 224.0,
+                    "dy": 384.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 240.0,
+                    "dy": 384.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 208.0,
+                    "dy": 384.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 192.0,
+                    "dy": 384.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 176.0,
+                    "dy": 384.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 576.0,
+                    "dy": 608.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 576.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 576.0,
+                    "dy": 640.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 592.0,
+                    "dy": 608.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 608.0,
+                    "dy": 608.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped45Left",
+                    "dx": 544.0,
+                    "dy": 608.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped45Left",
+                    "dx": 576.0,
+                    "dy": 576.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 528.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 608.0,
+                    "dy": 560.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 608.0,
+                    "dy": 576.0,
+                    "scale_x": 2.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 608.0,
+                    "dy": 592.0,
+                    "scale_x": 2.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 464.0,
+                    "dy": 448.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 432.0,
+                    "dy": 432.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 400.0,
+                    "dy": 416.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 368.0,
+                    "dy": 400.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 336.0,
+                    "dy": 384.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSlopBot",
+                    "dx": 288.0,
+                    "dy": 352.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped45Left",
+                    "dx": 144.0,
+                    "dy": 384.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped45Left",
+                    "dx": 112.0,
+                    "dy": 416.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 0.0,
+                    "dy": 448.0,
+                    "scale_x": 8.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "obj_Wall",
+                    "dx": 240.0,
+                    "dy": 448.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 0.0,
+                    "dy": 304.0,
+                    "scale_x": 3.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 0.0,
+                    "dy": 160.0,
+                    "scale_x": 2.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 0.0,
+                    "dy": 288.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 32.0,
+                    "dy": 272.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 64.0,
+                    "dy": 256.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 96.0,
+                    "dy": 240.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 128.0,
+                    "dy": 224.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 128.0,
+                    "dy": 240.0,
+                    "scale_x": 2.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 96.0,
+                    "dy": 256.0,
+                    "scale_x": 3.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 64.0,
+                    "dy": 272.0,
+                    "scale_x": 3.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 32.0,
+                    "dy": 288.0,
+                    "scale_x": 3.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 0.0,
+                    "dy": 0.0,
+                    "scale_x": 10.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                }
+            ],
+            "source_room": "SP1",
+            "source_start": 1920
+        },
+        {
+            "width": 640,
+            "platforms": [],
+            "hazards": [],
+            "elements": [
+                {
+                    "object_name": "objSolid6",
+                    "dx": 272.0,
+                    "dy": 608.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 288.0,
+                    "dy": 608.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 304.0,
+                    "dy": 608.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 320.0,
+                    "dy": 608.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 336.0,
+                    "dy": 608.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 352.0,
+                    "dy": 608.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 368.0,
+                    "dy": 608.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 368.0,
+                    "dy": 592.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 384.0,
+                    "dy": 592.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 400.0,
+                    "dy": 592.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 416.0,
+                    "dy": 592.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 432.0,
+                    "dy": 592.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 448.0,
+                    "dy": 592.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 464.0,
+                    "dy": 592.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 480.0,
+                    "dy": 592.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 496.0,
+                    "dy": 592.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 512.0,
+                    "dy": 592.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 528.0,
+                    "dy": 592.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 544.0,
+                    "dy": 592.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 560.0,
+                    "dy": 592.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 576.0,
+                    "dy": 592.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 592.0,
+                    "dy": 592.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 608.0,
+                    "dy": 576.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 624.0,
+                    "dy": 576.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 624.0,
+                    "dy": 416.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 608.0,
+                    "dy": 400.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 592.0,
+                    "dy": 400.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 576.0,
+                    "dy": 384.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 480.0,
+                    "dy": 432.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 464.0,
+                    "dy": 432.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 448.0,
+                    "dy": 432.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 432.0,
+                    "dy": 432.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 368.0,
+                    "dy": 432.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 352.0,
+                    "dy": 432.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 336.0,
+                    "dy": 432.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 320.0,
+                    "dy": 432.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 304.0,
+                    "dy": 432.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 288.0,
+                    "dy": 432.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 272.0,
+                    "dy": 432.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 256.0,
+                    "dy": 432.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 240.0,
+                    "dy": 432.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 224.0,
+                    "dy": 432.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 208.0,
+                    "dy": 432.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 192.0,
+                    "dy": 432.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 176.0,
+                    "dy": 432.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 160.0,
+                    "dy": 432.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 144.0,
+                    "dy": 432.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 128.0,
+                    "dy": 432.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 112.0,
+                    "dy": 432.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 80.0,
+                    "dy": 432.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 96.0,
+                    "dy": 432.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 64.0,
+                    "dy": 432.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 48.0,
+                    "dy": 432.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 32.0,
+                    "dy": 432.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 16.0,
+                    "dy": 432.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid6",
+                    "dx": 0.0,
+                    "dy": 432.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 0.0,
+                    "dy": 560.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 0.0,
+                    "dy": 576.0,
+                    "scale_x": 2.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 0.0,
+                    "dy": 592.0,
+                    "scale_x": 17.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 32.0,
+                    "dy": 576.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 624.0,
+                    "dy": 400.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 592.0,
+                    "dy": 384.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSlopBot",
+                    "dx": 208.0,
+                    "dy": 544.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSlopBotSlacker",
+                    "dx": 128.0,
+                    "dy": 400.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                }
+            ],
+            "source_room": "SP1",
+            "source_start": 2560
+        },
+        {
+            "width": 640,
+            "platforms": [],
+            "hazards": [],
+            "elements": [
+                {
+                    "object_name": "objSloped45Left",
+                    "dx": 16.0,
+                    "dy": 864.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 48.0,
+                    "dy": 848.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 160.0,
+                    "dy": 848.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped45",
+                    "dx": 192.0,
+                    "dy": 864.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped45",
+                    "dx": 592.0,
+                    "dy": 576.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 512.0,
+                    "dy": 576.0,
+                    "scale_x": 2.0,
+                    "scale_y": 4.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 512.0,
+                    "dy": 384.0,
+                    "scale_x": 2.0,
+                    "scale_y": 7.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolidInvisible",
+                    "dx": 0.0,
+                    "dy": 896.0,
+                    "scale_x": 40.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 544.0,
+                    "dy": 608.0,
+                    "scale_x": 6.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 528.0,
+                    "dy": 576.0,
+                    "scale_x": 1.0,
+                    "scale_y": 3.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolidInvisible",
+                    "dx": 0.0,
+                    "dy": 912.0,
+                    "scale_x": 40.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 304.0,
+                    "dy": 576.0,
+                    "scale_x": 13.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "obj_Wall",
+                    "dx": 32.0,
+                    "dy": 0.0,
+                    "scale_x": 30.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "obj_Wall",
+                    "dx": 16.0,
+                    "dy": 576.0,
+                    "scale_x": 18.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSlopBotGunner",
+                    "dx": 528.0,
+                    "dy": 368.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "obj_Wall",
+                    "dx": 320.0,
+                    "dy": 192.0,
+                    "scale_x": 20.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 480.0,
+                    "dy": 560.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 320.0,
+                    "dy": 560.0,
+                    "scale_x": 10.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "obj_Wall",
+                    "dx": 416.0,
+                    "dy": 448.0,
+                    "scale_x": 6.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 512.0,
+                    "dy": 0.0,
+                    "scale_x": 8.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 576.0,
+                    "dy": 160.0,
+                    "scale_x": 4.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 336.0,
+                    "dy": 176.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 304.0,
+                    "dy": 160.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 304.0,
+                    "dy": 176.0,
+                    "scale_x": 2.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSlopBotGunner",
+                    "dx": 448.0,
+                    "dy": 176.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "obj_Wall",
+                    "dx": 0.0,
+                    "dy": 576.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 0.0,
+                    "dy": 0.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 0.0,
+                    "dy": 464.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 0.0,
+                    "dy": -16.0,
+                    "scale_x": 3.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped45",
+                    "dx": 0.0,
+                    "dy": 544.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 16.0,
+                    "dy": 560.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                }
+            ],
+            "source_room": "SP2",
+            "source_start": 640
+        },
+        {
+            "width": 640,
+            "platforms": [],
+            "hazards": [],
+            "elements": [
+                {
+                    "object_name": "objBouncyBottom",
+                    "dx": 96.0,
+                    "dy": 880.0,
+                    "scale_x": 6.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 192.0,
+                    "dy": 800.0,
+                    "scale_x": 1.0,
+                    "scale_y": 6.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 480.0,
+                    "dy": 800.0,
+                    "scale_x": 1.0,
+                    "scale_y": 6.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objBouncyBottom",
+                    "dx": 496.0,
+                    "dy": 880.0,
+                    "scale_x": 5.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 192.0,
+                    "dy": 704.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 480.0,
+                    "dy": 704.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid1",
+                    "dx": 480.0,
+                    "dy": 800.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid1",
+                    "dx": 480.0,
+                    "dy": 704.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid1",
+                    "dx": 480.0,
+                    "dy": 640.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid1",
+                    "dx": 192.0,
+                    "dy": 640.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid1",
+                    "dx": 192.0,
+                    "dy": 704.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid1",
+                    "dx": 192.0,
+                    "dy": 800.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid1",
+                    "dx": 192.0,
+                    "dy": 880.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid1",
+                    "dx": 480.0,
+                    "dy": 880.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objBouncyBottom",
+                    "dx": 320.0,
+                    "dy": 688.0,
+                    "scale_x": 3.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped45",
+                    "dx": 208.0,
+                    "dy": 576.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 176.0,
+                    "dy": 560.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 224.0,
+                    "dy": 592.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 144.0,
+                    "dy": 560.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped45Left",
+                    "dx": 112.0,
+                    "dy": 576.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 96.0,
+                    "dy": 592.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objBouncyBottom",
+                    "dx": 400.0,
+                    "dy": 608.0,
+                    "scale_x": 5.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 384.0,
+                    "dy": 608.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 400.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 288.0,
+                    "dy": 608.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 416.0,
+                    "dy": 640.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 478.0,
+                    "dy": 560.0,
+                    "scale_x": 2.0,
+                    "scale_y": 5.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 480.0,
+                    "dy": 384.0,
+                    "scale_x": 2.0,
+                    "scale_y": 7.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSlopBot",
+                    "dx": 32.0,
+                    "dy": 544.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 208.0,
+                    "dy": 800.0,
+                    "scale_x": 17.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "obj_Wall",
+                    "dx": 480.0,
+                    "dy": 816.0,
+                    "scale_x": 1.0,
+                    "scale_y": 4.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "obj_Wall",
+                    "dx": 192.0,
+                    "dy": 816.0,
+                    "scale_x": 1.0,
+                    "scale_y": 4.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "obj_Wall",
+                    "dx": 208.0,
+                    "dy": 704.0,
+                    "scale_x": 17.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolidInvisible",
+                    "dx": 0.0,
+                    "dy": 896.0,
+                    "scale_x": 40.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 0.0,
+                    "dy": 608.0,
+                    "scale_x": 19.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSlopBotGunner",
+                    "dx": 272.0,
+                    "dy": 592.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 208.0,
+                    "dy": 816.0,
+                    "scale_x": 17.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 208.0,
+                    "dy": 832.0,
+                    "scale_x": 17.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolidInvisible",
+                    "dx": 0.0,
+                    "dy": 912.0,
+                    "scale_x": 40.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 80.0,
+                    "dy": 880.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 576.0,
+                    "dy": 880.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid1",
+                    "dx": 192.0,
+                    "dy": 784.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid1",
+                    "dx": 480.0,
+                    "dy": 784.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSlopBotSlacker",
+                    "dx": 384.0,
+                    "dy": 784.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSlopBotGunner",
+                    "dx": 16.0,
+                    "dy": 864.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 368.0,
+                    "dy": 688.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 304.0,
+                    "dy": 688.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "obj_Wall",
+                    "dx": 0.0,
+                    "dy": 192.0,
+                    "scale_x": 21.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 480.0,
+                    "dy": 368.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 336.0,
+                    "dy": 368.0,
+                    "scale_x": 6.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 80.0,
+                    "dy": 368.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 112.0,
+                    "dy": 352.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 144.0,
+                    "dy": 336.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 112.0,
+                    "dy": 368.0,
+                    "scale_x": 4.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 144.0,
+                    "dy": 352.0,
+                    "scale_x": 2.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSlopBotGunner",
+                    "dx": 256.0,
+                    "dy": 368.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSlopBotSlacker",
+                    "dx": 304.0,
+                    "dy": 368.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 0.0,
+                    "dy": 0.0,
+                    "scale_x": 31.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 0.0,
+                    "dy": 160.0,
+                    "scale_x": 4.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSlopBotGunner",
+                    "dx": 16.0,
+                    "dy": 144.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                }
+            ],
+            "source_room": "SP2",
+            "source_start": 1280
+        },
+        {
+            "width": 640,
+            "platforms": [],
+            "hazards": [],
+            "elements": [
+                {
+                    "object_name": "objSolid",
+                    "dx": 16.0,
+                    "dy": 736.0,
+                    "scale_x": 38.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped45Left",
+                    "dx": 624.0,
+                    "dy": 688.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 592.0,
+                    "dy": 720.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 624.0,
+                    "dy": 720.0,
+                    "scale_x": 1.0,
+                    "scale_y": 2.0,
+                    "rotation": 0.0
+                }
+            ],
+            "source_room": "SP3",
+            "source_start": 0
+        },
+        {
+            "width": 640,
+            "platforms": [],
+            "hazards": [],
+            "elements": [
+                {
+                    "object_name": "objSloped45Left",
+                    "dx": -16.0,
+                    "dy": 688.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped45Left",
+                    "dx": 16.0,
+                    "dy": 656.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped45Left",
+                    "dx": 48.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objBouncyBottom",
+                    "dx": 80.0,
+                    "dy": 624.0,
+                    "scale_x": 7.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "obj_Wall",
+                    "dx": 192.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 9.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "obj_Wall",
+                    "dx": 400.0,
+                    "dy": 736.0,
+                    "scale_x": 1.0,
+                    "scale_y": 2.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 416.0,
+                    "dy": 736.0,
+                    "scale_x": 14.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 48.0,
+                    "dy": 656.0,
+                    "scale_x": 2.0,
+                    "scale_y": 2.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 16.0,
+                    "dy": 688.0,
+                    "scale_x": 2.0,
+                    "scale_y": 2.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 0.0,
+                    "dy": 720.0,
+                    "scale_x": 1.0,
+                    "scale_y": 2.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 80.0,
+                    "dy": 640.0,
+                    "scale_x": 7.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 592.0,
+                    "dy": 688.0,
+                    "scale_x": 3.0,
+                    "scale_y": 2.0,
+                    "rotation": 0.0
+                }
+            ],
+            "source_room": "SP3",
+            "source_start": 640
+        },
+        {
+            "width": 640,
+            "platforms": [],
+            "hazards": [],
+            "elements": [
+                {
+                    "object_name": "objSolid",
+                    "dx": 0.0,
+                    "dy": 688.0,
+                    "scale_x": 21.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped45Left",
+                    "dx": 112.0,
+                    "dy": 656.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 96.0,
+                    "dy": 672.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped45Left",
+                    "dx": 144.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped45",
+                    "dx": 240.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 272.0,
+                    "dy": 656.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 304.0,
+                    "dy": 672.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 336.0,
+                    "dy": 688.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 368.0,
+                    "dy": 704.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 560.0,
+                    "dy": 704.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 592.0,
+                    "dy": 688.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 624.0,
+                    "dy": 672.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 368.0,
+                    "dy": 720.0,
+                    "scale_x": 15.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 624.0,
+                    "dy": 688.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 592.0,
+                    "dy": 704.0,
+                    "scale_x": 3.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 448.0,
+                    "dy": 672.0,
+                    "scale_x": 5.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 528.0,
+                    "dy": 592.0,
+                    "scale_x": 2.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 608.0,
+                    "dy": 512.0,
+                    "scale_x": 2.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSlopBotGunner",
+                    "dx": 544.0,
+                    "dy": 576.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSlopBot",
+                    "dx": 496.0,
+                    "dy": 656.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 176.0,
+                    "dy": 624.0,
+                    "scale_x": 4.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                }
+            ],
+            "source_room": "SP3",
+            "source_start": 2560
+        },
+        {
+            "width": 640,
+            "platforms": [],
+            "hazards": [],
+            "elements": [
+                {
+                    "object_name": "objSloped45Left",
+                    "dx": 0.0,
+                    "dy": 656.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped45Left",
+                    "dx": 32.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped45Left",
+                    "dx": 64.0,
+                    "dy": 592.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped45Left",
+                    "dx": 96.0,
+                    "dy": 560.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped45Left",
+                    "dx": 128.0,
+                    "dy": 528.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 160.0,
+                    "dy": 512.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": -16.0,
+                    "dy": 672.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 32.0,
+                    "dy": 656.0,
+                    "scale_x": 4.0,
+                    "scale_y": 2.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 64.0,
+                    "dy": 624.0,
+                    "scale_x": 4.0,
+                    "scale_y": 2.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 96.0,
+                    "dy": 592.0,
+                    "scale_x": 4.0,
+                    "scale_y": 2.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 128.0,
+                    "dy": 560.0,
+                    "scale_x": 4.0,
+                    "scale_y": 2.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 0.0,
+                    "dy": 688.0,
+                    "scale_x": 4.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 160.0,
+                    "dy": 528.0,
+                    "scale_x": 4.0,
+                    "scale_y": 2.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 192.0,
+                    "dy": 512.0,
+                    "scale_x": 27.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 0.0,
+                    "dy": 512.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSlopBotGunner",
+                    "dx": 0.0,
+                    "dy": 496.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "obj_Wall",
+                    "dx": 624.0,
+                    "dy": 512.0,
+                    "scale_x": 1.0,
+                    "scale_y": 8.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 624.0,
+                    "dy": 640.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objBouncyBottom",
+                    "dx": 608.0,
+                    "dy": 496.0,
+                    "scale_x": 2.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 576.0,
+                    "dy": 496.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                }
+            ],
+            "source_room": "SP3",
+            "source_start": 3200
+        },
+        {
+            "width": 640,
+            "platforms": [],
+            "hazards": [],
+            "elements": [
+                {
+                    "object_name": "objSolid",
+                    "dx": 0.0,
+                    "dy": 640.0,
+                    "scale_x": 17.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "obj_Wall",
+                    "dx": 256.0,
+                    "dy": 592.0,
+                    "scale_x": 1.0,
+                    "scale_y": 3.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 256.0,
+                    "dy": 576.0,
+                    "scale_x": 17.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSlopBotGunner",
+                    "dx": 48.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSlopBotGunner",
+                    "dx": 96.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSlopBotGunner",
+                    "dx": 144.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSlopBotGunner",
+                    "dx": 208.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 528.0,
+                    "dy": 512.0,
+                    "scale_x": 7.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                }
+            ],
+            "source_room": "SP3",
+            "source_start": 3840
+        },
+        {
+            "width": 640,
+            "platforms": [],
+            "hazards": [],
+            "elements": [
+                {
+                    "object_name": "objSolid",
+                    "dx": 0.0,
+                    "dy": 512.0,
+                    "scale_x": 4.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 64.0,
+                    "dy": 656.0,
+                    "scale_x": 36.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "obj_Wall",
+                    "dx": 416.0,
+                    "dy": 576.0,
+                    "scale_x": 1.0,
+                    "scale_y": 5.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "obj_Wall",
+                    "dx": 304.0,
+                    "dy": 288.0,
+                    "scale_x": 1.0,
+                    "scale_y": 16.0,
+                    "rotation": 0.0
+                }
+            ],
+            "source_room": "SP3",
+            "source_start": 4480
+        },
+        {
+            "width": 640,
+            "platforms": [],
+            "hazards": [],
+            "elements": [
+                {
+                    "object_name": "objSolid",
+                    "dx": 0.0,
+                    "dy": 656.0,
+                    "scale_x": 13.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 288.0,
+                    "dy": 496.0,
+                    "scale_x": 22.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped45Left",
+                    "dx": 80.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 64.0,
+                    "dy": 640.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped45Left",
+                    "dx": 112.0,
+                    "dy": 592.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 144.0,
+                    "dy": 576.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped45Left",
+                    "dx": 192.0,
+                    "dy": 544.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 176.0,
+                    "dy": 560.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped45Left",
+                    "dx": 224.0,
+                    "dy": 512.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 256.0,
+                    "dy": 496.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                }
+            ],
+            "source_room": "SP3",
+            "source_start": 5120
+        },
+        {
+            "width": 640,
+            "platforms": [],
+            "hazards": [],
+            "elements": [
+                {
+                    "object_name": "objSolid",
+                    "dx": 0.0,
+                    "dy": 320.0,
+                    "scale_x": 16.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 0.0,
+                    "dy": 640.0,
+                    "scale_x": 40.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 160.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSlopBotGunner",
+                    "dx": 144.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSlopBot",
+                    "dx": 608.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSlopBot",
+                    "dx": 304.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped45",
+                    "dx": 496.0,
+                    "dy": 608.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped45Left",
+                    "dx": 384.0,
+                    "dy": 608.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 368.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 416.0,
+                    "dy": 592.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 464.0,
+                    "dy": 592.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 512.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 448.0,
+                    "dy": 592.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "obj_Wall",
+                    "dx": 0.0,
+                    "dy": 288.0,
+                    "scale_x": 8.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_4",
+                    "dx": 128.0,
+                    "dy": 288.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                }
+            ],
+            "source_room": "SP4",
+            "source_start": 640
+        },
+        {
+            "width": 640,
+            "platforms": [],
+            "hazards": [],
+            "elements": [
+                {
+                    "object_name": "objSolid",
+                    "dx": 0.0,
+                    "dy": 640.0,
+                    "scale_x": 10.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 320.0,
+                    "dy": 656.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped45",
+                    "dx": 288.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 256.0,
+                    "dy": 608.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 128.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 160.0,
+                    "dy": 608.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 192.0,
+                    "dy": 608.0,
+                    "scale_x": 4.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 352.0,
+                    "dy": 688.0,
+                    "scale_x": 18.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 352.0,
+                    "dy": 672.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped45Left",
+                    "dx": 624.0,
+                    "dy": 656.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_2",
+                    "dx": 608.0,
+                    "dy": 672.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                }
+            ],
+            "source_room": "SP4",
+            "source_start": 2560
+        },
+        {
+            "width": 640,
+            "platforms": [],
+            "hazards": [],
+            "elements": [
+                {
+                    "object_name": "objSolid",
+                    "dx": 0.0,
+                    "dy": 688.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped45Left",
+                    "dx": -16.0,
+                    "dy": 656.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped45Left",
+                    "dx": 16.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped45Left",
+                    "dx": 48.0,
+                    "dy": 592.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped45Left",
+                    "dx": 80.0,
+                    "dy": 560.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped45Left",
+                    "dx": 112.0,
+                    "dy": 528.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped45Left",
+                    "dx": 144.0,
+                    "dy": 496.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 176.0,
+                    "dy": 496.0,
+                    "scale_x": 29.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "obj_Wall",
+                    "dx": 608.0,
+                    "dy": 128.0,
+                    "scale_x": 2.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                }
+            ],
+            "source_room": "SP4",
+            "source_start": 3200
+        },
+        {
+            "width": 640,
+            "platforms": [],
+            "hazards": [],
+            "elements": [
+                {
+                    "object_name": "objSolid",
+                    "dx": 0.0,
+                    "dy": 496.0,
+                    "scale_x": 5.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 80.0,
+                    "dy": 256.0,
+                    "scale_x": 30.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "obj_Wall",
+                    "dx": 0.0,
+                    "dy": 128.0,
+                    "scale_x": 21.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "obj_Wall",
+                    "dx": 80.0,
+                    "dy": 496.0,
+                    "scale_x": 31.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objBouncyBottom",
+                    "dx": 576.0,
+                    "dy": 496.0,
+                    "scale_x": 19.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                }
+            ],
+            "source_room": "SP4",
+            "source_start": 3840
+        },
+        {
+            "width": 640,
+            "platforms": [],
+            "hazards": [],
+            "elements": [
+                {
+                    "object_name": "objSolid",
+                    "dx": 0.0,
+                    "dy": 304.0,
+                    "scale_x": 19.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 288.0,
+                    "dy": 384.0,
+                    "scale_x": 14.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objBouncyBottom",
+                    "dx": 512.0,
+                    "dy": 384.0,
+                    "scale_x": 16.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "obj_Wall",
+                    "dx": 272.0,
+                    "dy": 320.0,
+                    "scale_x": 1.0,
+                    "scale_y": 5.0,
+                    "rotation": 0.0
+                }
+            ],
+            "source_room": "SP4",
+            "source_start": 5120
+        },
+        {
+            "width": 640,
+            "platforms": [],
+            "hazards": [],
+            "elements": [
+                {
+                    "object_name": "objSolid",
+                    "dx": 0.0,
+                    "dy": 640.0,
+                    "scale_x": 39.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "obj_Wall",
+                    "dx": 608.0,
+                    "dy": 608.0,
+                    "scale_x": 1.0,
+                    "scale_y": 10.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped45Left",
+                    "dx": 560.0,
+                    "dy": 608.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped45Left",
+                    "dx": 592.0,
+                    "dy": 576.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 544.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped45",
+                    "dx": 432.0,
+                    "dy": 608.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 448.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped45Left",
+                    "dx": 304.0,
+                    "dy": 608.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped_1",
+                    "dx": 400.0,
+                    "dy": 592.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 336.0,
+                    "dy": 592.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSloped",
+                    "dx": 288.0,
+                    "dy": 624.0,
+                    "scale_x": 1.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 368.0,
+                    "dy": 592.0,
+                    "scale_x": 2.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                }
+            ],
+            "source_room": "SP4",
+            "source_start": 6400
+        },
+        {
+            "width": 640,
+            "platforms": [],
+            "hazards": [],
+            "elements": [
+                {
+                    "object_name": "objSolid",
+                    "dx": 512.0,
+                    "dy": 672.0,
+                    "scale_x": 8.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "objSolid",
+                    "dx": 0.0,
+                    "dy": 640.0,
+                    "scale_x": 20.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "obj_Wall",
+                    "dx": 304.0,
+                    "dy": 656.0,
+                    "scale_x": 1.0,
+                    "scale_y": 7.0,
+                    "rotation": 0.0
+                },
+                {
+                    "object_name": "obj_Wall",
+                    "dx": 512.0,
+                    "dy": 688.0,
+                    "scale_x": 1.0,
+                    "scale_y": 5.0,
+                    "rotation": 0.0
+                }
+            ],
+            "source_room": "SP4",
+            "source_start": 7680
+        },
+        {
+            "width": 640,
+            "platforms": [],
+            "hazards": [],
+            "elements": [
+                {
+                    "object_name": "objSolid",
+                    "dx": 0.0,
+                    "dy": 672.0,
+                    "scale_x": 40.0,
+                    "scale_y": 1.0,
+                    "rotation": 0.0
+                }
+            ],
+            "source_room": "SP4",
+            "source_start": 8320
+        }
+    ]
+}

@@ -33,24 +33,103 @@ function sgc_gateway_base_url() {
 function sgc_gateway_state_init() {
 	if (variable_global_exists("sgc_gateway")) return;
 	global.sgc_gateway = {
-		ready            : false,
-		bootstrapping    : false,
-		session_token    : "",
-		steam_id         : "",
-		persona_name     : "",
-		auth_nonce       : "",
-		ticket_handle    : -1,
-		linked           : false,
-		pending_link     : false,
-		match_id         : "",
-		match_token      : "",
-		server_instance  : "",
-		http_requests    : ds_map_create(),
+		ready             : false,
+		bootstrapping     : false,
+		session_token     : "",
+		steam_id          : "",
+		persona_name      : "",
+		auth_nonce        : "",
+		ticket_handle     : -1,
+		ticket_buffer     : -1,
+		ticket_validated  : false,
+		linked            : false,
+		pending_link      : false,
+		pending_match_create : false,
+		pending_match_join   : "",
+		pending_reports      : [],
+		singleplayer_mode    : false,
+		balance_value        : undefined,
+		balance_synced_value : undefined,
+		balance_level_base   : undefined,
+		balance_level_pending : 0,
+		run_total_earned     : 0,
+		balance_reset_on_next_fetch : false,
+		balance_pending      : false,
+		next_balance_poll_ms : 0,
+		match_id          : "",
+		match_token       : "",
+		server_instance   : "",
+		http_requests     : ds_map_create(),
 	};
 }
 
 function sgc_gateway_log(_msg) {
 	show_debug_message("[sgc-gateway] " + string(_msg));
+}
+
+function sgc_gateway_begin_singleplayer_match() {
+	sgc_gateway_state_init();
+	global.sgc_gateway.singleplayer_mode = true;
+	if (string_length(global.sgc_gateway.match_id) > 0) return;
+	var _nonce = string(current_time) + "_" + string(irandom(0x7fffffff));
+	global.sgc_gateway.match_id        = "sp_match_" + _nonce;
+	global.sgc_gateway.match_token     = "sp_token_" + _nonce;
+	global.sgc_gateway.server_instance = "sp_srv_" + _nonce;
+	sgc_gateway_log("singleplayer synthetic match prepared: "
+		+ global.sgc_gateway.match_id);
+}
+
+function sgc_gateway_queue_report(_event_type, _args) {
+	sgc_gateway_state_init();
+	var _idx = array_length(global.sgc_gateway.pending_reports);
+	global.sgc_gateway.pending_reports[_idx] = {
+		event_type : _event_type,
+		args       : _args,
+	};
+}
+
+function sgc_gateway_submit_report(_event_type, _args) {
+	var _body = {
+		event_type           : _event_type,
+		event_id             : variable_struct_exists(_args, "event_id") ? _args.event_id : sgc_gateway_iso_now() + ":" + string(irandom(0x7fffffff)),
+		match_id             : global.sgc_gateway.match_id,
+		match_token          : global.sgc_gateway.match_token,
+		server_instance_id   : global.sgc_gateway.server_instance,
+		reporter_steam_id    : global.sgc_gateway.steam_id,
+		beneficiary_steam_id : variable_struct_exists(_args, "beneficiary_steam_id")
+			? string(_args.beneficiary_steam_id)
+			: global.sgc_gateway.steam_id,
+		occurred_at          : sgc_gateway_iso_now(),
+	};
+	if (variable_struct_exists(_args, "victim_steam_id"))
+		_body.victim_steam_id = string(_args.victim_steam_id);
+	if (variable_struct_exists(_args, "enemy_spawn_id"))
+		_body.enemy_spawn_id = string(_args.enemy_spawn_id);
+	if (variable_struct_exists(_args, "level_id"))
+		_body.level_id = string(_args.level_id);
+	if (variable_struct_exists(_args, "run_id"))
+		_body.run_id = string(_args.run_id);
+	if (variable_struct_exists(_args, "death_seq"))
+		_body.death_seq = real(_args.death_seq);
+	if (variable_struct_exists(_args, "amount"))
+		_body.amount = real(_args.amount);
+	if (variable_struct_exists(_args, "collectible_id"))
+		_body.collectible_id = string(_args.collectible_id);
+
+	sgc_gateway_post_json("/matches/report-event", _body, "report_event", _body);
+}
+
+function sgc_gateway_flush_pending_reports() {
+	sgc_gateway_state_init();
+	if (string_length(global.sgc_gateway.match_id) <= 0) return;
+	var _pending = global.sgc_gateway.pending_reports;
+	global.sgc_gateway.pending_reports = [];
+	for (var _i = 0; _i < array_length(_pending); _i++) {
+		var _entry = _pending[_i];
+		if (is_struct(_entry)) {
+			sgc_gateway_submit_report(_entry.event_type, _entry.args);
+		}
+	}
 }
 
 /// @desc Track an outbound http_request_id so the async HTTP event can route it.
@@ -133,23 +212,52 @@ function sgc_gateway_ticket_to_hex(_buffer) {
 	}
 }
 
-/// @desc Acquire a fresh Steam auth-session ticket and return it as hex.
-///       Returns "" if the Steamworks extension isn't available; the
-///       gateway will accept that only when ALLOW_INSECURE_STEAM_AUTH=true.
-function sgc_gateway_get_steam_ticket_hex() {
-	if (!script_exists(asset_get_index("steam_user_get_auth_session_ticket"))) {
-		return "";
+/// @desc Request a fresh Steam auth-session ticket. Stores the buffer and
+///       handle on global state. The actual /auth/finish post is deferred
+///       until Steam fires its ticket_response async event with success.
+function sgc_gateway_request_steam_ticket() {
+	sgc_gateway_state_init();
+	if (global.sgc_gateway.ticket_buffer >= 0) {
+		buffer_delete(global.sgc_gateway.ticket_buffer);
+		global.sgc_gateway.ticket_buffer = -1;
 	}
+	global.sgc_gateway.ticket_handle    = -1;
+	global.sgc_gateway.ticket_validated = false;
 	try {
 		var _ticket = steam_user_get_auth_session_ticket();
-		if (!is_struct(_ticket)) return "";
-		var _buf = variable_struct_exists(_ticket, "buffer") ? _ticket.buffer : -1;
-		var _hex = sgc_gateway_ticket_to_hex(_buf);
-		if (_buf >= 0) buffer_delete(_buf);
-		return _hex;
+		if (is_struct(_ticket)) {
+			if (variable_struct_exists(_ticket, "buffer"))
+				global.sgc_gateway.ticket_buffer = _ticket.buffer;
+			if (variable_struct_exists(_ticket, "auth_ticket_handle"))
+				global.sgc_gateway.ticket_handle = _ticket.auth_ticket_handle;
+		} else if (is_real(_ticket)) {
+			global.sgc_gateway.ticket_buffer = _ticket;
+		}
+		if (global.sgc_gateway.ticket_buffer < 0) {
+			sgc_gateway_log("steam ticket request returned no buffer");
+		}
 	} catch (_e) {
-		return "";
+		sgc_gateway_log("steam ticket request threw: " + string(_e));
 	}
+}
+
+/// @desc Post /auth/steam/finish using whatever ticket is currently held.
+///       Sends an empty ticket if none was acquired; the gateway only
+///       accepts that when ALLOW_INSECURE_STEAM_AUTH=true.
+function sgc_gateway_finish_auth() {
+	sgc_gateway_state_init();
+	var _hex = "";
+	if (global.sgc_gateway.ticket_buffer >= 0) {
+		_hex = sgc_gateway_ticket_to_hex(global.sgc_gateway.ticket_buffer);
+		buffer_delete(global.sgc_gateway.ticket_buffer);
+		global.sgc_gateway.ticket_buffer = -1;
+	}
+	sgc_gateway_post_json("/auth/steam/finish", {
+		steam_id     : global.sgc_gateway.steam_id,
+		persona_name : global.sgc_gateway.persona_name,
+		nonce        : global.sgc_gateway.auth_nonce,
+		ticket_hex   : _hex,
+	}, "auth_finish", undefined);
 }
 
 /// @desc Start SGC OAuth link flow. If the gateway session isn't ready yet,
@@ -170,18 +278,199 @@ function sgc_gateway_check_balance() {
 		sgc_gateway_log("balance requested before gateway ready");
 		return;
 	}
+	if (global.sgc_gateway.balance_pending) return;
+	global.sgc_gateway.balance_pending = true;
 	sgc_gateway_get("/sgc/balance", "balance", undefined);
+}
+
+function sgc_gateway_begin_level_balance_cycle() {
+	sgc_gateway_state_init();
+	global.sgc_gateway.balance_reset_on_next_fetch = true;
+	if (!global.sgc_gateway.ready || !global.sgc_gateway.linked) return;
+	sgc_gateway_check_balance();
+}
+
+function sgc_gateway_end_level_balance_cycle() {
+	sgc_gateway_state_init();
+	global.sgc_gateway.balance_reset_on_next_fetch = true;
+	if (!global.sgc_gateway.ready || !global.sgc_gateway.linked) return;
+	sgc_gateway_check_balance();
+}
+
+function sgc_gateway_collectible_roll_amount() {
+	var _roll = irandom(99);
+	if (_roll < 45) return 1;
+	if (_roll < 75) return 3;
+	if (_roll < 92) return 5;
+	return 10;
+}
+
+function sgc_gateway_has_auto_singleplayer_collectibles() {
+	if (!instance_exists(obj_SGCCollectible)) return false;
+	var _count = instance_number(obj_SGCCollectible);
+	for (var _i = 0; _i < _count; _i++) {
+		var _pickup = instance_find(obj_SGCCollectible, _i);
+		if (!instance_exists(_pickup)) continue;
+		if (!variable_instance_exists(_pickup, "collectibleCode")) continue;
+		var _code = string(_pickup.collectibleCode);
+		if (string_pos("auto:", _code) == 1) return true;
+	}
+	return false;
+}
+
+function sgc_gateway_spawn_singleplayer_collectibles(_avoid_x, _avoid_y) {
+	sgc_gateway_state_init();
+	if (instance_exists(obj_Server) || instance_exists(obj_Client)) return;
+	if (room == rm_Runner) return;
+	if (sgc_gateway_has_auto_singleplayer_collectibles()) return;
+
+	var _solid_count = instance_number(objSolid);
+	if (_solid_count <= 0) return;
+
+	var _candidates = [];
+	var _lower_band_y = room_height * 0.35;
+	for (var _i = 0; _i < _solid_count; _i++) {
+		var _solid = instance_find(objSolid, _i);
+		if (!instance_exists(_solid)) continue;
+
+		var _width = abs(_solid.bbox_right - _solid.bbox_left);
+		var _height = abs(_solid.bbox_bottom - _solid.bbox_top);
+		if (_width < 48 || _height < 12) continue;
+		if (_solid.bbox_top < _lower_band_y) continue;
+
+		var _span = max(1, floor(_width) - 48);
+		var _px = _solid.bbox_left + 24 + irandom(_span);
+		var _py = _solid.bbox_top - 18;
+
+		if (point_distance(_avoid_x, _avoid_y, _px, _py) < 96) continue;
+		if (collision_circle(_px, _py, 22, obj_SGCCollectible, false, true) != noone) continue;
+
+		array_push(_candidates, {
+			x : _px,
+			y : _py,
+			sort_y : _solid.bbox_top,
+		});
+	}
+
+	var _candidate_count = array_length(_candidates);
+	if (_candidate_count <= 0) return;
+
+	for (var _j = 0; _j < _candidate_count; _j++) {
+		var _swap = irandom(_candidate_count - 1);
+		var _tmp = _candidates[_j];
+		_candidates[_j] = _candidates[_swap];
+		_candidates[_swap] = _tmp;
+	}
+
+	var _spawn_target = clamp(2 + irandom(2), 1, _candidate_count);
+	var _spawned = [];
+	for (var _k = 0; _k < _candidate_count; _k++) {
+		if (array_length(_spawned) >= _spawn_target) break;
+		var _candidate = _candidates[_k];
+		var _too_close = false;
+		for (var _m = 0; _m < array_length(_spawned); _m++) {
+			if (point_distance(_candidate.x, _candidate.y, _spawned[_m].x, _spawned[_m].y) < 72) {
+				_too_close = true;
+				break;
+			}
+		}
+		if (_too_close) continue;
+
+		var _amount = sgc_gateway_collectible_roll_amount();
+		var _pickup = instance_create_layer(_candidate.x, _candidate.y, "Instances", obj_SGCCollectible);
+		_pickup.sgcAmount = _amount;
+		_pickup.collectibleCode = "auto:"
+			+ room_get_name(room)
+			+ ":" + string(_k)
+			+ ":" + string(round(_candidate.x))
+			+ ":" + string(round(_candidate.y))
+			+ ":" + string(_amount);
+		array_push(_spawned, _candidate);
+	}
+}
+
+function sgc_gateway_balance_text() {
+	sgc_gateway_state_init();
+	if (!global.sgc_gateway.ready) return "SGC ...";
+	if (!global.sgc_gateway.linked) return "SGC UNLINKED";
+	var _base = global.sgc_gateway.balance_level_base;
+	if (_base == undefined) _base = global.sgc_gateway.balance_synced_value;
+	if (_base == undefined) return "SGC ...";
+	return "SGC " + string(_base + global.sgc_gateway.balance_level_pending);
+}
+
+function sgc_gateway_run_total_text() {
+	sgc_gateway_state_init();
+	return "This Run: " + string(global.sgc_gateway.run_total_earned);
+}
+
+function sgc_gateway_draw_holo_text(_x, _y, _text) {
+	// Holographic fringe layers
+	draw_set_alpha(0.35);
+	draw_set_color(make_color_rgb(80, 255, 255));
+	draw_text(_x - 2, _y + 1, _text);
+	draw_set_color(make_color_rgb(255, 90, 180));
+	draw_text(_x + 2, _y - 1, _text);
+	draw_set_color(make_color_rgb(255, 160, 160));
+	draw_text(_x, _y + 3, _text);
+
+	// Main red face
+	draw_set_alpha(1);
+	draw_set_color(make_color_rgb(255, 45, 45));
+	draw_text(_x, _y, _text);
+
+	// Bright inner pass for a crisp holo-core
+	draw_set_alpha(0.6);
+	draw_set_color(make_color_rgb(255, 215, 215));
+	draw_text(_x, _y, _text);
+	draw_set_alpha(1);
+}
+
+function sgc_gateway_draw_balance_hud() {
+	sgc_gateway_state_init();
+	if (!isLocal) return;
+
+	var _balance = sgc_gateway_balance_text();
+	var _run = sgc_gateway_run_total_text();
+	var _x = display_get_gui_width() * 0.5;
+	var _y = 18;
+
+	draw_set_font(fontMenu);
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_top);
+	sgc_gateway_draw_holo_text(_x, _y, _balance);
+
+	draw_set_font(fontMenuSmall);
+	sgc_gateway_draw_holo_text(_x, _y + 24, _run);
+
+	draw_set_alpha(1);
+	draw_set_halign(fa_left);
+	draw_set_valign(fa_top);
 }
 
 function sgc_gateway_match_create() {
 	sgc_gateway_state_init();
-	if (!global.sgc_gateway.ready) return;
+	if (global.sgc_gateway.singleplayer_mode) {
+		if (string_length(global.sgc_gateway.match_id) <= 0) {
+			sgc_gateway_begin_singleplayer_match();
+		}
+		return;
+	}
+	if (!global.sgc_gateway.ready) {
+		global.sgc_gateway.pending_match_create = true;
+		sgc_gateway_bootstrap(false);
+		return;
+	}
 	sgc_gateway_post_json("/matches/create", {}, "match_create", undefined);
 }
 
 function sgc_gateway_match_join(_match_id) {
 	sgc_gateway_state_init();
-	if (!global.sgc_gateway.ready) return;
+	if (!global.sgc_gateway.ready) {
+		global.sgc_gateway.pending_match_join = string(_match_id);
+		sgc_gateway_bootstrap(false);
+		return;
+	}
 	sgc_gateway_post_json("/matches/join", { match_id : _match_id }, "match_join", undefined);
 }
 
@@ -207,38 +496,35 @@ function sgc_gateway_iso_now() {
 
 function sgc_gateway_report_event(_event_type, _args) {
 	sgc_gateway_state_init();
-	if (!global.sgc_gateway.ready) return;
-	if (string_length(global.sgc_gateway.match_id) <= 0) return;
-
-	var _body = {
-		event_type           : _event_type,
-		event_id             : variable_struct_exists(_args, "event_id") ? _args.event_id : sgc_gateway_iso_now() + ":" + string(irandom(0x7fffffff)),
-		match_id             : global.sgc_gateway.match_id,
-		match_token          : global.sgc_gateway.match_token,
-		server_instance_id   : global.sgc_gateway.server_instance,
-		reporter_steam_id    : global.sgc_gateway.steam_id,
-		beneficiary_steam_id : variable_struct_exists(_args, "beneficiary_steam_id")
-			? string(_args.beneficiary_steam_id)
-			: global.sgc_gateway.steam_id,
-		occurred_at          : sgc_gateway_iso_now(),
-	};
-	if (variable_struct_exists(_args, "victim_steam_id"))
-		_body.victim_steam_id = string(_args.victim_steam_id);
-	if (variable_struct_exists(_args, "enemy_spawn_id"))
-		_body.enemy_spawn_id = string(_args.enemy_spawn_id);
-	if (variable_struct_exists(_args, "level_id"))
-		_body.level_id = string(_args.level_id);
-	if (variable_struct_exists(_args, "run_id"))
-		_body.run_id = string(_args.run_id);
-	if (variable_struct_exists(_args, "death_seq"))
-		_body.death_seq = real(_args.death_seq);
-
-	sgc_gateway_post_json("/matches/report-event", _body, "report_event", _body);
+	if (!global.sgc_gateway.ready) {
+		sgc_gateway_log("queueing report before gateway ready: " + string(_event_type));
+		sgc_gateway_queue_report(_event_type, _args);
+		sgc_gateway_bootstrap(false);
+		return;
+	}
+	if (string_length(global.sgc_gateway.match_id) <= 0) {
+		if (global.sgc_gateway.singleplayer_mode) {
+			sgc_gateway_begin_singleplayer_match();
+		} else {
+			sgc_gateway_log("queueing report until match exists: " + string(_event_type));
+			sgc_gateway_queue_report(_event_type, _args);
+			sgc_gateway_match_create();
+			return;
+		}
+	}
+	if (string_length(global.sgc_gateway.match_id) <= 0) {
+		sgc_gateway_log("queueing report until match exists: " + string(_event_type));
+		sgc_gateway_queue_report(_event_type, _args);
+		sgc_gateway_match_create();
+		return;
+	}
+	sgc_gateway_submit_report(_event_type, _args);
 }
 
 function sgc_gateway_report_pve_kill(_args)        { sgc_gateway_report_event("pve_kill",        _args); }
 function sgc_gateway_report_level_complete(_args)  { sgc_gateway_report_event("level_complete",  _args); }
 function sgc_gateway_report_pvp_kill(_args)        { sgc_gateway_report_event("pvp_kill",        _args); }
+function sgc_gateway_report_collectible(_args)     { sgc_gateway_report_event("collectible_pickup", _args); }
 
 /// @desc Call this from any Async HTTP event (Other -> HTTP).
 ///       Returns true if the event was handled.
@@ -271,13 +557,13 @@ function sgc_gateway_handle_async_http() {
 				break;
 			}
 			global.sgc_gateway.auth_nonce = _data.nonce;
-			var _ticket_hex = sgc_gateway_get_steam_ticket_hex();
-			sgc_gateway_post_json("/auth/steam/finish", {
-				steam_id     : global.sgc_gateway.steam_id,
-				persona_name : global.sgc_gateway.persona_name,
-				nonce        : global.sgc_gateway.auth_nonce,
-				ticket_hex   : _ticket_hex,
-			}, "auth_finish", undefined);
+			sgc_gateway_request_steam_ticket();
+			// If Steamworks didn't give us a ticket buffer at all, finish now
+			// (gateway will only accept this in insecure mode). Otherwise wait
+			// for Steam's ticket_response async event to confirm validity.
+			if (global.sgc_gateway.ticket_buffer < 0) {
+				sgc_gateway_finish_auth();
+			}
 			break;
 
 		case "auth_finish":
@@ -289,12 +575,28 @@ function sgc_gateway_handle_async_http() {
 			global.sgc_gateway.session_token = _data.session_token;
 			global.sgc_gateway.ready         = true;
 			if (is_struct(_data.player)) {
-				global.sgc_gateway.linked = (_data.player.sgc_link_active == true);
+			global.sgc_gateway.linked = (_data.player.sgc_link_active == true);
 			}
 			sgc_gateway_log("session ready for " + global.sgc_gateway.steam_id);
+			if (global.sgc_gateway.linked
+				&& (global.sgc_gateway.balance_reset_on_next_fetch
+					|| global.sgc_gateway.balance_level_base == undefined)) {
+				sgc_gateway_check_balance();
+			}
 			if (global.sgc_gateway.pending_link) {
 				global.sgc_gateway.pending_link = false;
 				sgc_gateway_post_json("/sgc/link/start", {}, "link_start", undefined);
+			}
+			if (global.sgc_gateway.pending_match_create) {
+				global.sgc_gateway.pending_match_create = false;
+				sgc_gateway_post_json("/matches/create", {}, "match_create", undefined);
+			}
+			if (string_length(global.sgc_gateway.pending_match_join) > 0) {
+				var _pending_match_id = global.sgc_gateway.pending_match_join;
+				global.sgc_gateway.pending_match_join = "";
+				sgc_gateway_post_json("/matches/join",
+					{ match_id : _pending_match_id },
+					"match_join", undefined);
 			}
 			break;
 
@@ -306,18 +608,27 @@ function sgc_gateway_handle_async_http() {
 			var _url = _data.authorize_url;
 			if (is_string(_url) && string_length(_url) > 0) {
 				sgc_gateway_log("opening SGC link URL: " + _url);
-				if (steam_is_overlay_enabled()) {
-					steam_activate_overlay_browser(_url);
-				} else {
-					url_open(_url);
-				}
+				// Always hand OAuth off to the OS browser so Discord and other
+				// providers use the player's existing signed-in session.
+				url_open(_url);
 			}
 			break;
 
 		case "balance":
+			global.sgc_gateway.balance_pending = false;
 			if (!_ok) { sgc_gateway_log("balance failed: http=" + string(_http)); break; }
 			sgc_gateway_log("balance: " + string(_body));
 			global.sgc_gateway_last_balance = _data;
+			if (is_struct(_data) && variable_struct_exists(_data, "balance")) {
+				global.sgc_gateway.balance_value = _data.balance;
+				global.sgc_gateway.balance_synced_value = _data.balance;
+				if (global.sgc_gateway.balance_reset_on_next_fetch
+					|| global.sgc_gateway.balance_level_base == undefined) {
+					global.sgc_gateway.balance_level_base = _data.balance;
+					global.sgc_gateway.balance_level_pending = 0;
+					global.sgc_gateway.balance_reset_on_next_fetch = false;
+				}
+			}
 			break;
 
 		case "match_create":
@@ -329,6 +640,7 @@ function sgc_gateway_handle_async_http() {
 			global.sgc_gateway.match_token     = _data.match.match_token;
 			global.sgc_gateway.server_instance = _data.match.server_instance_id;
 			sgc_gateway_log("match created: " + global.sgc_gateway.match_id);
+			sgc_gateway_flush_pending_reports();
 			break;
 
 		case "match_join":
@@ -340,6 +652,7 @@ function sgc_gateway_handle_async_http() {
 			global.sgc_gateway.match_token     = _data.match.match_token;
 			global.sgc_gateway.server_instance = _data.match.server_instance_id;
 			sgc_gateway_log("match joined: " + global.sgc_gateway.match_id);
+			sgc_gateway_flush_pending_reports();
 			break;
 
 		case "match_close":
@@ -349,6 +662,22 @@ function sgc_gateway_handle_async_http() {
 			break;
 
 		case "report_event":
+			if (_ok && is_struct(_data)) {
+				var _reward = variable_struct_exists(_data, "reward_event")
+					? _data.reward_event : undefined;
+				var _statusText = variable_struct_exists(_data, "status")
+					? string(_data.status) : "";
+				if (is_struct(_reward) && _statusText == "issued") {
+					if (variable_struct_exists(_reward, "amount")) {
+						var _issued_amount = real(_reward.amount);
+						global.sgc_gateway.balance_level_pending += _issued_amount;
+						global.sgc_gateway.run_total_earned += _issued_amount;
+					}
+					if (string(_reward.event_type) == "level_complete") {
+						sgc_gateway_end_level_balance_cycle();
+					}
+				}
+			}
 			if (!_ok) {
 				sgc_gateway_log("report_event failed: http=" + string(_http) + " body=" + string(_body));
 			}
@@ -357,7 +686,30 @@ function sgc_gateway_handle_async_http() {
 	return true;
 }
 
-/// @desc Stub for Async Steam events – reserved for future ticket-based auth.
+/// @desc Call from any Async Steam event (Other -> Async Steam). Listens
+///       for ticket_response and posts /auth/finish only after Steam has
+///       validated the ticket. Returns true if the event was handled.
 function sgc_gateway_handle_async_steam() {
-	return false;
+	sgc_gateway_state_init();
+	var _evt = async_load[? "event_type"];
+	if (_evt != "ticket_response") return false;
+	var _handle = async_load[? "auth_ticket_handle"];
+	if (global.sgc_gateway.ticket_handle >= 0
+		&& _handle != global.sgc_gateway.ticket_handle) {
+		return false; // not our ticket
+	}
+	var _success = async_load[? "success"];
+	var _result  = async_load[? "result"];
+	// Steamworks GM wrapper reports success=true and result=1 (k_EResultOK).
+	var _ok = (_success == true) || (_result == 1) || (_result == 1.0);
+	if (!_ok) {
+		sgc_gateway_log("steam ticket validation failed: success="
+			+ string(_success) + " result=" + string(_result));
+		global.sgc_gateway.bootstrapping = false;
+		return true;
+	}
+	if (global.sgc_gateway.ticket_validated) return true;
+	global.sgc_gateway.ticket_validated = true;
+	sgc_gateway_finish_auth();
+	return true;
 }

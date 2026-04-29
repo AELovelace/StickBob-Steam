@@ -9,6 +9,19 @@
 function variableInitAll(){
 	// Steam session identifiers
 	localSteamID = steam_get_user_steam_id()
+	if !variable_instance_exists(id, "steamID")
+		|| steamID == undefined
+		|| steamID == -1
+		|| steamID == "-1"
+		|| steamID == "" {
+		steamID = localSteamID
+	}
+	if !variable_instance_exists(id, "steamName")
+		|| steamName == undefined
+		|| steamName == ""
+		|| steamName == "Player" {
+		steamName = steam_get_persona_name()
+	}
 	lobbyHost    = steam_lobby_get_owner_id()
 	isHost       = steam_lobby_is_owner()
 	isLocal      = (localSteamID == steamID)  // true only for the instance owned by this machine
@@ -313,6 +326,7 @@ function playerShoot(){
 			bullet.direction  = mouseAngle
 			bullet.image_angle = bullet.direction
 			bullet.owner_id   = id   // track who fired for hit attribution
+			bullet.owner_steam_id = steamID
 		audio_play_sound(wob_wob_2, 10, 0)
 		// Muzzle-flash particle effects at the gun barrel
 	    var _x = x + lengthdir_x(gun_distance, mouseAngle);

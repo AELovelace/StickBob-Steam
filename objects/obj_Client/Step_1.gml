@@ -42,15 +42,25 @@ while(steam_net_packet_receive()){
 					break
 				}
 			}
-			var _inst = instance_create_layer(_x,_y,_layer,obj_Player,{
-							steamName : _spawnedName,
-							steamID : _steamID,
-							lobbyMemberID : _num,
-							maxHealth : _maxHP,
-							playerHealth : _maxHP,
-							gameMode : global.gameParams.modeSelection,
-							playerColor : _spawnedColor
-							})
+			var _inst = undefined
+			if (_existingIndex != -1) && player_entry_has_live_character(playerList[_existingIndex]) {
+				_inst = playerList[_existingIndex].character
+				_inst.x = _x
+				_inst.y = _y
+				_inst.netX = _x
+				_inst.netY = _y
+				_inst.hasNetPos = true
+			} else {
+				_inst = instance_create_layer(_x,_y,_layer,obj_Player,{
+								steamName : _spawnedName,
+								steamID : _steamID,
+								lobbyMemberID : _num,
+								maxHealth : _maxHP,
+								playerHealth : _maxHP,
+								gameMode : global.gameParams.modeSelection,
+								playerColor : _spawnedColor
+								})
+			}
 			if (_existingIndex != -1) {
 				playerList[_existingIndex].character = _inst
 				playerList[_existingIndex].startPos = {x:_x, y:_y}

@@ -1,0 +1,256 @@
+:root {
+    color-scheme: dark;
+    --bg: #11161c;
+    --panel: #18222b;
+    --panel-2: #21303c;
+    --line: #304251;
+    --text: #f1f5f8;
+    --muted: #97a8b7;
+    --accent: #ff5d5d;
+    --accent-2: #f8b94a;
+    --danger: #df4a4a;
+    --good: #5dbf84;
+    --grid: rgba(255,255,255,0.08);
+    --grid-strong: rgba(255,255,255,0.16);
+    --shadow: 0 16px 30px rgba(0, 0, 0, 0.24);
+    font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background:
+        radial-gradient(circle at top right, rgba(255, 93, 93, 0.18), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(248, 185, 74, 0.12), transparent 24%),
+        var(--bg);
+    color: var(--text);
+}
+
+.app-shell {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    min-height: 100vh;
+}
+
+.sidebar,
+.workspace {
+    padding: 18px;
+}
+
+.sidebar {
+    border-right: 1px solid var(--line);
+    background: rgba(10, 14, 18, 0.5);
+    overflow-y: auto;
+}
+
+.workspace {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+h1,
+h2 {
+    margin: 0 0 10px;
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 1.5rem;
+}
+
+h2 {
+    font-size: 1rem;
+}
+
+.muted,
+.status,
+.canvas-help {
+    color: var(--muted);
+}
+
+.panel {
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 14px;
+    box-shadow: var(--shadow);
+    margin-top: 14px;
+}
+
+.button-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+button,
+.file-button {
+    border: 1px solid var(--line);
+    background: var(--panel-2);
+    color: var(--text);
+    border-radius: 10px;
+    padding: 10px 12px;
+    cursor: pointer;
+    font: inherit;
+}
+
+button:hover,
+.file-button:hover {
+    border-color: var(--accent-2);
+}
+
+button.danger {
+    border-color: rgba(223, 74, 74, 0.45);
+}
+
+.file-button {
+    position: relative;
+    overflow: hidden;
+}
+
+.file-button input {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 10px;
+}
+
+label span {
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    border: 1px solid var(--line);
+    background: #10181f;
+    color: var(--text);
+    border-radius: 10px;
+    padding: 10px 12px;
+    font: inherit;
+}
+
+textarea {
+    min-height: 200px;
+    resize: vertical;
+}
+
+.chunk-list,
+.palette {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 280px;
+    overflow: auto;
+}
+
+.chunk-item,
+.palette-item {
+    width: 100%;
+    text-align: left;
+    border-radius: 12px;
+    background: #10181f;
+    border: 1px solid var(--line);
+    padding: 10px 12px;
+}
+
+.chunk-item.active,
+.palette-item.active {
+    border-color: var(--accent);
+    background: rgba(255, 93, 93, 0.12);
+}
+
+.chunk-item small,
+.palette-item small {
+    display: block;
+    color: var(--muted);
+    margin-top: 4px;
+}
+
+.workspace-toolbar {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: center;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: rgba(24, 34, 43, 0.72);
+    padding: 12px 14px;
+}
+
+.toolbar-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.editor-grid {
+    display: grid;
+    grid-template-columns: minmax(480px, 1fr) 320px;
+    gap: 16px;
+    min-height: 0;
+}
+
+.canvas-panel,
+.inspector-panel {
+    min-height: 0;
+}
+
+.canvas-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.canvas-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: end;
+}
+
+.canvas-scroll {
+    background: #0d1217;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: auto;
+    min-height: 75vh;
+    box-shadow: var(--shadow);
+}
+
+#chunk-canvas {
+    display: block;
+    transform-origin: top left;
+    background: linear-gradient(180deg, rgba(16, 24, 31, 0.96), rgba(8, 12, 16, 1));
+}
+
+.inspector-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+@media (max-width: 1200px) {
+    .app-shell {
+        grid-template-columns: 1fr;
+    }
+
+    .editor-grid {
+        grid-template-columns: 1fr;
+    }
+}
