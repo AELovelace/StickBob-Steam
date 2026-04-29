@@ -19,6 +19,14 @@ last_mouse_x = mouse_x;
 last_mouse_y = mouse_y;
 
 start_host_lobby = function(_room) {
+	if (global.gameParams.practiceMode) {
+		global.gameParams.mapSelection = _room
+		if (instance_exists(obj_Server)) with (obj_Server) instance_destroy()
+		if (instance_exists(obj_Client)) with (obj_Client) instance_destroy()
+		room_goto(_room)
+		return
+	}
+
 	var _initialised = steam_initialised()
 	var _logged_on = steam_is_user_logged_on()
 	if (!_initialised || !_logged_on)

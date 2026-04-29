@@ -1,16 +1,8 @@
-if (other.owner_steam_id == steamID) exit;
-
-instance_destroy(other)
-
-if !isHost exit;
-if sprite_index == sprPlayerDie exit;
-
 if global.gameParams.modeSelection == global.GAME_MODE_CLASSIC {
 	playerHealth = 0
 } else {
 	playerHealth = max(0, playerHealth - 1)
 }
-
 if (playerHealth <= 0){
 	global.stopShooting = true
 	image_speed = 1
@@ -32,14 +24,14 @@ if (playerHealth <= 0){
 		beneficiary_steam_id : string(other.owner_steam_id),
 		death_seq            : sgc_pvp_death_seq,
 	});
-	//if(random(10) >= 6){
-	//	x = 200
+	if(random(10) >= 6){
+		x = 200
 
-	//}
-	//else{
-	//	x = room_width - 200;		
-	//}
-	//y = room_height / 2;
+	}
+	else{
+		x = room_width - 200;		
+	}
+	y = room_height / 2;
 	set_player_health(steamID, 5)
 } else {
 	global.stopShooting = false

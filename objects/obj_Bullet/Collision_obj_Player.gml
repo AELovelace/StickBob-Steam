@@ -3,5 +3,4 @@ if (other.steamID == owner_steam_id){
 	instance_destroy()
 	exit;
 }
-
 instance_destroy()

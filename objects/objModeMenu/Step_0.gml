@@ -45,16 +45,24 @@ last_mouse_y = mouse_y;
 if (keyboard_check_pressed(vk_enter) || keyboard_check_pressed(vk_space) || (_hovered_index == menu_index && _mouse_pressed)) {
     switch(menu_index) {
         case 0:
+			global.gameParams.practiceMode = false
 			global.gameParams.modeSelection = global.GAME_MODE_CLASSIC
 			instance_create_layer(x,y,"Instances", objMapMenu)
 			instance_destroy()
             break;
         case 1:
+			global.gameParams.practiceMode = false
 			global.gameParams.modeSelection = global.GAME_MODE_HP5
 			instance_create_layer(x,y,"Instances", objMapMenu)
 			instance_destroy()
             break;
         case 2:
+			global.gameParams.practiceMode = true
+			global.gameParams.modeSelection = global.GAME_MODE_CLASSIC
+			instance_create_layer(x,y,"Instances", objMapMenu)
+			instance_destroy()
+            break;
+        case 3:
 			instance_create_layer(x,y,"Instances", objPlayerMenu)
 			instance_destroy()
             break;

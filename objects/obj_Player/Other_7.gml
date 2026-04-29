@@ -11,6 +11,8 @@ if(sprite_index == sprPlayerDie){
 	if isHost {
 		playerHealth = maxHealth
 		set_player_health(steamID, maxHealth)
-		send_player_health_to_clients(steamID, playerHealth)
+		if (instance_exists(obj_Server)) {
+			send_player_health_to_clients(steamID, playerHealth)
+		}
 	}
 }

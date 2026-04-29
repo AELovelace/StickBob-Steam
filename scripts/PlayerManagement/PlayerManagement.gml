@@ -278,3 +278,4 @@ function apply_player_color(_b) {
 		}
 	}
 }
+

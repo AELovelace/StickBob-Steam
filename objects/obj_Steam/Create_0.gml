@@ -8,7 +8,8 @@ global.gameParams = {
 				numberPlayers: 0,
 				mapSelection: 0,
 				playerColor: 0,
-				modeSelection: global.GAME_MODE_CLASSIC
+				modeSelection: global.GAME_MODE_CLASSIC,
+				practiceMode: false
 }
 
 var _steam_init = steam_initialised()

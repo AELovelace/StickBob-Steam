@@ -10,6 +10,10 @@ localSteamID = steam_get_user_steam_id()
 lobbyHost = steam_lobby_get_owner_id()
 isHost = steam_lobby_is_owner()
 isLocal = (localSteamID == steamID)
+if (variable_global_exists("gameParams") && global.gameParams.practiceMode && !instance_exists(obj_Server) && !instance_exists(obj_Client) && isLocal) {
+	isHost = true
+	lobbyHost = steamID
+}
 playerID = id
 mask_index = sprPlayerIdle;
 collision_tilemap_id = layer_tilemap_get_id("CollisionLayer");
@@ -35,6 +39,8 @@ netY      = 0
 hasNetPos = false
 wallJumpTimer = 20;
 cwjt = 0;
+zoomDelay = 0;
+camLookAhead = 0;
 init_controls()
 //screen init
 // Pull current resolution from persisted app settings.

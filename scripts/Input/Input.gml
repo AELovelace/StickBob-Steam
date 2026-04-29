@@ -28,7 +28,9 @@ function get_controls(_is_host, _is_local)
 
 		// Broadcast the host's input to all clients so they can simulate the host character
 		var _input = {steamID: lobbyHost, xInput:xInput, yInput:yInput, runKey:runKey, actionKey:actionKey, mouseAngle:mouseAngle}
-		send_player_input_to_clients(_input)
+		if (instance_exists(obj_Server)) {
+			send_player_input_to_clients(_input)
+		}
 	}
 
 	if (!_is_host && _is_local) {
@@ -46,7 +48,9 @@ function get_controls(_is_host, _is_local)
 
 		// Send raw key state to the server; the server converts to axis values
 		var _input = {rightKey:_rightKey, leftKey:_leftKey, downKey:_downKey, upKey:_upKey, runKey:_runKey, actionKey:_actionKey, mouseAngle:_mouseAngle}
-		send_player_input(_input, lobbyHost);
+		if (instance_exists(obj_Server) || instance_exists(obj_Client)) {
+			send_player_input(_input, lobbyHost);
+		}
 
 		// Write input to instance vars so paddle_movement() has real input this frame
 		// (client-side prediction — physics runs locally, server corrections reconcile later)

@@ -1,45 +1,27 @@
-if(global.isPaused){
-	exit;
+if (global.isPaused) {
+    exit;
 }
+
+scr_smart_nav_update(O_Player);
+scr_smart_nav_update_sprite();
 var player_distance = distance_to_object(O_Player);
-var chase_range = 300; // Set a range in pixels
-
-	scr_fill_the_grid(floor(x/O_Grid.cell_width), floor(O_Grid.cell_height), floor(O_Player.x/O_Grid.cell_width), floor(O_Player.y/O_Grid.cell_height));
-	if path_exists(path_building)
-	{
-		scr_follow_the_path(path_building);
+var shoot_range = 100;
+	var distance = 48;
+	gun_distance = 20
+	if currentCooldown > 0 then --currentCooldown;
+	if(currentCooldown <= 0 && global.stopShooting == false && player_distance < shoot_range){
+		var bullet_x = x + lengthdir_x(distance, mouseAngle);
+		var bullet_y = y + lengthdir_y(distance, mouseAngle);
+		var bullet = instance_create_layer(bullet_x, bullet_y, "Instances", obj_Bullet)
+		bullet.direction = mouseAngle
+		bullet.image_angle = bullet.direction
+		bullet.owner_id = id
+		bullet.owner_steam_id = bot_owner_steam_id
+		audio_play_sound(wob_wob_2, 10, 0)
+	    var _x = x + lengthdir_x(gun_distance, mouseAngle);
+	    var _y = y + lengthdir_y(gun_distance, mouseAngle);
+		effect_create_above(ef_smokeup, _x, _y, .05, c_ltgray);
+		effect_create_above(ef_smoke, _x, _y, .05, c_grey);
+		effect_create_above(ef_spark, _x, _y, .05, c_orange);
+		currentCooldown = fireCooldown;
 	}
-
-if keyboard_check(vk_anykey)
-{
-     /// Reset all variable when we build a new path because enemy might be in path when we press S
-     speed_h = 0;
-     speed_v = 0;
-     if path_exists(path_building) {
-         path_delete (path_building);
-     }
-     path_point = 0 ;
-     action = 0 ;
-     jump_action = 0 ;
-
-//    scr_fill_the_grid(floor(x/O_Grid.cell_width), floor(y/O_Grid.cell_height), floor(O_Player.x/O_Grid.cell_width), floor(O_Player.y/O_Grid.cell_height));
-}
-
-// Follow the path if path exists
-if path_exists(path_building)
-{
-    scr_follow_the_path(path_building);
-}	else{
-	speed_h = 0;	
-}
-
-
-// Apply gravity
-if !place_meeting (x, y+1, objSolid)
-    {
-        speed_v = speed_v + game_gravity ;
-    }
-
-// Check if there is a collsiion
-scr_collision () ;
-

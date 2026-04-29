@@ -1,6 +1,4 @@
-/// @description Visual reaction to being hit
-draw_self()
-
+draw_self();
 scr_smart_nav_draw_debug();
 
 draw_set_alpha(1)
@@ -34,9 +32,6 @@ draw_set_alpha(1)
 	else if (sprite_index == sprPlayerCrawl){
 		draw_sprite_ext(sprPlayerGun, 0, x+7,y+8, image_xscale, image_yscale, mouseAngle, c_white, 1)
 	}
-	//else if(mouseAngle < 270 && mouseAngle > 90 && sprite_index == sprPlayerIdle){	
-	//	draw_sprite_ext(sprPlayerGun, 0, x,y, image_xscale, -1, mouseAngle, c_white, 1)
-	//}
-	//else{
-	//	draw_sprite_ext(sprPlayerGun, 0, x,y, image_xscale, image_yscale, mouseAngle, c_white, 1)
-	//}
+	else{
+		draw_sprite_ext(sprPlayerGun, 0, x, y, image_xscale, image_yscale, mouseAngle, c_white, 1)
+	}
