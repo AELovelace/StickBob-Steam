@@ -1,3 +1,9 @@
+unlockables_state_init();
+if (global.unlockables_runtime.mp3_refresh_pending) {
+	musicPlayerRefreshUnlockedArtists();
+	global.unlockables_runtime.mp3_refresh_pending = false;
+}
+
 if(!audio_is_playing(audio_instance)){
 	songPercent = 0;
 	if (randomizeSong == true){

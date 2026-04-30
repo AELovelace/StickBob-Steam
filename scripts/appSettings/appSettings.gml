@@ -5,7 +5,8 @@ function app_settings_defaults() {
         fullscreen: false,
         master_volume: 25,
         music_volume: 100,
-        player_color: 16777215   // c_white — default tint for the player character
+        player_color: 16777215,
+        unlockables: unlockables_default_state()
     }
 }
 
@@ -101,11 +102,15 @@ function app_settings_load() {
             var _pc = real(_loaded.player_color)
             _settings.player_color = (_pc >= 0 && _pc <= 16777215) ? _pc : 16777215
         }
+        if (variable_struct_exists(_loaded, "unlockables")) {
+            _settings.unlockables = unlockables_normalize_state(_loaded.unlockables)
+        }
 
         _settings.resolution_width = max(320, real(_settings.resolution_width))
         _settings.resolution_height = max(240, real(_settings.resolution_height))
         _settings.master_volume = clamp(real(_settings.master_volume), 0, 100)
         _settings.music_volume = clamp(real(_settings.music_volume), 0, 100)
+        _settings.unlockables = unlockables_normalize_state(_settings.unlockables)
 
         return _settings
     } catch (_error) {
@@ -140,6 +145,8 @@ function app_settings_current() {
 
     if variable_global_exists("appSettings") then _settings = variable_global_get("appSettings")
     if !is_struct(_settings) then _settings = app_settings_defaults()
+    if !variable_struct_exists(_settings, "unlockables") then _settings.unlockables = unlockables_default_state()
+    _settings.unlockables = unlockables_normalize_state(_settings.unlockables)
 
     variable_global_set("appSettings", _settings)
     return _settings
@@ -240,7 +247,7 @@ function app_settings_set_master_volume(_master_volume) {
     if (_v != _prev) {
         app_settings_save(_settings)
     }
-    // NOTE: do NOT call app_settings_apply_audio here — it would overwrite global.musicVolume
+    // NOTE: do NOT call app_settings_apply_audio here - it would overwrite global.musicVolume
     // from the saved JSON, snapping the music slider back to the last-saved value.
 }
 
@@ -254,6 +261,6 @@ function app_settings_set_music_volume(_music_volume) {
     if (_v != _prev) {
         app_settings_save(_settings)
     }
-    // NOTE: do NOT call app_settings_apply_audio here — it would overwrite global.masterVolume
+    // NOTE: do NOT call app_settings_apply_audio here - it would overwrite global.masterVolume
     // from the saved JSON, snapping the master slider back to the last-saved value.
 }

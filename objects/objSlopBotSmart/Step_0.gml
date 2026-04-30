@@ -2,6 +2,12 @@ if (global.isPaused) {
     exit;
 }
 
+if (isDying) {
+    xSpeed = 0;
+    ySpeed = 0;
+    exit;
+}
+
 scr_smart_nav_update(O_Player);
 scr_smart_nav_update_sprite();
 var player_distance = distance_to_object(O_Player);

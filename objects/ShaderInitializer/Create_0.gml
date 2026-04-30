@@ -1,4 +1,6 @@
+display_reset(8, false);
 global.GameState = new GameStateCreate();
+
 room_goto(rm_MainMenu);
 
 #region SHADER

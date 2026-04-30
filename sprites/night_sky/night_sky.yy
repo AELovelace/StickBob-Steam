@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Backgrounds",
-    "path":"folders/Backgrounds.yy",
+    "name":"skyboxes",
+    "path":"folders/Backgrounds/skyboxes.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"MenuNeoUI",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"MenuNeoUI",
+  "parent":{
+    "name":"clientServer",
+    "path":"folders/Scripts/clientServer.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

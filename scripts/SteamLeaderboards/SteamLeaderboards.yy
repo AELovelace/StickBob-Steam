@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"SteamLeaderboards",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"SteamLeaderboards",
+  "parent":{
+    "name":"clientServer",
+    "path":"folders/Scripts/clientServer.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

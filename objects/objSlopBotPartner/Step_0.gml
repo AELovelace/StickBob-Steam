@@ -2,6 +2,12 @@ if (global.isPaused) {
     exit;
 }
 
+if (isDying) {
+    xSpeed = 0;
+    ySpeed = 0;
+    exit;
+}
+
 if (!route_initialized) {
     route_points = scr_practice_spawn_route_points();
     route_initialized = true;

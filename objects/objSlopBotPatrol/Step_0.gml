@@ -2,6 +2,12 @@ if (global.isPaused) {
     exit;
 }
 
+if (isDying) {
+    xSpeed = 0;
+    ySpeed = 0;
+    exit;
+}
+
 var _target_player = noone;
 if (instance_exists(player_target)) {
     _target_player = player_target;

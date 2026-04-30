@@ -15,3 +15,6 @@ if (_steam_init != steam_initialised_last || _steam_logged != steam_logged_on_la
 	if (_steam_init) steam_set_warning_message_hook()
 }
 
+sgc_gateway_update();
+steam_leaderboards_update();
+

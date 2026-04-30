@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Backgrounds",
-    "path":"folders/Backgrounds.yy",
+    "name":"Grounds",
+    "path":"folders/Backgrounds/Grounds.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

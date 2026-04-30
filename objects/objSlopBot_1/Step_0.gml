@@ -1,6 +1,11 @@
 if(global.isPaused){
 	exit;
 }
+if (isDying) {
+	xSpeed = 0;
+	ySpeed = 0;
+	exit;
+}
 // Apply gravity
 ySpeed += grv;
 var target_x = O_Player.x;

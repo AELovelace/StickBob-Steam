@@ -12,6 +12,9 @@ climbHeight = 8;
 mouseAngle = 0;
 fireCooldown = 10;
 currentCooldown = fireCooldown;
+playerHealth = 1;
+maxHealth = 1;
+isDying = false;
 global.stopShooting = false;
 dir = -1; 
 // AI State (optional, but useful for more complex AI)

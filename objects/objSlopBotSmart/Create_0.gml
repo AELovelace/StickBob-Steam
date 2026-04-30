@@ -11,6 +11,9 @@ mouseAngle = 0;
 nav_grounded = false;
 fireCooldown = 60;
 currentCooldown = fireCooldown;
+playerHealth = 1;
+maxHealth = 1;
+isDying = false;
 bot_owner_steam_id = -1;
 
 nav_profile = scr_smart_nav_profile(id);

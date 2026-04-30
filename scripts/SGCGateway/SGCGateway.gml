@@ -10,6 +10,7 @@
 ///   sgc_gateway_bootstrap(_force)         - establish a session with the gateway
 ///   sgc_gateway_begin_link_flow()         - start the SGC OAuth link flow
 ///   sgc_gateway_check_balance()           - request the linked player's balance
+///   sgc_gateway_update()                  - pump periodic balance/summary refresh
 ///   sgc_gateway_match_create()            - host: register a match
 ///   sgc_gateway_match_join(_match_id)     - client: join a match
 ///   sgc_gateway_match_close()             - host: close a match
@@ -56,6 +57,11 @@ function sgc_gateway_state_init() {
 		balance_reset_on_next_fetch : false,
 		balance_pending      : false,
 		next_balance_poll_ms : 0,
+		leaderboard_summary_pending : false,
+		next_leaderboard_summary_poll_ms : 0,
+		verified_mp_kills_total : undefined,
+		purchase_pending      : false,
+		purchase_item_id      : "",
 		match_id          : "",
 		match_token       : "",
 		server_instance   : "",
@@ -281,6 +287,98 @@ function sgc_gateway_check_balance() {
 	if (global.sgc_gateway.balance_pending) return;
 	global.sgc_gateway.balance_pending = true;
 	sgc_gateway_get("/sgc/balance", "balance", undefined);
+}
+
+function sgc_gateway_fetch_leaderboard_summary() {
+	sgc_gateway_state_init();
+	if (!global.sgc_gateway.ready) return;
+	if (global.sgc_gateway.leaderboard_summary_pending) return;
+	global.sgc_gateway.leaderboard_summary_pending = true;
+	sgc_gateway_get("/leaderboards/summary", "leaderboard_summary", undefined);
+}
+
+function sgc_gateway_balance_available() {
+	sgc_gateway_state_init();
+	var _base = global.sgc_gateway.balance_level_base;
+	if (_base == undefined) _base = global.sgc_gateway.balance_synced_value;
+	if (_base == undefined) return undefined;
+	return max(0, floor(real(_base + global.sgc_gateway.balance_level_pending)));
+}
+
+function sgc_gateway_apply_balance_sync(_balance_value) {
+	sgc_gateway_state_init();
+	var _value = max(0, floor(real(_balance_value)));
+	global.sgc_gateway.balance_value = _value;
+	global.sgc_gateway.balance_synced_value = _value;
+	global.sgc_gateway.balance_level_base = _value;
+	global.sgc_gateway.balance_level_pending = 0;
+	global.sgc_gateway.balance_reset_on_next_fetch = false;
+	steam_leaderboards_set_sgc_balance(_value);
+}
+
+function sgc_gateway_extract_error_message(_data, _http, _body) {
+	if (is_struct(_data)) {
+		if (variable_struct_exists(_data, "error")) {
+			var _error = _data.error;
+			if (is_struct(_error) && variable_struct_exists(_error, "message")) return string(_error.message);
+			if (is_string(_error)) return _error;
+		}
+		if (variable_struct_exists(_data, "message")) return string(_data.message);
+	}
+	if (is_string(_body) && string_length(_body) > 0) return _body;
+	return "Purchase failed (HTTP " + string(_http) + ").";
+}
+
+function sgc_gateway_purchase_unlockable(_item_id, _amount, _note) {
+	sgc_gateway_state_init();
+	if (global.sgc_gateway.purchase_pending) {
+		return { ok : false, message : "Another purchase is already pending." };
+	}
+	if (!global.sgc_gateway.ready) {
+		return { ok : false, message : "SGC gateway is still connecting." };
+	}
+	if (!global.sgc_gateway.linked) {
+		return { ok : false, message : "Link your SGC account before purchasing." };
+	}
+
+	var _balance = sgc_gateway_balance_available();
+	if (_balance == undefined) {
+		return { ok : false, message : "Balance unavailable. Refresh and try again." };
+	}
+	if (_balance < _amount) {
+		return { ok : false, message : "Not enough SadGirlCoin." };
+	}
+
+	global.sgc_gateway.purchase_pending = true;
+	global.sgc_gateway.purchase_item_id = string(_item_id);
+	sgc_gateway_post_json("/sgc/charge", {
+		item_id : string(_item_id),
+		amount : max(1, floor(real(_amount))),
+		note : string(_note),
+	}, "purchase_charge", {
+		item_id : string(_item_id),
+		amount : max(1, floor(real(_amount))),
+	});
+	return { ok : true, message : "Purchase submitted." };
+}
+
+function sgc_gateway_update() {
+	sgc_gateway_state_init();
+	if (!global.sgc_gateway.ready) return;
+
+	var _now = current_time;
+	if (global.sgc_gateway.linked
+		&& !global.sgc_gateway.balance_pending
+		&& _now >= global.sgc_gateway.next_balance_poll_ms) {
+		global.sgc_gateway.next_balance_poll_ms = _now + 30000;
+		sgc_gateway_check_balance();
+	}
+
+	if (!global.sgc_gateway.leaderboard_summary_pending
+		&& _now >= global.sgc_gateway.next_leaderboard_summary_poll_ms) {
+		global.sgc_gateway.next_leaderboard_summary_poll_ms = _now + 15000;
+		sgc_gateway_fetch_leaderboard_summary();
+	}
 }
 
 function sgc_gateway_begin_level_balance_cycle() {
@@ -521,7 +619,12 @@ function sgc_gateway_report_event(_event_type, _args) {
 	sgc_gateway_submit_report(_event_type, _args);
 }
 
-function sgc_gateway_report_pve_kill(_args)        { sgc_gateway_report_event("pve_kill",        _args); }
+function sgc_gateway_report_pve_kill(_args)        {
+	if (variable_struct_exists(_args, "beneficiary_steam_id")) {
+		steam_leaderboards_note_pve_kill(_args.beneficiary_steam_id);
+	}
+	sgc_gateway_report_event("pve_kill", _args);
+}
 function sgc_gateway_report_level_complete(_args)  { sgc_gateway_report_event("level_complete",  _args); }
 function sgc_gateway_report_pvp_kill(_args)        { sgc_gateway_report_event("pvp_kill",        _args); }
 function sgc_gateway_report_collectible(_args)     { sgc_gateway_report_event("collectible_pickup", _args); }
@@ -577,12 +680,15 @@ function sgc_gateway_handle_async_http() {
 			if (is_struct(_data.player)) {
 			global.sgc_gateway.linked = (_data.player.sgc_link_active == true);
 			}
+			global.sgc_gateway.next_balance_poll_ms = 0;
+			global.sgc_gateway.next_leaderboard_summary_poll_ms = 0;
 			sgc_gateway_log("session ready for " + global.sgc_gateway.steam_id);
 			if (global.sgc_gateway.linked
 				&& (global.sgc_gateway.balance_reset_on_next_fetch
 					|| global.sgc_gateway.balance_level_base == undefined)) {
 				sgc_gateway_check_balance();
 			}
+			sgc_gateway_fetch_leaderboard_summary();
 			if (global.sgc_gateway.pending_link) {
 				global.sgc_gateway.pending_link = false;
 				sgc_gateway_post_json("/sgc/link/start", {}, "link_start", undefined);
@@ -620,14 +726,47 @@ function sgc_gateway_handle_async_http() {
 			sgc_gateway_log("balance: " + string(_body));
 			global.sgc_gateway_last_balance = _data;
 			if (is_struct(_data) && variable_struct_exists(_data, "balance")) {
-				global.sgc_gateway.balance_value = _data.balance;
-				global.sgc_gateway.balance_synced_value = _data.balance;
+				sgc_gateway_apply_balance_sync(_data.balance);
 				if (global.sgc_gateway.balance_reset_on_next_fetch
 					|| global.sgc_gateway.balance_level_base == undefined) {
 					global.sgc_gateway.balance_level_base = _data.balance;
 					global.sgc_gateway.balance_level_pending = 0;
 					global.sgc_gateway.balance_reset_on_next_fetch = false;
 				}
+			}
+			break;
+
+		case "purchase_charge":
+			global.sgc_gateway.purchase_pending = false;
+			var _purchase_item_id = "";
+			if (is_struct(_entry.payload) && variable_struct_exists(_entry.payload, "item_id")) {
+				_purchase_item_id = string(_entry.payload.item_id);
+			}
+			global.sgc_gateway.purchase_item_id = "";
+			if (!_ok) {
+				unlockables_complete_purchase_failure(
+					_purchase_item_id,
+					sgc_gateway_extract_error_message(_data, _http, _body)
+				);
+				sgc_gateway_log("purchase failed: http=" + string(_http) + " body=" + string(_body));
+				break;
+			}
+			var _balance_after = undefined;
+			if (is_struct(_data) && variable_struct_exists(_data, "balance")) {
+				_balance_after = _data.balance;
+			}
+			unlockables_complete_purchase_success(_purchase_item_id, _balance_after);
+			break;
+
+		case "leaderboard_summary":
+			global.sgc_gateway.leaderboard_summary_pending = false;
+			if (!_ok) {
+				sgc_gateway_log("leaderboard summary failed: http=" + string(_http));
+				break;
+			}
+			if (is_struct(_data) && variable_struct_exists(_data, "verified_mp_kills_total")) {
+				global.sgc_gateway.verified_mp_kills_total = _data.verified_mp_kills_total;
+				steam_leaderboards_set_verified_mp_kills(_data.verified_mp_kills_total);
 			}
 			break;
 
@@ -676,6 +815,9 @@ function sgc_gateway_handle_async_http() {
 					if (string(_reward.event_type) == "level_complete") {
 						sgc_gateway_end_level_balance_cycle();
 					}
+				}
+				if (is_struct(_reward) && string(_reward.event_type) == "pvp_kill") {
+					sgc_gateway_fetch_leaderboard_summary();
 				}
 			}
 			if (!_ok) {

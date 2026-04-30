@@ -7,14 +7,16 @@ menu_y = window_get_height() / topness; // Position vertically
 button_h = 40; // Vertical spacing between options
 
 // Array of menu options (strings)
-button[0] = "Host Game";
-button[1] = "Join Game";
-button[2] = "SinglePlayer";
+button[0] = "Main Menu";
+button[1] = "Link SadGirlCoin Account";
+button[2] = "Leaderboards";
 button[3] = "Runner";
 button[4] = "Settings";
 button[5] = "Exit";
 button[6] = "Link SGC OAuth";
 button[7] = "SadGirlsClub.WTF";
+button[8] = "Leaderboards";
+button[9] = "New Main Menu";
 
 
 buttons = array_length_1d(button); // Get the number of buttons

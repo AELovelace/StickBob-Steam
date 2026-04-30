@@ -15,6 +15,9 @@ climbHeight = 8;
 mouseAngle = 0;
 fireCooldown = 30;
 currentCooldown = fireCooldown;
+playerHealth = 1;
+maxHealth = 1;
+isDying = false;
 dir = -1; 
 // AI State (optional, but useful for more complex AI)
 state = "patrol";

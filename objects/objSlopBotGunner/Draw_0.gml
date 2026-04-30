@@ -1,6 +1,10 @@
 /// @description Visual reaction to being hit
 draw_self()
 
+if (isDying || sprite_index == sprPlayerDie) {
+	exit;
+}
+
 // If paddle is hit by bullet
 //if moveSpeed < 5 {
 //	draw_set_color(c_white);

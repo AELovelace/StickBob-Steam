@@ -1,4 +1,7 @@
 draw_self();
+if (isDying || sprite_index == sprPlayerDie) {
+	exit;
+}
 scr_smart_nav_draw_debug();
 
 draw_set_alpha(1)

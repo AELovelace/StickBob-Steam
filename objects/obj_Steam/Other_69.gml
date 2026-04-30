@@ -3,6 +3,10 @@
 // It will log all the messages from the steam callbacks
 show_debug_message("Steam ASYNC: " + json_encode(async_load))
 
+sgc_gateway_handle_async_steam();
+
+if (steam_leaderboards_handle_async(async_load)) exit;
+
 // this only happens if you have Dynamic Steam Cloud Sync enabled in Partner Settings
 if (async_load[? "event_type"] == "remote_storage_local_file_change")
 {

@@ -178,11 +178,11 @@ function scr_smart_nav_step_state(_state, _input_x, _jump_pressed, _profile, _ti
         }
 
         var _step_up = 0;
-        while (scr_smart_nav_collision_at(_state.x + sign(_state.xSpeed), _state.y - _step_up, _tilemap) && _step_up < _climb_height) {
+        while (scr_smart_nav_collision_at(_state.x + _state.xSpeed, _state.y - _step_up, _tilemap) && _step_up < _climb_height) {
             _step_up += 1;
         }
 
-        if (!scr_smart_nav_collision_at(_state.x + sign(_state.xSpeed), _state.y - _step_up, _tilemap)) {
+        if (!scr_smart_nav_collision_at(_state.x + _state.xSpeed, _state.y - _step_up, _tilemap)) {
             _state.y -= _step_up;
         } else {
             _state.xSpeed = 0;

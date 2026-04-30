@@ -28,6 +28,8 @@ if (_steam_init) {
 	show_debug_message("Steam warning hook enabled")
 }
 
+steam_leaderboards_state_init();
+
 if (os_browser != browser_not_a_browser) {
 	vpSizeWidthFS = browser_width-5;
 	vpSizeLengthFS = browser_height-5;

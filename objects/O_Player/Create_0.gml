@@ -11,6 +11,8 @@ speedBar = 0;
 playerHealth = 5;
 zoomDelay = 0;
 camLookAhead = 0;
+selectedWeaponSlot = 1;
+machinegunFireCooldown = 3;
 //screen init
 // Pull current resolution from persisted app settings.
 var _settings = app_settings_defaults()
