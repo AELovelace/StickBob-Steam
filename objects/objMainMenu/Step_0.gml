@@ -41,7 +41,7 @@ last_mouse_x = mouse_x;
 last_mouse_y = mouse_y;
 
 // Handle selection (Enter/Space key)
-if (keyboard_check_pressed(vk_enter) || keyboard_check_pressed(vk_space) || (_hovered_index == menu_index && _mouse_pressed)) {
+if (keyboard_check_pressed(vk_enter) || (_hovered_index == menu_index && _mouse_pressed)) {
     switch(menu_index) {
         case 0:
 			// Multiplayer Logic
@@ -76,6 +76,7 @@ if (keyboard_check_pressed(vk_enter) || keyboard_check_pressed(vk_space) || (_ho
 			instance_destroy()
 			break;
 		case 5:
+			shutdown_multiplayer("main_menu_exit_game")
 			game_end(); // Closes the game
             show_debug_message("Open Options Menu");
             break;

@@ -11,6 +11,35 @@ function grab_spawn_point(_player) {
 	return {x:_spawnPoint.x, y:_spawnPoint.y}
 }
 
+// Leaves any active Steam lobby and tears down multiplayer objects/UI.
+// Call this before transitioning to menus or exiting the game.
+function shutdown_multiplayer(_reason="manual") {
+	mp_debug_log("lobby-leave", "reason=" + string(_reason))
+	steam_lobby_leave()
+
+	if instance_exists(obj_Client) {
+		with (obj_Client) instance_destroy()
+	}
+
+	if instance_exists(obj_Server) {
+		with (obj_Server) instance_destroy()
+	}
+
+	if instance_exists(obj_Player) {
+		with (obj_Player) instance_destroy()
+	}
+
+	if instance_exists(obj_LobbyItem) {
+		with (obj_LobbyItem) instance_destroy()
+	}
+
+	if instance_exists(obj_LobbyList) {
+		with (obj_LobbyList) instance_destroy()
+	}
+
+	global.isPaused = false
+}
+
 
 ///@self obj_Client
 // Serialises local input into a CLIENT_PLAYER_INPUT packet and sends it to
@@ -50,15 +79,24 @@ function receive_player_input(_b, _steam_id=-1){
 	var _runKey     = buffer_read(_b, buffer_u8)
 	var _actionKey  = buffer_read(_b, buffer_u8)
 	var _mouseAngle = buffer_read(_b, buffer_s16)
+	var _input = {steamID: _steam_id, xInput: _xInput, yInput: _yInput, runKey: _runKey, actionKey: _actionKey, mouseAngle: _mouseAngle}
 	var _player = find_player_by_steam_id(_steam_id)
-	if _player == noone return;  // player may not have spawned yet — drop the packet
+	if _player == noone {
+		if instance_exists(obj_Client) {
+			queue_pending_player_input(_input)
+			mp_debug_log("input-deferred", "steam=" + string(_steam_id) + " reason=player_not_ready")
+			return _input;
+		}
+		mp_debug_log("input-dropped", "steam=" + string(_steam_id) + " reason=player_not_found")
+		return;  // player may not have spawned yet — drop the packet
+	}
 	_player.xInput     = _xInput
 	_player.yInput     = _yInput
 	_player.runKey     = _runKey
 	_player.actionKey  = _actionKey
 	_player.mouseAngle = _mouseAngle
 
-	return {steamID: _steam_id, xInput: _xInput, yInput: _yInput, runKey: _runKey, actionKey: _actionKey, mouseAngle: _mouseAngle}
+	return _input
 }
 
 function player_entry_has_live_character(_entry) {
@@ -69,6 +107,57 @@ function player_entry_has_live_character(_entry) {
 	return instance_exists(_char)
 }
 
+function find_player_entry_index_by_steam_id(_steam_id){
+	for (var _i = 0; _i < array_length(playerList); _i++){
+		if playerList[_i].steamID == _steam_id return _i;
+	}
+	return -1;
+}
+
+function queue_pending_player_input(_player_input) {
+	if !instance_exists(obj_Client) then return
+	var _pending = obj_Client.pendingPlayerInputs
+	if !is_array(_pending) then _pending = []
+	var _pendingIndex = -1
+	for (var _i = 0; _i < array_length(_pending); _i++) {
+		if _pending[_i].steamID == _player_input.steamID {
+			_pendingIndex = _i
+			break
+		}
+	}
+	if _pendingIndex == -1 {
+		array_push(_pending, _player_input)
+	} else {
+		_pending[_pendingIndex] = _player_input
+	}
+	obj_Client.pendingPlayerInputs = _pending
+}
+
+function apply_pending_player_input(_steam_id) {
+	if !instance_exists(obj_Client) then return false
+	var _pending = obj_Client.pendingPlayerInputs
+	if !is_array(_pending) then return false
+	var _pendingIndex = -1
+	for (var _i = 0; _i < array_length(_pending); _i++) {
+		if _pending[_i].steamID == _steam_id {
+			_pendingIndex = _i
+			break
+		}
+	}
+	if _pendingIndex == -1 then return false
+	var _player = find_player_by_steam_id(_steam_id)
+	if _player == noone then return false
+	var _input = _pending[_pendingIndex]
+	_player.xInput     = _input.xInput
+	_player.yInput     = _input.yInput
+	_player.runKey     = _input.runKey
+	_player.actionKey  = _input.actionKey
+	_player.mouseAngle = _input.mouseAngle
+	obj_Client.pendingPlayerInputs = array_delete(_pending, _pendingIndex, 1)
+	mp_debug_log("input-buffer-applied", "steam=" + string(_steam_id) + " x=" + string(_input.xInput) + " y=" + string(_input.yInput))
+	return true
+}
+
 ///@self obj_Client, obj_Server
 // Searches playerList for an entry whose character instance has the given
 // steamID.  Returns the instance reference, or noone if not found.
@@ -76,7 +165,9 @@ function find_player_by_steam_id(_steam_id){
 	for (var _i = 0; _i < array_length(playerList); _i++){
 		var _player = playerList[_i].character
 		if !player_entry_has_live_character(playerList[_i]) continue;
-		if _player.steamID == _steam_id return _player;
+		if _player.steamID == _steam_id {
+			return _player;
+		}
 	}
 	return noone;
 }
@@ -96,9 +187,12 @@ function send_player_positions() {
 		buffer_write(_b, buffer_u64, _player.steamID);
 		buffer_write(_b, buffer_u16, _player.character.x);
 		buffer_write(_b, buffer_u16, _player.character.y);
-		// Broadcast to every non-host client
+		// Broadcast to every non-host client EXCEPT the player whose position this is.
+		// Clients manage their own position via client-side prediction; sending their
+		// own authoritative position back would cause the reconciler to snap them.
 		for (var _k = 0; _k < array_length(playerList); _k++){
 			if ((playerList[_k].steamID != obj_Server.steamID)
+				&& (playerList[_k].steamID != playerList[_i].steamID)
 				&& !(variable_struct_exists(playerList[_k], "disconnected") && playerList[_k].disconnected)) {
 				steam_net_packet_send(playerList[_k].steamID, _b)
 			}
@@ -196,6 +290,11 @@ function set_player_health(_steam_id, _health){
 //@self obj_Server
 // Broadcasts a player's current health to all non-host clients.
 function send_player_health_to_clients(_steam_id, _health){
+	mp_debug_log("health-send-begin",
+		"steam=" + string(_steam_id)
+		+ " health=" + string(_health)
+		+ " recipients=" + string(array_length(obj_Server.playerList) - 1)
+	)
 	var _b = buffer_create(11, buffer_fixed, 1);
 	buffer_write(_b, buffer_u8, NETWORK_PACKETS.PLAYER_HEALTH)
 	buffer_write(_b, buffer_u64, _steam_id)
@@ -204,11 +303,20 @@ function send_player_health_to_clients(_steam_id, _health){
 	for (var _i = 0; _i < array_length(obj_Server.playerList); _i++){
 		if (obj_Server.playerList[_i].steamID != obj_Server.steamID
 			&& !(variable_struct_exists(obj_Server.playerList[_i], "disconnected") && obj_Server.playerList[_i].disconnected)) {
+			mp_debug_log("health-send-peer",
+				"steam=" + string(_steam_id)
+				+ " health=" + string(_health)
+				+ " to=" + string(obj_Server.playerList[_i].steamID)
+			)
 			steam_net_packet_send(obj_Server.playerList[_i].steamID, _b)
 		}
 	}
 
 	buffer_delete(_b)
+	mp_debug_log("health-send-end",
+		"steam=" + string(_steam_id)
+		+ " health=" + string(_health)
+	)
 }
 
 //@self obj_Client
@@ -216,6 +324,10 @@ function send_player_health_to_clients(_steam_id, _health){
 function receive_player_health(_b){
 	var _steam_id = buffer_read(_b, buffer_u64)
 	var _health = buffer_read(_b, buffer_u16)
+	mp_debug_log("health-receive",
+		"steam=" + string(_steam_id)
+		+ " health=" + string(_health)
+	)
 	set_player_health(_steam_id, _health)
 }
 

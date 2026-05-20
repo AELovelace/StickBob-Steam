@@ -3,7 +3,7 @@ menu_index = clamp(menu_index + menu_move, 0, buttons - 1)
 
 var _left = keyboard_check_pressed(vk_left)
 var _right = keyboard_check_pressed(vk_right)
-var _confirm = keyboard_check_pressed(vk_enter) || keyboard_check_pressed(vk_space)
+var _confirm = keyboard_check_pressed(vk_enter)
 
 if (menu_index == 0 && (_left || _right)) {
     // Cycle resolution options and keep label in sync with selection.

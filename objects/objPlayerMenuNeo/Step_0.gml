@@ -28,9 +28,7 @@ if (keyboard_check_pressed(vk_escape)) {
 	exit;
 }
 
-var _confirm = keyboard_check_pressed(vk_enter)
-	|| keyboard_check_pressed(vk_space)
-	|| (_hovered_index == menu_index && _mouse_pressed);
+var _confirm = menu_neo_confirm_pressed(_hovered_index == menu_index && _mouse_pressed);
 if (!_confirm) exit;
 
 switch (menu_index) {

@@ -1,5 +1,24 @@
 /// @description Listening for Activity as Client
 
+if (spawn_resync_active) {
+	var _hasLocalCharacter = (character != undefined) && instance_exists(character)
+	if (!_hasLocalCharacter && current_time >= spawn_resync_next_time) {
+		if (lobbyHost <= 0) {
+			lobbyHost = steam_lobby_get_owner_id()
+		}
+		if (lobbyHost > 0) {
+			var _resync = buffer_create(1, buffer_fixed, 1)
+			buffer_write(_resync, buffer_u8, NETWORK_PACKETS.CLIENT_SPAWN_RESYNC)
+			steam_net_packet_send(lobbyHost, _resync)
+			buffer_delete(_resync)
+			spawn_resync_attempts += 1
+			spawn_resync_last_host = lobbyHost
+			mp_debug_log("client-spawn-resync", "attempt=" + string(spawn_resync_attempts) + " host=" + string(lobbyHost) + " room=" + room_get_name(room))
+		}
+		spawn_resync_next_time = current_time + 700
+	}
+}
+
 // Receive Packets
 while(steam_net_packet_receive()){
 	
@@ -12,6 +31,7 @@ while(steam_net_packet_receive()){
 		case NETWORK_PACKETS.SYNC_PLAYERS:
 			var _playerList = buffer_read(inbuf, buffer_string);
 			_playerList = json_parse(_playerList)
+			mp_debug_log("client-packet", "received " + mp_debug_packet_name(_type) + " from=" + string(_sender) + " count=" + string(array_length(_playerList)))
 			sync_players(_playerList)
 			break
 		case NETWORK_PACKETS.SPAWN_OTHER:
@@ -20,6 +40,7 @@ while(steam_net_packet_receive()){
 			var _y = buffer_read(inbuf, buffer_u16)
 			var _steamID = buffer_read(inbuf, buffer_u64)
 			var _packetName = buffer_read(inbuf, buffer_string)
+			mp_debug_log("client-packet", "received SPAWN_OTHER from=" + string(_sender) + " steam=" + string(_steamID) + " pos=(" + string(_x) + "," + string(_y) + ")")
 			var _num = array_length(playerList)
 			var _maxHP = mode_max_health()
 			// Look up playerColor from list if already synced via SYNC_PLAYERS
@@ -45,11 +66,13 @@ while(steam_net_packet_receive()){
 			var _inst = undefined
 			if (_existingIndex != -1) && player_entry_has_live_character(playerList[_existingIndex]) {
 				_inst = playerList[_existingIndex].character
-				_inst.x = _x
-				_inst.y = _y
-				_inst.netX = _x
-				_inst.netY = _y
-				_inst.hasNetPos = true
+				with (_inst) {
+					x = _x
+					y = _y
+					netX = _x
+					netY = _y
+					hasNetPos = true
+				}
 			} else {
 				_inst = instance_create_layer(_x,_y,_layer,obj_Player,{
 								steamName : _spawnedName,
@@ -69,6 +92,7 @@ while(steam_net_packet_receive()){
 				playerList[_existingIndex].maxHealth = _maxHP
 				playerList[_existingIndex].playerHealth = _maxHP
 				playerList[_existingIndex].playerColor = _spawnedColor
+				apply_pending_player_input(_steamID)
 			} else {
 				array_push(playerList, {
 					steamID	 : _steamID,
@@ -80,6 +104,7 @@ while(steam_net_packet_receive()){
 					playerHealth: _maxHP,
 					playerColor: _spawnedColor
 				})
+				apply_pending_player_input(_steamID)
 			}
 			break
 			
@@ -90,6 +115,7 @@ while(steam_net_packet_receive()){
 			// Slot is now authoritative from the server — no longer depends on
 			// SYNC_PLAYERS having arrived first (fixes the UDP reorder freeze bug).
 			var _slot = buffer_read(inbuf, buffer_u8)
+			mp_debug_log("client-packet", "received SPAWN_SELF from=" + string(_sender) + " slot=" + string(_slot) + " pos=(" + string(_x) + "," + string(_y) + ")")
 			lobbyMemberID = _slot
 			var _maxHP = mode_max_health()
 			var _localColor = app_settings_current().player_color
@@ -102,6 +128,10 @@ while(steam_net_packet_receive()){
 							gameMode : global.gameParams.modeSelection,
 							playerColor : _localColor
 						})
+			// Force the server address from the packet sender so it's correct even
+			// if steam_lobby_get_owner_id() returned 0 at Create_0 time.
+			variable_instance_set(_inst, "lobbyHost", _sender)
+			mp_debug_log("client-lobbyhost-set", "steam=" + string(steamID) + " host=" + string(_sender))
 			// Find our own entry in playerList rather than always assuming index 0
 			var _myIdx = 0
 			for (var _ci = 0; _ci < array_length(playerList); _ci++) {
@@ -114,6 +144,7 @@ while(steam_net_packet_receive()){
 			character = _inst
 			// Local player — mirror chosen color in the local player list
 			playerList[_myIdx].playerColor = _localColor
+			spawn_resync_active = false
 			break
 
 		case NETWORK_PACKETS.SERVER_PLAYER_INPUT:
@@ -134,6 +165,7 @@ while(steam_net_packet_receive()){
 
 		default:
 			show_debug_message("Unknown packet received: "+string(_type))
+			mp_debug_log("client-packet", "unknown packet type=" + string(_type) + " from=" + string(_sender))
 			break
 	}
 }

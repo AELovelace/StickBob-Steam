@@ -41,6 +41,7 @@ wallJumpTimer = 20;
 cwjt = 0;
 zoomDelay = 0;
 camLookAhead = 0;
+debug_next_heartbeat = current_time + 1000;
 init_controls()
 //screen init
 // Pull current resolution from persisted app settings.
@@ -66,7 +67,13 @@ if(isLocal){
 
     // Local player drives the output viewport dimensions.
     view_enabled = true;
-	view_visible[lobbyMemberID] = true;
+	// Hide every view we don't own. Without this, a joining client (slot != 0)
+	// would still render view 0 from the room editor (a wide-angle of the whole
+	// stage), drawn on top of our follow-cam. The host is unaffected because
+	// their lobbyMemberID == 0 so view 0 is the one they keep visible.
+	for (var _vi = 0; _vi < 8; _vi++) {
+		view_visible[_vi] = (_vi == lobbyMemberID);
+	}
 	view_wport[lobbyMemberID] = vpSizeWidth
 	view_hport[lobbyMemberID] = vpSizeLength
 	camera_set_view_size(view_camera[lobbyMemberID], 320, 240);
@@ -79,4 +86,7 @@ if(isLocal){
 
 if (isLocal) {
 	sgc_gateway_begin_level_balance_cycle();
+	if (instance_exists(obj_Server) || instance_exists(obj_Client)) {
+		mp_debug_log("player-spawn", "local player steam=" + string(steamID) + " slot=" + string(lobbyMemberID) + " pos=(" + string(x) + "," + string(y) + ")")
+	}
 }

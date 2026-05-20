@@ -1,6 +1,7 @@
 /// @description Init Client Variables
 
 playerList = []
+pendingPlayerInputs = []
 
 steamID = steam_get_user_steam_id()
 steamName = steam_get_persona_name()
@@ -9,6 +10,10 @@ lobbyHost = steam_lobby_get_owner_id()
 character = undefined
 
 inbuf = buffer_create(16, buffer_grow, 1);
+spawn_resync_next_time = current_time + 750
+spawn_resync_attempts = 0
+spawn_resync_active = true
+spawn_resync_last_host = lobbyHost
 
 var _maxHP = mode_max_health()
 
@@ -22,6 +27,8 @@ playerList[0] = {
 	playerHealth	: _maxHP,
 	playerColor	: app_settings_current().player_color
 	}
+
+mp_debug_log("client-create", "steam=" + string(steamID) + " host=" + string(lobbyHost))
 
 // Establish a gateway session for this client. Match registration is
 // driven host-side and gets joined later through gameplay packets.

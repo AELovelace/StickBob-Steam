@@ -22,6 +22,8 @@ playerList[0] = {
 	playerColor		: app_settings_current().player_color
 	}
 
+mp_debug_log("server-create", "steam=" + string(steamID) + " room=" + room_get_name(room))
+
 // Establish gateway session and (host-only) create a match record so that
 // reward events from this lobby can be reported and idempotency-bound.
 sgc_gateway_bootstrap(false);

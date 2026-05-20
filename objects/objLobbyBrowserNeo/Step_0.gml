@@ -39,9 +39,7 @@ if (keyboard_check_pressed(vk_escape)) {
 	exit;
 }
 
-var _confirm = keyboard_check_pressed(vk_enter)
-	|| keyboard_check_pressed(vk_space)
-	|| (_hovered_index == menu_index && _mouse_pressed);
+var _confirm = menu_neo_confirm_pressed(_hovered_index == menu_index && _mouse_pressed);
 
 if (!_confirm || join_pending) exit;
 
@@ -58,7 +56,12 @@ join_target_map = _selected.map_name;
 join_target_mode = _selected.mode_raw;
 status_text = "JOINING " + _selected.creator;
 
+global.mp_join_target_id = join_target_id;
+global.mp_join_target_map = join_target_map;
+global.mp_join_target_mode = join_target_mode;
+
 if (instance_exists(obj_Server)) with (obj_Server) instance_destroy();
 if (instance_exists(obj_Client)) with (obj_Client) instance_destroy();
+global.client = instance_create_depth(0, 0, 0, obj_Client);
 
 steam_lobby_join_id(join_target_id);

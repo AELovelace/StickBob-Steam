@@ -4,6 +4,11 @@ global.isPaused = false;
 var _settings = app_settings_load()
 variable_global_set("appSettings", _settings)
 app_settings_apply(_settings)
+mp_debug_init(true)
+crash_log_install()
+mp_debug_log("boot", "obj_Game created room=" + room_get_name(room))
+mp_debug_log("boot", "tail helper: tools\\Start-MpLogTail.cmd \"" + mp_debug_log_path() + "\"")
+mp_debug_log("boot", "crash handler path=" + crash_log_path())
 
 menu_x = room_width / 2; // Center the menu horizontally
 menu_y = room_height / 2; // Position vertically

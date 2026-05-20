@@ -34,6 +34,19 @@ function menu_neo_draw_glow_text(_x, _y, _text, _main_color, _glow_color) {
 	draw_set_alpha(1);
 }
 
+function menu_neo_confirm_pressed(_mouse_confirm) {
+	if !variable_instance_exists(id, "menu_confirm_armed") then menu_confirm_armed = false;
+
+	var _confirm_down = keyboard_check(vk_enter) || mouse_check_button(mb_left);
+
+	if (!menu_confirm_armed) {
+		if (!_confirm_down) menu_confirm_armed = true;
+		return false;
+	}
+
+	return keyboard_check_pressed(vk_enter) || _mouse_confirm;
+}
+
 function menu_neo_draw_flicker_overlay() {
 	var _gui_w = display_get_gui_width();
 	var _gui_h = display_get_gui_height();

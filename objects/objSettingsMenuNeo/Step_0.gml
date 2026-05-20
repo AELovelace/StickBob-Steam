@@ -20,7 +20,7 @@ if (_hovered_index != -1 && (_mouse_moved || _mouse_pressed)) menu_index = _hove
 
 var _left = keyboard_check_pressed(vk_left) || keyboard_check_pressed(ord("A"));
 var _right = keyboard_check_pressed(vk_right) || keyboard_check_pressed(ord("D"));
-var _confirm = keyboard_check_pressed(vk_enter) || keyboard_check_pressed(vk_space) || (_hovered_index == menu_index && _mouse_pressed);
+var _confirm = menu_neo_confirm_pressed(_hovered_index == menu_index && _mouse_pressed);
 
 if (keyboard_check_pressed(vk_escape)) {
 	instance_create_layer(x, y, "Instances", objMainMenuNeo);

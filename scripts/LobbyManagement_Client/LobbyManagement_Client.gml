@@ -28,6 +28,7 @@ function sync_players(_new_list) {
 			var _inst = client_player_spawn_at_pos(_new_list[_i])
 			_new_list[_i].character = _inst
 			array_push(playerList, _new_list[_i])
+			apply_pending_player_input(_newSteamID)
 		} else {
 			// Already tracked — update positional and lobby metadata
 			for (var _k = 0; _k < array_length(playerList); _k++) {
@@ -42,6 +43,7 @@ function sync_players(_new_list) {
 					if !player_entry_has_live_character(playerList[_k]) && playerList[_k].steamID != steam_get_user_steam_id() {
 						var _inst = client_player_spawn_at_pos(playerList[_k])
 						playerList[_k].character = _inst
+						apply_pending_player_input(_newSteamID)
 					} else if player_entry_has_live_character(playerList[_k]) {
 						playerList[_k].character.maxHealth    = playerList[_k].maxHealth
 						playerList[_k].character.playerHealth = playerList[_k].playerHealth

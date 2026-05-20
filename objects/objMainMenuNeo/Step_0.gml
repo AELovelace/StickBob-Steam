@@ -34,14 +34,12 @@ last_mouse_x = _mouse_x;
 last_mouse_y = _mouse_y;
 
 if (keyboard_check_pressed(vk_escape)) {
-	instance_create_layer(x, y, "Instances", objMainMenu);
-	instance_destroy();
+	shutdown_multiplayer("main_menu_neo_exit_game");
+	game_end();
 	exit;
 }
 
-var _confirm = keyboard_check_pressed(vk_enter)
-	|| keyboard_check_pressed(vk_space)
-	|| (_hovered_index == menu_index && _mouse_pressed);
+var _confirm = menu_neo_confirm_pressed(_hovered_index == menu_index && _mouse_pressed);
 
 if (!_confirm) exit;
 
@@ -90,11 +88,7 @@ switch (menu_index) {
 		break;
 
 	case 9:
-		instance_create_layer(x, y, "Instances", objMainMenu);
-		instance_destroy();
-		break;
-
-	case 10:
+		shutdown_multiplayer("main_menu_neo_exit_game")
 		game_end();
 		break;
 }

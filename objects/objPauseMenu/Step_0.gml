@@ -42,7 +42,7 @@ last_mouse_x = mouse_x;
 last_mouse_y = mouse_y;
 
 // Handle selection (Enter/Space key)
-if (keyboard_check_pressed(vk_enter) || keyboard_check_pressed(vk_space) || (_hovered_index == menu_index && _mouse_pressed)) {
+if (keyboard_check_pressed(vk_enter) || (_hovered_index == menu_index && _mouse_pressed)) {
     switch(menu_index) {
         case 0:
 			global.isPaused = false;
@@ -57,10 +57,12 @@ if (keyboard_check_pressed(vk_enter) || keyboard_check_pressed(vk_space) || (_ho
             show_debug_message("Open Load Menu");
 			break;
         case 3:
+            shutdown_multiplayer("pause_to_main_menu")
 			room_goto(rm_MainMenu)
             break;
             // Action for "Exit"
-		case 4:	
+		case 4:
+            shutdown_multiplayer("pause_exit_game")
 			game_end(); // Closes the game
             break;
     }

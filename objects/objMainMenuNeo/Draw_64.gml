@@ -30,7 +30,7 @@ menu_neo_draw_glow_text(30, 48, "NOTICE BOARD // STICKBOB MAIN TERMINAL", _accen
 
 draw_set_font(fontMenuMed);
 menu_neo_draw_glow_text(32, 78, ">LINKS/RES :: DOLLOS V-3.01", _ice, _c.phosphor);
-menu_neo_draw_glow_text(32, _gui_h - 36, "W/S OR MOUSE: SELECT   ENTER: OPEN   ESC: CLASSIC MENU", _paper, _c.phosphor);
+menu_neo_draw_glow_text(32, _gui_h - 36, "W/S OR MOUSE: SELECT   ENTER: OPEN   ESC: EXIT", _paper, _c.phosphor);
 
 draw_set_color(_bg_mid);
 draw_rectangle(22, 116, 300, _gui_h - 52, false);
@@ -107,10 +107,6 @@ for (var _b = 0; _b < array_length(_ui.boards); _b++) {
 		draw_set_halign(fa_left);
 	}
 }
-
-draw_set_color(_accent);
-draw_rectangle(_gui_w - 196, _gui_h - 46, _gui_w - 38, _gui_h - 18, true);
-menu_neo_draw_glow_text(_gui_w - 182, _gui_h - 40, "OPEN CLASSIC", c_black, _paper);
 
 menu_neo_draw_flicker_overlay();
 

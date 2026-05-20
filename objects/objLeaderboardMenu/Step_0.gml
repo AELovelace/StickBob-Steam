@@ -5,7 +5,7 @@ var _mouse_pressed = mouse_check_button_pressed(mb_left);
 var _mouse_moved = (_mouse_x != last_mouse_x) || (_mouse_y != last_mouse_y);
 
 if (keyboard_check_pressed(vk_escape) || keyboard_check_pressed(vk_backspace)) {
-	instance_create_layer(x, y, "Instances", objMainMenu);
+	instance_create_layer(x, y, "Instances", objMainMenuNeo);
 	instance_destroy();
 	exit;
 }

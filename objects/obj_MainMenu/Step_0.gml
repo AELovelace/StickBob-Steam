@@ -21,7 +21,7 @@ if (keyboard_check_pressed(vk_down) or keyboard_check_pressed(ord("S"))) {
 
 
 // Confirm Action
-if (keyboard_check_pressed(vk_enter) || keyboard_check_pressed(ord("E")) || keyboard_check_pressed(vk_space) ) {
+if (keyboard_check_pressed(vk_enter) || keyboard_check_pressed(ord("E")) ) {
 	if !menuItems[selectedItem].disabled then menuItems[selectedItem].selectAction()
 	for (var _i = 0; _i < array_length(menuItems); _i++){
 		menuItems[_i].disabled = true

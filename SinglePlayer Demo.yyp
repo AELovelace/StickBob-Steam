@@ -388,12 +388,12 @@
     {"roomId":{"name":"MPB2","path":"rooms/MPB2/MPB2.yy",},},
     {"roomId":{"name":"rm_GameRoom","path":"rooms/rm_GameRoom/rm_GameRoom.yy",},},
     {"roomId":{"name":"SP5","path":"rooms/SP5/SP5.yy",},},
-    {"roomId":{"name":"BPB2","path":"rooms/BPB2/BPB2.yy",},},
     {"roomId":{"name":"SP3","path":"rooms/SP3/SP3.yy",},},
     {"roomId":{"name":"SP1","path":"rooms/SP1/SP1.yy",},},
     {"roomId":{"name":"SP2","path":"rooms/SP2/SP2.yy",},},
     {"roomId":{"name":"SP4","path":"rooms/SP4/SP4.yy",},},
     {"roomId":{"name":"rm_Runner","path":"rooms/rm_Runner/rm_Runner.yy",},},
+    {"roomId":{"name":"BPB2","path":"rooms/BPB2/BPB2.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[

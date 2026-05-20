@@ -1,0 +1,5 @@
+=== mp debug session start ===
+0|484|rm_MainMenu|boot|obj_Game created room=rm_MainMenu
+0|485|rm_MainMenu|boot|tail helper: tools\Start-MpLogTail.cmd "mp_multiplayer_debug.log"
+0|490|rm_MainMenu|boot|crash handler path=runtime_crash.log
+0|73718|rm_MainMenu|client-create|steam=76561198084771996 host=76561198060548054

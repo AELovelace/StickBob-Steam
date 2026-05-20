@@ -1,4 +1,9 @@
+// Only the locally owned player should drive camera and parallax.
+if !isLocal exit;
+if lobbyMemberID == undefined exit;
+
 var _cam = view_camera[lobbyMemberID];
+if _cam == undefined || _cam < 0 exit;
 //view_set_visible(0, false)
 var _maxZoomFactor = 1.5;
 var _zoomSpeed = 0.05;

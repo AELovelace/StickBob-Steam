@@ -200,9 +200,19 @@ function paddle_movement() {
 	if (place_meeting(x, y + ySpeed, objSolid)){
 		canJump = true;
 		// Nudge to exact contact before zeroing speed
-		while (!place_meeting(x, y + sign(ySpeed), objSolid)){
-			y += sign(ySpeed);
-			wallJump = 0;
+		var _solidStep = sign(ySpeed)
+		if (_solidStep == 0) {
+			mp_debug_log("move-guard", "solid overlap with zero y-step steam=" + string(steamID) + " pos=(" + string(x) + "," + string(y) + ")")
+		} else {
+			var _solidGuard = 0
+			while (!place_meeting(x, y + _solidStep, objSolid) && _solidGuard < 1024){
+				y += _solidStep;
+				wallJump = 0;
+				_solidGuard += 1
+			}
+			if (_solidGuard >= 1024) {
+				mp_debug_log("move-guard", "solid vertical guard tripped steam=" + string(steamID) + " pos=(" + string(x) + "," + string(y) + ") step=" + string(_solidStep))
+			}
 		}
 		ySpeed = 0;
 		// Jump from solid surface
@@ -215,9 +225,19 @@ function paddle_movement() {
 
 	// --- Vertical collision with tilemap terrain (same logic as above) ---
 	if (place_meeting(x, y + ySpeed, collision_tilemap_id)){
-		while (!place_meeting(x, y + sign(ySpeed), collision_tilemap_id)){
-			y += sign(ySpeed);
-			wallJump = 0;
+		var _tileStep = sign(ySpeed)
+		if (_tileStep == 0) {
+			mp_debug_log("move-guard", "tile overlap with zero y-step steam=" + string(steamID) + " pos=(" + string(x) + "," + string(y) + ")")
+		} else {
+			var _tileGuard = 0
+			while (!place_meeting(x, y + _tileStep, collision_tilemap_id) && _tileGuard < 1024){
+				y += _tileStep;
+				wallJump = 0;
+				_tileGuard += 1
+			}
+			if (_tileGuard >= 1024) {
+				mp_debug_log("move-guard", "tile vertical guard tripped steam=" + string(steamID) + " pos=(" + string(x) + "," + string(y) + ") step=" + string(_tileStep))
+			}
 		}
 		ySpeed = 0;
 		// Jump from tile surface
@@ -249,11 +269,21 @@ function paddle_movement() {
 	// the obstacle is short enough to step over (i.e. a slope or low ledge).
 	if (place_meeting(x + xSpeed, y, objSolid))
 	{
+		var _slideStep = sign(xSpeed)
+		if (_slideStep == 0) {
+			mp_debug_log("move-guard", "horizontal overlap with zero x-step steam=" + string(steamID) + " pos=(" + string(x) + "," + string(y) + ")")
+			xSpeed = 0;
+		} else {
 	    // Slide up to the wall pixel-by-pixel
-	    while (!place_meeting(x + sign(xSpeed), y, objSolid))
+	    var _slideGuard = 0
+	    while (!place_meeting(x + _slideStep, y, objSolid) && _slideGuard < 1024)
 	    {
-	        x += sign(xSpeed);
+	        x += _slideStep;
+			_slideGuard += 1
 	    }
+		if (_slideGuard >= 1024) {
+			mp_debug_log("move-guard", "horizontal slide guard tripped steam=" + string(steamID) + " pos=(" + string(x) + "," + string(y) + ") step=" + string(_slideStep))
+		}
 
 		// Scan upward one pixel at a time until the path is clear or we exceed climbHeight
 		var dy = 0;
@@ -267,6 +297,7 @@ function paddle_movement() {
 		else {
 			// Obstacle is too tall — stop horizontal movement
 			xSpeed = 0;
+		}
 		}
 	}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

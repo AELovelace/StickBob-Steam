@@ -14,8 +14,7 @@ button[5] = "LINK SGC OAUTH";
 button[6] = "SADGIRLSCLUB.WTF";
 button[7] = "SETTINGS";
 button[8] = "STORE";
-button[9] = "CLASSIC MENU";
-button[10] = "EXIT";
+button[9] = "EXIT";
 
 button_desc[0] = "Spin up a multiplayer lobby and drop straight into the player-count flow.";
 button_desc[1] = "Browse open lobbies and connect to the current host feed.";
@@ -26,8 +25,7 @@ button_desc[5] = "Link your Steam identity to SadGirlCoin through the gateway br
 button_desc[6] = "Open the club homepage in your system browser.";
 button_desc[7] = "Adjust resolution, fullscreen, and player color from the existing settings screen.";
 button_desc[8] = "Buy unlockable weapons and playlists with SadGirlCoin.";
-button_desc[9] = "Return to the original menu object without removing it from the project.";
-button_desc[10] = "Close the game client.";
+button_desc[9] = "Close the game client.";
 
 buttons = array_length_1d(button);
 menu_index = 0;

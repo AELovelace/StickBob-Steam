@@ -16,14 +16,14 @@ function get_controls(_is_host, _is_local)
 		rightKey = keyboard_check(vk_right) ||keyboard_check(ord("D")) || gamepad_button_check( 0, gp_padr );
 		leftKey  = keyboard_check(vk_left) || keyboard_check(ord("A")) || gamepad_button_check( 0, gp_padl );
 		downKey  = keyboard_check(vk_down) || keyboard_check(ord("S")) || gamepad_button_check( 0, gp_padd );
-		upKey  = keyboard_check(vk_up) || keyboard_check(ord("W")) || gamepad_button_check( 0, gp_padu );
+		upKey  = keyboard_check(vk_up) || keyboard_check(ord("W")) || keyboard_check(vk_space) || gamepad_button_check( 0, gp_padu );
 		allDir = rightKey+leftKey+downKey+upKey
 		// Collapse directional keys into signed axis values (-1, 0, 1)
 		xInput = (rightKey - leftKey)
 		yInput = (downKey - upKey)
 
 		runKey    = keyboard_check(vk_shift) || gamepad_button_check( 0, gp_face3 );
-		actionKey = keyboard_check(vk_space) || mouse_check_button(mb_left) || gamepad_button_check( 0, gp_face2 );
+		actionKey = keyboard_check(ord("E")) || mouse_check_button(mb_left) || gamepad_button_check( 0, gp_face2 );
 		mouseAngle = point_direction(x, y, mouse_x, mouse_y);
 
 		// Broadcast the host's input to all clients so they can simulate the host character
@@ -40,10 +40,10 @@ function get_controls(_is_host, _is_local)
 		var _rightKey = keyboard_check(vk_right) ||keyboard_check(ord("D")) || gamepad_button_check( 0, gp_padr );
 		var _leftKey  = keyboard_check(vk_left) || keyboard_check(ord("A")) || gamepad_button_check( 0, gp_padl );
 		var _downKey  = keyboard_check(vk_down) || keyboard_check(ord("S")) || gamepad_button_check( 0, gp_padd );
-		var _upKey  = keyboard_check(vk_up) || keyboard_check(ord("W")) || gamepad_button_check( 0, gp_padu );
+		var _upKey  = keyboard_check(vk_up) || keyboard_check(ord("W")) || keyboard_check(vk_space) || gamepad_button_check( 0, gp_padu );
 
 		var _runKey    = keyboard_check(vk_shift) || gamepad_button_check( 0, gp_face3 );
-		var _actionKey = keyboard_check(vk_space) || mouse_check_button(mb_left) || gamepad_button_check( 0, gp_face2 );
+		var _actionKey = keyboard_check(ord("E")) || mouse_check_button(mb_left) || gamepad_button_check( 0, gp_face2 );
 		var _mouseAngle = point_direction(x, y, mouse_x, mouse_y);
 
 		// Send raw key state to the server; the server converts to axis values
@@ -87,12 +87,12 @@ function getSPControls(){
 	downKey  = keyboard_check(vk_down) || keyboard_check(ord("S")) || gamepad_button_check( 0, gp_padd );
 	// Released check is needed for the slide-cancel logic in paddle_movement
 	downKeyReleased  = keyboard_check_released(vk_down) || keyboard_check_released(ord("S")) || gamepad_button_check_released( 0, gp_padd );
-	upKey  = keyboard_check(vk_up) || keyboard_check(ord("W")) || gamepad_button_check( 0, gp_padu );
+	upKey  = keyboard_check(vk_up) || keyboard_check(ord("W")) || keyboard_check(vk_space) || gamepad_button_check( 0, gp_padu );
 	allDir = rightKey+leftKey+downKey+upKey
 	xInput = (rightKey - leftKey)
 	yInput = (downKey - upKey)
 
 	runKey    = keyboard_check(vk_shift) || gamepad_button_check( 0, gp_face3 );
-	actionKey = keyboard_check(vk_space) || mouse_check_button(mb_left) || gamepad_button_check( 0, gp_face2 );
+	actionKey = keyboard_check(ord("E")) || mouse_check_button(mb_left) || gamepad_button_check( 0, gp_face2 );
 	mouseAngle = point_direction(x, y, mouse_x, mouse_y);
 }
