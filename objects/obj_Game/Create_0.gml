@@ -26,3 +26,20 @@ button[4] = "Exit Game";
 buttons = array_length_1d(button); // Get the number of buttons
 menu_index = 0; // Current selected item index (starts at 0)
 last_selected = 0; // Track the last selection to prevent repeated sound playing
+
+// ── Phase 6.1: Chat overlay state ────────────────────────────────────────
+mp_chat_init()
+chat_open  = false
+chat_input = ""
+chat_visible_ms = 6000   // how long messages stay visible after last activity
+
+// ── Bullet trail particle system ─────────────────────────────────────────
+global.ps = part_system_create_layer("Instances", false);
+global.p_bullet_trail = part_type_create();
+part_type_shape(global.p_bullet_trail, pt_shape_pixel);
+part_type_size(global.p_bullet_trail, 0.4, 0.9, -0.04, 0);
+part_type_speed(global.p_bullet_trail, 0.0, 0.8, -0.05, 0);
+part_type_direction(global.p_bullet_trail, 0, 360, 0, 0);
+part_type_life(global.p_bullet_trail, 8, 14);
+part_type_colour3(global.p_bullet_trail, c_yellow, c_orange, c_red);
+part_type_alpha3(global.p_bullet_trail, 0.8, 0.4, 0.0);

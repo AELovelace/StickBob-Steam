@@ -132,7 +132,7 @@ function server_player_spawn_at_pos(_steam_id, _pos) {
 // Packet layout: u8 type | u64 steamID | s8 xInput | s8 yInput | u8 runKey | u8 actionKey | s16 mouseAngle  → 15 bytes
 function send_player_input_to_clients(_player_input, _exclude_steam_id=undefined){
 	if _player_input == undefined then return
-	var _b = buffer_create(15, buffer_fixed, 1);
+	var _b = buffer_create(17, buffer_fixed, 1);
 	buffer_write(_b, buffer_u8,  NETWORK_PACKETS.SERVER_PLAYER_INPUT);
 	buffer_write(_b, buffer_u64, _player_input.steamID);
 	buffer_write(_b, buffer_s8,  _player_input.xInput);
@@ -140,6 +140,8 @@ function send_player_input_to_clients(_player_input, _exclude_steam_id=undefined
 	buffer_write(_b, buffer_u8,  _player_input.runKey);
 	buffer_write(_b, buffer_u8,  _player_input.actionKey);
 	buffer_write(_b, buffer_s16, _player_input.mouseAngle);
+	buffer_write(_b, buffer_u8,  variable_struct_exists(_player_input, "meleeKeyPressed") ? (_player_input.meleeKeyPressed ? 1 : 0) : 0);
+	buffer_write(_b, buffer_u8,  variable_struct_exists(_player_input, "slashKeyPressed") ? (_player_input.slashKeyPressed ? 1 : 0) : 0);
 	for (var _i = 0; _i < array_length(obj_Server.playerList); _i++){
 		if (obj_Server.playerList[_i].steamID != obj_Server.steamID
 			&& (_exclude_steam_id == undefined || obj_Server.playerList[_i].steamID != _exclude_steam_id)

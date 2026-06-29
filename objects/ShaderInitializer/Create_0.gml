@@ -6,6 +6,7 @@ room_goto(rm_MainMenu);
 #region SHADER
 	
 	UCRTParams = shader_get_uniform(SHD_CRT, "params");
+	UCRTTime   = shader_get_uniform(SHD_CRT, "u_time");
 	CRT = global.GameState.CRT;
 	application_surface_draw_enable(false);
 	

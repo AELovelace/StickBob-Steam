@@ -1,4 +1,5 @@
 /// @description Setup Player
+variableInitAll()
 wallJump = 0;
 background_map = ds_map_create();
 background_map[? layer_get_id("bgClouds")] = 0.3;
@@ -90,3 +91,5 @@ if (isLocal) {
 		mp_debug_log("player-spawn", "local player steam=" + string(steamID) + " slot=" + string(lobbyMemberID) + " pos=(" + string(x) + "," + string(y) + ")")
 	}
 }
+
+vfx_init_trail();

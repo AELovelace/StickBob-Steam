@@ -15,12 +15,12 @@ if (isLocal && (instance_exists(obj_Server) || instance_exists(obj_Client)) && c
 paddle_movement()
 reconcile_net_position()
 
-if (sprite_index != sprPlayerDie){
+if (sprite_index != sprPlayerDie && meleeTimer <= 0){
 	global.stopShooting = false;	
 }
 playerSpriteIndexer()
 // Logic for shooting a bullet
-if (actionKey == 1 && currentCooldown <= 0){
+if (actionKey == 1 && currentCooldown <= 0 && meleeTimer <= 0 && !meleeKeyPressed && slashTimer <= 0){
 	var dist = 32;
 	gun_distance = 20
 	var bullet_x = x + lengthdir_x(dist, mouseAngle);
@@ -38,6 +38,7 @@ if (actionKey == 1 && currentCooldown <= 0){
 		bullet.image_angle = bullet.direction
 		bullet.owner_id = id
 		bullet.owner_steam_id = steamID
+	mp_replicate_spawn(bullet, ENTITY_KIND.BULLET)
 	mp_debug_log("shoot-spawn",
 		"steam=" + string(steamID)
 		+ " bullet=" + string(bullet)
@@ -57,5 +58,15 @@ if (actionKey == 1 && currentCooldown <= 0){
 		+ " fxPos=(" + string(_x) + "," + string(_y) + ")"
 	)
 	currentCooldown = fireCooldown
+}
+playerMelee()
+playerSlash()
+
+// Safety net: catch any health-below-zero case that slipped past collision handlers
+if (playerHealth <= 0 && sprite_index != sprPlayerDie) {
+	playerHealth = 0;
+	global.stopShooting = true;
+	sprite_index = sprPlayerDie;
+	audio_play_sound(i_fucked_ur_mum, 10, 0)
 }
 

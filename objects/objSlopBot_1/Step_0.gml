@@ -1,6 +1,7 @@
 if(global.isPaused){
 	exit;
 }
+vfx_update_trail();
 if (isDying) {
 	xSpeed = 0;
 	ySpeed = 0;
@@ -93,6 +94,7 @@ if (state == "chase") {
 		bullet.direction = mouseAngle
 		bullet.image_angle = bullet.direction
 		bullet.owner_id = id
+		if (mp_is_host()) mp_replicate_spawn(bullet, ENTITY_KIND.BULLET);
 		audio_play_sound(wob_wob_2, 10, 0)
 	    var _x = x + lengthdir_x(gun_distance, mouseAngle);
 	    var _y = y + lengthdir_y(gun_distance, mouseAngle);

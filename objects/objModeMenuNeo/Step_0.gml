@@ -50,6 +50,12 @@ switch (menu_index) {
 		instance_destroy();
 		break;
 	case 3:
+		global.gameParams.practiceMode = true;
+		global.gameParams.modeSelection = global.GAME_MODE_HP5;
+		instance_create_layer(x, y, "Instances", objMapMenuNeo);
+		instance_destroy();
+		break;
+	case 4:
 		instance_create_layer(x, y, "Instances", objPlayerMenuNeo);
 		instance_destroy();
 		break;

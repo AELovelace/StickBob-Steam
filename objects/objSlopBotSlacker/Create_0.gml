@@ -21,3 +21,5 @@ isDying = false;
 dir = -1; 
 // AI State (optional, but useful for more complex AI)
 state = "patrol";
+
+vfx_init_trail();

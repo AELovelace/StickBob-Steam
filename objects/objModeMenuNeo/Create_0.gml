@@ -7,12 +7,14 @@ action_card_gap = 10;
 button[0] = "MPB CLASSIC";
 button[1] = "MPB 5 HP";
 button[2] = "MPB PRACTICE";
-button[3] = "BACK";
+button[3] = "MPB PRACTICE 5HP";
+button[4] = "BACK";
 
 button_desc[0] = "One-hit lethal classic mode. Fast resets, fast grudges.";
 button_desc[1] = "Five-hit variant for longer duels and messier comebacks.";
 button_desc[2] = "Practice path with hosted flow intact but softer stakes.";
-button_desc[3] = "Return to player-count selection.";
+button_desc[3] = "Practice path with 5HP — forgiving against smartbots.";
+button_desc[4] = "Return to player-count selection.";
 
 buttons = array_length_1d(button);
 menu_index = 0;

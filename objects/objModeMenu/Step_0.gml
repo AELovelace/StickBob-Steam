@@ -63,6 +63,12 @@ if (keyboard_check_pressed(vk_enter) || (_hovered_index == menu_index && _mouse_
 			instance_destroy()
             break;
         case 3:
+			global.gameParams.practiceMode = true
+			global.gameParams.modeSelection = global.GAME_MODE_HP5
+			instance_create_layer(x,y,"Instances", objMapMenu)
+			instance_destroy()
+            break;
+        case 4:
 			instance_create_layer(x,y,"Instances", objPlayerMenu)
 			instance_destroy()
             break;

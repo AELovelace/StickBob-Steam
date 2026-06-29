@@ -9,7 +9,8 @@ button = []
 // Array of menu options (strings)
 button[0] = "MPB1";
 button[1] = "MPB2";
-button[2] = "Back";
+button[2] = "MPB3";
+button[3] = "Back";
 
 
 buttons = array_length_1d(button); // Get the number of buttons

@@ -1,5 +1,7 @@
 /// @description Visual reaction to being hit
 
+vfx_draw_afterimage(playerColor);
+
 // Tint body with the player's chosen colour, then restore blend for other sprites
 image_blend = playerColor
 draw_self()
@@ -20,6 +22,7 @@ draw_set_valign(fa_top)
 //	draw_rectangle(bbox_left,bbox_top,bbox_right-1,bbox_bottom-1,false)
 //}
 draw_set_alpha(1)
+if (meleeTimer <= 0 && slashTimer <= 0) {
 	if (sprite_index == sprPlayerSkidLeft){
 		draw_sprite_ext(sprPlayerGun, 0, x+5,y-3, image_xscale, -1, mouseAngle, playerColor, 1)
 	}
@@ -57,6 +60,25 @@ draw_set_alpha(1)
 	else{
 		draw_sprite_ext(sprPlayerGun, 0, x,y, image_xscale, image_yscale, mouseAngle, playerColor, 1)
 	}
+} else if (slashTimer > 0) {
+	// Afterimage — ghost copies of previous frames, additive blending
+	gpu_set_blendmode(bm_add);
+	for (var _t = 1; _t <= 3; _t++) {
+		var _pframe = max(slashFrame - _t, 0);
+		var _pa = (1.0 - (_t / 4.0)) * 0.35;
+		draw_sprite_ext(sprPlayerKnife, _pframe, x, y, lastFacingDir, image_yscale, 0, playerColor, _pa);
+	}
+	gpu_set_blendmode(bm_normal);
+	// Knife at current frame, flipped to match last travel direction
+	draw_sprite_ext(sprPlayerKnife, slashFrame, x, y, lastFacingDir, image_yscale, 0, playerColor, 1);
+	// Bloom — redraw at small offsets with additive blending
+	gpu_set_blendmode(bm_add);
+	var _bOff = [[2,0],[-2,0],[0,2],[0,-2],[3,0],[-3,0],[0,3],[0,-3]];
+	for (var _b = 0; _b < 8; _b++) {
+		draw_sprite_ext(sprPlayerKnife, slashFrame, x + _bOff[_b][0], y + _bOff[_b][1], lastFacingDir, image_yscale, 0, playerColor, 0.12);
+	}
+	gpu_set_blendmode(bm_normal);
+}
 
 //blood effect
 if(playerHealth <= 4){
@@ -76,3 +98,5 @@ if(playerHealth <= 1){
 		draw_sprite_ext(sprPlayerPuddle, image_index, x, y, image_xscale, image_yscale, 0, c_white, 1)
 		draw_sprite_ext(sprPlayerPuddle, image_index, x, y, image_xscale, -1, 180, c_white, 1)
 }
+
+vfx_draw_bloom(playerColor);

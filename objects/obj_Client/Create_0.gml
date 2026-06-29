@@ -15,6 +15,15 @@ spawn_resync_attempts = 0
 spawn_resync_active = true
 spawn_resync_last_host = lobbyHost
 
+// Phase 1.1: protocol handshake state
+hello_sent = false
+hello_ack_received = false
+hello_next_time = current_time + 200  // small delay so lobby host id is ready
+
+// Phase 2.1: heartbeat schedule
+heartbeat_next_time = current_time + MP_HEARTBEAT_INTERVAL_MS
+mp_liveness_init()
+
 var _maxHP = mode_max_health()
 
 playerList[0] = {

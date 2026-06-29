@@ -38,6 +38,7 @@ resolve_lobby_room = function(_raw_map) {
 	if (_room == -1) {
 		if (_map_name == "MPB1") return MPB1;
 		if (_map_name == "MPB2") return MPB2;
+		if (_map_name == "MPB3") return MPB3;
 	}
 
 	return _room;

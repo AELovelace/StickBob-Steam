@@ -1,4 +1,5 @@
 /// @description Visual reaction to being hit
+vfx_draw_afterimage(c_white);
 draw_self()
 
 if (isDying || sprite_index == sprPlayerDie) {
@@ -19,3 +20,4 @@ draw_set_alpha(1)
 	else{
 		draw_sprite_ext(sprMG, 0, x,y, image_xscale, image_yscale, mouseAngle, c_white, 1)
 	}
+vfx_draw_bloom(make_color_rgb(255, 60, 60));

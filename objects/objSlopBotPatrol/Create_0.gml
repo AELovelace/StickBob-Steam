@@ -50,3 +50,5 @@ patrol_points = [
 
 ds_gridpathfinding = noone;
 path_building = noone;
+
+vfx_init_trail();

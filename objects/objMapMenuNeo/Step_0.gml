@@ -38,6 +38,9 @@ switch (menu_index) {
 		start_host_lobby_neo(MPB2);
 		break;
 	case 2:
+		start_host_lobby_neo(MPB3);
+		break;
+	case 3:
 		instance_create_layer(x, y, "Instances", objModeMenuNeo);
 		instance_destroy();
 		break;

@@ -51,6 +51,9 @@ if (keyboard_check_pressed(vk_enter) || (_hovered_index == menu_index && _mouse_
 			start_host_lobby(MPB2)
             break;
 		case 2:
+			start_host_lobby(MPB3)
+			break;
+		case 3:
 			instance_create_layer(x,y,"Instances", objModeMenu)
 			instance_destroy()
             break;

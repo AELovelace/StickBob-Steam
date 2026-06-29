@@ -30,3 +30,5 @@ nav_last_pos_y = y;
 
 ds_gridpathfinding = noone;
 path_building = noone;
+
+vfx_init_trail();

@@ -63,3 +63,5 @@ if (isLocal && !instance_exists(obj_Server) && !instance_exists(obj_Client)) {
 if (isLocal) {
 	sgc_gateway_begin_level_balance_cycle();
 }
+
+vfx_init_trail();

@@ -27,7 +27,9 @@ selectAction = function () {
 	targetRoom = string_delete(_lobbyMap,1,9)
 	show_debug_message("mapReceived: " + targetRoom)
 	if(targetRoom == "MPB1"){
-		room_goto(MPB1)	
+		room_goto(MPB1)
+	} else if (targetRoom == "MPB3") {
+		room_goto(MPB3)
 	} else {
 		room_goto(MPB2)
 	}

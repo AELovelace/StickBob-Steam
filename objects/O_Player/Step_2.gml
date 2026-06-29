@@ -57,3 +57,5 @@ repeat(ds_map_size(background_map)) {
 }
 
 //check for death
+
+vfx_update_trail();

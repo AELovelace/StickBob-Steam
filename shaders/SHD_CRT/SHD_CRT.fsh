@@ -1,6 +1,7 @@
 varying vec2 v_vTexcoord;
 varying vec4 v_vColour;	
 uniform float params[10];
+uniform float u_time;
 vec2 size = vec2(params[0], params[1]);
 #define res (size.xy/params[2])
 float hardScan = params[3]; //-8.0;
@@ -11,6 +12,12 @@ float maskLight = params[8];
 bool SRGB = bool(params[9] == 1.0);
 
 //---------------------- FUNCTIONS ----------------------------
+
+// Pseudo-random hash for animated static noise.
+float hash(vec2 p)
+{
+    return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453);
+}
 
 // sRGB to Linear.
 float ToLinear1(float c)
@@ -139,6 +146,12 @@ void main()
 	fragColor.rgb = Tri(pos) * Mask(fragCoord.xy);
 	fragColor.a = 1.0;  
 	if (SRGB) fragColor.rgb = ToSrgb(fragColor.rgb);
+	
+	// Animated TV static — only inside the warped screen area
+	float inScreen = step(0.0, pos.x) * step(pos.x, 1.0) * step(0.0, pos.y) * step(pos.y, 1.0);
+	float noise    = hash(fragCoord.xy + u_time * 1000.0);
+	fragColor.rgb += (noise - 0.5) * 0.06 * inScreen;
+	
 	gl_FragColor = fragColor;
 }
 

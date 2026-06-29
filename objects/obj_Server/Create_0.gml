@@ -9,6 +9,11 @@ character = undefined
 
 inbuf = buffer_create(16, buffer_grow, 1);
 
+mp_seq_reset()
+mp_liveness_init()
+heartbeat_next_time = current_time + MP_HEARTBEAT_INTERVAL_MS
+timeout_next_check  = current_time + 1000
+
 var _maxHP = mode_max_health()
 
 playerList[0] = {

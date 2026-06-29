@@ -9,7 +9,15 @@ display_reset(4, true);
 depth = 1000000;
 
 musicPlayerLoadArtists()	//load artist music
+startArtist = irandom(numArtists - 1)	//pick a random unlocked playlist on boot
 musicPlayerInitVariables()	//init vars
+track_position = irandom(max(0, array_length(track_list) - 1))	//random track in that playlist
+
+// Apply saved volume to the audio group BEFORE starting playback so the
+// sound never plays at the wrong gain for even one frame.
+var _gain = (global.musicVolume <= 0) ? 0 : power(10, ((global.musicVolume / 100) - 1) * 2);
+audio_group_set_gain(SADP3, _gain / 8, 0);
+
 play_current_track();		//playCurrentTrack
 
 // Music volume slider

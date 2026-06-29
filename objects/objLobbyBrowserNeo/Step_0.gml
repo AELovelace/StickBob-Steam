@@ -28,11 +28,6 @@ if (_hovered_index != -1 && (_mouse_moved || _mouse_pressed)) {
 last_mouse_x = _mouse_x;
 last_mouse_y = _mouse_y;
 
-if (keyboard_check_pressed(ord("R"))) {
-	request_lobby_feed();
-	alarm[0] = refresh_frames;
-}
-
 if (keyboard_check_pressed(vk_escape)) {
 	instance_create_layer(x, y, "Instances", objMainMenuNeo);
 	instance_destroy();

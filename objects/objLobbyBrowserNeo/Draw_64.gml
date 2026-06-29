@@ -8,7 +8,7 @@ if (_rows > 0 && menu_index >= 0 && menu_index < _rows) {
 menu_neo_draw_shell(
 	"NOTICE BOARD // OPEN LOBBIES",
 	">LINKS/RES :: LIVE STEAM BROWSER",
-	"W/S OR MOUSE: SELECT   ENTER: JOIN   R: REFRESH   ESC: BACK"
+	"W/S OR MOUSE: SELECT   ENTER: JOIN   ESC: BACK"
 );
 
 draw_set_color(_c.bg_mid);

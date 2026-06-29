@@ -20,6 +20,11 @@ switch(async_load[?"event_type"])
 		spawn_resync_attempts = 0;
 		spawn_resync_next_time = current_time + 600;
 		spawn_resync_last_host = lobbyHost;
+		// Reset Phase 1 handshake state for the new lobby
+		hello_sent = false;
+		hello_ack_received = false;
+		hello_next_time = current_time + 200;
+		mp_seq_reset();
 
 		var _mode_raw = string(steam_lobby_get_data("Mode"));
 		if (string_length(_mode_raw) <= 0 && variable_global_exists("mp_join_target_mode")) {
@@ -43,6 +48,7 @@ switch(async_load[?"event_type"])
 		if (_target_room == -1) {
 			if (_map_name == "MPB1") _target_room = MPB1;
 			if (_map_name == "MPB2") _target_room = MPB2;
+			if (_map_name == "MPB3") _target_room = MPB3;
 		}
 		mp_debug_log("client-room-resolve", "map=" + _map_name + " room=" + string(_target_room) + " current=" + string(room));
 

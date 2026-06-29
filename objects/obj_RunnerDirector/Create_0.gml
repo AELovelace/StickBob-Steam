@@ -2,6 +2,13 @@
 // Manages the infinite chunk streaming, scoring, and fail state.
 // All slice/chunk logic lives here; O_Player code is untouched.
 
+// ── Deterministic RNG (multiplayer parity) ────────────────────────────────
+// If a synchronized match seed exists, use it so all peers stream identical chunks.
+if (variable_global_exists("mp_match") && is_struct(global.mp_match)
+    && variable_struct_exists(global.mp_match, "seed") && global.mp_match.seed != 0) {
+    random_set_seed(global.mp_match.seed);
+}
+
 // ── Chunk management ───────────────────────────────────────────────────────
 chunk_list     = ds_list_create();  // active chunks: structs {x_start, width, instances:[]}
 next_spawn_x   = 0;                 // world x where the next slice will be placed
@@ -344,6 +351,7 @@ _spawn_chunk = function() {
         var _hdx  = variable_struct_get(_h, "dx");
         var _hdy  = variable_struct_get(_h, "dy");
         var _hinst = instance_create_layer(_ox + _hdx, _hdy, "Instances", obj_RunnerHazard);
+        mp_replicate_spawn(_hinst, ENTITY_KIND.HAZARD);
         array_push(_inst_arr, _hinst);
     }
 

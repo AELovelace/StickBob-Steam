@@ -18,3 +18,10 @@ if (_steam_init != steam_initialised_last || _steam_logged != steam_logged_on_la
 sgc_gateway_update();
 steam_leaderboards_update();
 
+// Background leaderboard download poll
+if (current_time >= lb_poll_next && steam_leaderboards_is_available()) {
+    steam_leaderboards_request_boards();
+    steam_leaderboards_ui_request(false);
+    lb_poll_next = current_time + lb_poll_interval;
+}
+

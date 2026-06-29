@@ -68,6 +68,16 @@ function variableInitAll(){
 		steamName = steam_get_persona_name()
 	}
 	playerColor = app_settings_current().player_color  // overridden post-spawn for remote players
+
+	// Melee attack
+	meleeTimer    = 0   // counts down from meleeDuration while kick animation plays
+	meleeDuration = 32  // 8 anim frames * 4 steps/frame (15 fps sprite, 60 fps room)
+	lastFacingDir = 1   // 1 = facing right, -1 = facing left
+
+	// Slash (knife) attack
+	slashTimer      = 0    // counts down while knife slash is active
+	slashDuration   = 22   // 11 anim frames * 2 steps/frame (30 fps sprite, 60 fps room)
+	slashFrame      = 0    // current animation frame 0-10 (read by Draw)
 }
 
 // ---------------------------------------------------------------------------
@@ -461,6 +471,13 @@ function playerSpriteIndexer(){
 	else if(xInput == 0 && yInput == 0 && xSpeed == 0 && global.stopShooting == false){
 		sprite_index = sprPlayerIdle
 	}
+
+	// Track last horizontal facing direction for the kick flip
+	if (xInput > 0 || xSpeed > 0.1) {
+		lastFacingDir = 1;
+	} else if (xInput < 0 || xSpeed < -0.1) {
+		lastFacingDir = -1;
+	}
 }
 
 function playerSounds(){
@@ -478,4 +495,100 @@ function playerSounds(){
 	}
 
 
+}
+
+// ---------------------------------------------------------------------------
+// Handles the melee (kick) attack.
+// Triggered by right-click (mb_right) or E key (meleeKeyPressed).
+// Locks the player sprite to sprPlayerKick for meleeDuration frames.
+// 8-frame sprite at 15 fps with 60 fps room speed = 4 steps per frame = 32 steps total.
+// Damage fires once at the start of the 2nd animation frame (meleeTimer == 28).
+// Enemies are identified by having the isDying variable.
+// Call once per Step after movement and the global.stopShooting reset.
+// ---------------------------------------------------------------------------
+function playerMelee() {
+	if (meleeKeyPressed && meleeTimer <= 0) {
+		meleeTimer    = meleeDuration;
+		image_index   = 0;              // always start kick from frame 0
+		image_xscale  = lastFacingDir;  // flip sprite to match last travel direction
+	}
+
+	if (meleeTimer > 0) {
+		sprite_index = sprPlayerKick;
+		global.stopShooting = true;
+		meleeTimer--;
+
+		// Damage window: fires once at the start of the 2nd animation frame
+		// (frame index 1, meleeTimer == 28 = 32 - 1*4 steps elapsed).
+		if (meleeTimer == 28) {
+			var _pw = bbox_right - bbox_left;  // one player-width expansion each side
+			var _list = ds_list_create();
+			var _count = collision_rectangle_list(bbox_left - _pw, bbox_top, bbox_right + _pw, bbox_bottom, all, false, true, _list, false);
+			for (var _i = 0; _i < _count; _i++) {
+				var _inst = _list[| _i];
+				if (instance_exists(_inst) && _inst != id
+						&& variable_instance_exists(_inst, "isDying")
+						&& !_inst.isDying) {
+					with (_inst) {
+						playerHealth = max(0, playerHealth - 1);
+						if (playerHealth <= 0) {
+							isDying = true;
+							state   = "dead";
+							xSpeed  = 0;
+							ySpeed  = 0;
+							image_speed = 1;
+							image_index = 0;
+							sprite_index = sprPlayerDie;
+						}
+					}
+				}
+			}
+			ds_list_destroy(_list);
+		}
+
+		if (meleeTimer == 0) {
+			global.stopShooting = false;
+			image_xscale = 1;  // restore scale so normal sprites aren't mirrored
+		}
+	}
+}
+
+// ---------------------------------------------------------------------------
+// Handles the knife slash attack.
+// Triggered by F or middle mouse button (slashKeyPressed).
+// Plays the sprPlayerKnife animation (11 frames, 20 fps).
+// Every enemy touching the player's bbox each step is instantly killed.
+// Call once per Step after movement.
+// ---------------------------------------------------------------------------
+function playerSlash() {
+	if (slashKeyPressed && slashTimer <= 0) {
+		slashTimer = slashDuration;
+	}
+
+	if (slashTimer > 0) {
+		slashFrame = min(floor((slashDuration - slashTimer) / 2), 10);
+		slashTimer--;
+
+		// Instantly kill every enemy touching the player
+		var _list = ds_list_create();
+		var _count = collision_rectangle_list(bbox_left, bbox_top, bbox_right, bbox_bottom, all, false, true, _list, false);
+		for (var _i = 0; _i < _count; _i++) {
+			var _inst = _list[| _i];
+			if (instance_exists(_inst) && _inst != id
+					&& variable_instance_exists(_inst, "isDying")
+					&& !_inst.isDying) {
+				with (_inst) {
+					playerHealth = 0;
+					isDying      = true;
+					state        = "dead";
+					xSpeed       = 0;
+					ySpeed       = 0;
+					image_speed  = 1;
+					image_index  = 0;
+					sprite_index = sprPlayerDie;
+				}
+			}
+		}
+		ds_list_destroy(_list);
+	}
 }

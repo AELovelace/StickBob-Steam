@@ -11,6 +11,12 @@
 //     (false for remote player objects that are controlled by packets)
 function get_controls(_is_host, _is_local)
 {
+	// Block all gameplay input while the chat box is open.
+	if (instance_exists(obj_Game) && obj_Game.chat_open) {
+		init_controls()
+		return
+	}
+
 	if (_is_host && _is_local) {
 		// --- Host reads local hardware ---
 		rightKey = keyboard_check(vk_right) ||keyboard_check(ord("D")) || gamepad_button_check( 0, gp_padr );
@@ -22,12 +28,14 @@ function get_controls(_is_host, _is_local)
 		xInput = (rightKey - leftKey)
 		yInput = (downKey - upKey)
 
-		runKey    = keyboard_check(vk_shift) || gamepad_button_check( 0, gp_face3 );
+		runKey    = gamepad_button_check( 0, gp_face3 );
 		actionKey = keyboard_check(ord("E")) || mouse_check_button(mb_left) || gamepad_button_check( 0, gp_face2 );
 		mouseAngle = point_direction(x, y, mouse_x, mouse_y);
+		meleeKeyPressed = keyboard_check_pressed(vk_shift) || mouse_check_button_pressed(mb_right);
+		slashKeyPressed = keyboard_check_pressed(vk_control) || mouse_check_button_pressed(mb_middle);
 
 		// Broadcast the host's input to all clients so they can simulate the host character
-		var _input = {steamID: lobbyHost, xInput:xInput, yInput:yInput, runKey:runKey, actionKey:actionKey, mouseAngle:mouseAngle}
+		var _input = {steamID: lobbyHost, xInput:xInput, yInput:yInput, runKey:runKey, actionKey:actionKey, mouseAngle:mouseAngle, meleeKeyPressed:meleeKeyPressed, slashKeyPressed:slashKeyPressed}
 		if (instance_exists(obj_Server)) {
 			send_player_input_to_clients(_input)
 		}
@@ -42,23 +50,27 @@ function get_controls(_is_host, _is_local)
 		var _downKey  = keyboard_check(vk_down) || keyboard_check(ord("S")) || gamepad_button_check( 0, gp_padd );
 		var _upKey  = keyboard_check(vk_up) || keyboard_check(ord("W")) || keyboard_check(vk_space) || gamepad_button_check( 0, gp_padu );
 
-		var _runKey    = keyboard_check(vk_shift) || gamepad_button_check( 0, gp_face3 );
+		var _runKey    = gamepad_button_check( 0, gp_face3 );
 		var _actionKey = keyboard_check(ord("E")) || mouse_check_button(mb_left) || gamepad_button_check( 0, gp_face2 );
 		var _mouseAngle = point_direction(x, y, mouse_x, mouse_y);
+		var _meleeKeyPressed = keyboard_check_pressed(vk_shift) || mouse_check_button_pressed(mb_right);
+		var _slashKeyPressed = keyboard_check_pressed(vk_control) || mouse_check_button_pressed(mb_middle);
 
 		// Send raw key state to the server; the server converts to axis values
-		var _input = {rightKey:_rightKey, leftKey:_leftKey, downKey:_downKey, upKey:_upKey, runKey:_runKey, actionKey:_actionKey, mouseAngle:_mouseAngle}
+		var _input = {rightKey:_rightKey, leftKey:_leftKey, downKey:_downKey, upKey:_upKey, runKey:_runKey, actionKey:_actionKey, mouseAngle:_mouseAngle, meleeKeyPressed:_meleeKeyPressed, slashKeyPressed:_slashKeyPressed}
 		if (instance_exists(obj_Server) || instance_exists(obj_Client)) {
 			send_player_input(_input, lobbyHost);
 		}
 
 		// Write input to instance vars so paddle_movement() has real input this frame
 		// (client-side prediction — physics runs locally, server corrections reconcile later)
-		xInput     = (_rightKey - _leftKey)
-		yInput     = (_downKey  - _upKey)
-		runKey     = _runKey
-		actionKey  = _actionKey
-		mouseAngle = _mouseAngle
+		xInput          = (_rightKey - _leftKey)
+		yInput          = (_downKey  - _upKey)
+		runKey          = _runKey
+		actionKey       = _actionKey
+		mouseAngle      = _mouseAngle
+		meleeKeyPressed = _meleeKeyPressed
+		slashKeyPressed = _slashKeyPressed
 	}
 }
 
@@ -77,11 +89,19 @@ function init_controls(){
 	runKey		= 0
 	actionKey	= 0
 	mouseAngle  = 0;
+	meleeKeyPressed = false;
+	slashKeyPressed = false;
 }
 
 // Singleplayer input: reads hardware directly into instance vars each frame.
 // No networking required — there is no server to send to.
 function getSPControls(){
+	// Block all gameplay input while the chat box is open.
+	if (instance_exists(obj_Game) && obj_Game.chat_open) {
+		init_controls()
+		return
+	}
+
 	rightKey = keyboard_check(vk_right) ||keyboard_check(ord("D")) || gamepad_button_check( 0, gp_padr );
 	leftKey  = keyboard_check(vk_left) || keyboard_check(ord("A")) || gamepad_button_check( 0, gp_padl );
 	downKey  = keyboard_check(vk_down) || keyboard_check(ord("S")) || gamepad_button_check( 0, gp_padd );
@@ -92,7 +112,9 @@ function getSPControls(){
 	xInput = (rightKey - leftKey)
 	yInput = (downKey - upKey)
 
-	runKey    = keyboard_check(vk_shift) || gamepad_button_check( 0, gp_face3 );
-	actionKey = keyboard_check(ord("E")) || mouse_check_button(mb_left) || gamepad_button_check( 0, gp_face2 );
+	runKey    = gamepad_button_check( 0, gp_face3 );
+	actionKey = mouse_check_button(mb_left) || gamepad_button_check( 0, gp_face2 );
+	meleeKeyPressed = keyboard_check_pressed(vk_shift) || mouse_check_button_pressed(mb_right);
+	slashKeyPressed = keyboard_check_pressed(vk_control) || mouse_check_button_pressed(mb_middle);
 	mouseAngle = point_direction(x, y, mouse_x, mouse_y);
 }

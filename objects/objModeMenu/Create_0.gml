@@ -10,7 +10,8 @@ button = []
 button[0] = "MPB - Classic";
 button[1] = "MPB - 5 HP";
 button[2] = "MPB - Practice";
-button[3] = "Back";
+button[3] = "MPB - Practice 5HP";
+button[4] = "Back";
 
 
 buttons = array_length_1d(button); // Get the number of buttons

@@ -2,6 +2,8 @@ if (global.isPaused) {
     exit;
 }
 
+vfx_update_trail();
+
 if (isDying) {
     xSpeed = 0;
     ySpeed = 0;
@@ -127,6 +129,7 @@ if (is_alerted && _player_exists && currentCooldown <= 0 && _player_distance < s
     _bullet.image_angle = _bullet.direction;
     _bullet.owner_id = id;
     _bullet.owner_steam_id = bot_owner_steam_id;
+    if (mp_is_host()) mp_replicate_spawn(_bullet, ENTITY_KIND.BULLET);
     audio_play_sound(wob_wob_2, 10, 0);
 
     var _fx = x + lengthdir_x(_gun_distance, mouseAngle);

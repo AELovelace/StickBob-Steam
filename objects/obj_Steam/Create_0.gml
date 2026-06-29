@@ -30,6 +30,11 @@ if (_steam_init) {
 
 steam_leaderboards_state_init();
 
+// Background leaderboard download poll — fires every 60 s once Steam is ready,
+// so the main-menu feed panel has data before the user opens the leaderboard screen.
+lb_poll_next = current_time + 5000;   // first fetch after 5 s (stats need a moment to settle)
+lb_poll_interval = 60000;             // subsequent fetches every 60 s
+
 if (os_browser != browser_not_a_browser) {
 	vpSizeWidthFS = browser_width-5;
 	vpSizeLengthFS = browser_height-5;

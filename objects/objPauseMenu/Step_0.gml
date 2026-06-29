@@ -1,4 +1,5 @@
 // Step Event
+if (!global.isPaused) exit;
 var _menu_down = keyboard_check_pressed(vk_down) || keyboard_check_pressed(ord("S"));
 var _menu_up = keyboard_check_pressed(vk_up) || keyboard_check_pressed(ord("W"));
 var _mouse_pressed = mouse_check_button_pressed(mb_left);

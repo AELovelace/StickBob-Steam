@@ -6,11 +6,13 @@ action_card_gap = 10;
 
 button[0] = "MPB1";
 button[1] = "MPB2";
-button[2] = "BACK";
+button[2] = "MPB3";
+button[3] = "BACK";
 
 button_desc[0] = "Launch the first multiplayer board with the current host settings.";
 button_desc[1] = "Launch the second multiplayer board with the current host settings.";
-button_desc[2] = "Return to mode selection.";
+button_desc[2] = "Launch the third multiplayer board with the current host settings.";
+button_desc[3] = "Return to mode selection.";
 
 buttons = array_length_1d(button);
 menu_index = 0;

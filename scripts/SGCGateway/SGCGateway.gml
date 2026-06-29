@@ -483,6 +483,7 @@ function sgc_gateway_spawn_singleplayer_collectibles(_avoid_x, _avoid_y) {
 			+ ":" + string(round(_candidate.x))
 			+ ":" + string(round(_candidate.y))
 			+ ":" + string(_amount);
+		mp_replicate_spawn(_pickup, ENTITY_KIND.COLLECTIBLE);
 		array_push(_spawned, _candidate);
 	}
 }

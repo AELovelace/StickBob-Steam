@@ -41,3 +41,5 @@ shoot_range = 260;
 
 ds_gridpathfinding = noone;
 path_building = noone;
+
+vfx_init_trail();

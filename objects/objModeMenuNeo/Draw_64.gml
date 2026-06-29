@@ -1,5 +1,7 @@
 var _mode_text = "CLASSIC";
 if (global.gameParams.modeSelection == global.GAME_MODE_HP5) _mode_text = "5 HP";
+if (global.gameParams.practiceMode && global.gameParams.modeSelection == global.GAME_MODE_CLASSIC) _mode_text = "PRACTICE";
+if (global.gameParams.practiceMode && global.gameParams.modeSelection == global.GAME_MODE_HP5) _mode_text = "PRACTICE 5HP";
 menu_neo_draw_shell(
 	"NOTICE BOARD // MODE SELECTION",
 	">LINKS/RES :: COMBAT RULESET ROUTER",
